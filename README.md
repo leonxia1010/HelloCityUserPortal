@@ -11,7 +11,14 @@ A modern frontend project powered by Next.js 14, React 18, TypeScript, and Tailw
 
 ## Getting Started
 
-1. **Install dependencies:**
+1. **Clone the project and enter the directory:**
+
+   ```bash
+   git clone <your-repo-url>
+   cd hello-city-server
+   ```
+
+2. **Install dependencies:**
 
    ```bash
    npm install
@@ -23,28 +30,14 @@ A modern frontend project powered by Next.js 14, React 18, TypeScript, and Tailw
    bun install
    ```
 
-2. **Start the development server:**
+3. **Start the development server:**
 
    ```bash
    npm run dev
    # or yarn dev / pnpm dev / bun dev
    ```
 
-3. **Open** [http://localhost:3000](http://localhost:3000) **in your browser.**
-
-## Build & Run for Production
-
-1. **Build the project:**
-
-   ```bash
-   npm run build
-   ```
-
-2. **Start the production server:**
-
-   ```bash
-   npm start
-   ```
+4. **Open** [http://localhost:3000](http://localhost:3000) **in your browser.**
 
 ## Tech Stack
 

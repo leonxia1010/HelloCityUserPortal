@@ -11,7 +11,14 @@
 
 ## 快速开始
 
-1. **安装依赖：**
+1. **克隆项目并进入目录：**
+
+   ```bash
+   git clone <your-repo-url>
+   cd hello-city-server
+   ```
+
+2. **安装依赖：**
 
    ```bash
    npm install
@@ -23,28 +30,14 @@
    bun install
    ```
 
-2. **本地开发启动：**
+3. **本地开发启动：**
 
    ```bash
    npm run dev
    # 或 yarn dev / pnpm dev / bun dev
    ```
 
-3. **在浏览器中访问** [http://localhost:3000](http://localhost:3000)。
-
-## 构建与生产环境运行
-
-1. **构建项目：**
-
-   ```bash
-   npm run build
-   ```
-
-2. **启动生产环境服务：**
-
-   ```bash
-   npm start
-   ```
+4. **在浏览器中访问** [http://localhost:3000](http://localhost:3000)。
 
 ## 主要技术栈
 
