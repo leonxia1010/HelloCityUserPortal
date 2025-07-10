@@ -14,8 +14,8 @@
 1. **克隆项目并进入目录：**
 
    ```bash
-   git clone <your-repo-url>
-   cd hello-city-server
+   git clone <repo-url/ssh>
+   cd HelloCityUserPortal
    ```
 
 2. **安装依赖：**

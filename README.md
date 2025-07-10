@@ -14,8 +14,8 @@ A modern frontend project powered by Next.js 14, React 18, TypeScript, and Tailw
 1. **Clone the project and enter the directory:**
 
    ```bash
-   git clone <your-repo-url>
-   cd hello-city-server
+   git clone <repo-url/ssh>
+   cd HelloCityUserPortal
    ```
 
 2. **Install dependencies:**
