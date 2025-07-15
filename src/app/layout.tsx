@@ -1,6 +1,10 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+import { CssBaseline, ThemeProvider, StyledEngineProvider } from '@mui/material';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
+import websiteTheme from '@/theme/theme';
+
 export const metadata: Metadata = {
   title: 'HelloCity – Landing Assistant for new cities',
   description:
@@ -14,7 +18,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body>{children}</body>
+      <body>
+        <AppRouterCacheProvider>
+            <StyledEngineProvider injectFirst>
+              <ThemeProvider theme={websiteTheme}>
+                <CssBaseline />
+                {children}
+              </ThemeProvider>
+            </StyledEngineProvider>
+          </AppRouterCacheProvider>
+        </body>
     </html>
   );
 }
