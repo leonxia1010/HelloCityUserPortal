@@ -2,12 +2,15 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { Button, Switch } from '@mui/material';
-import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { Button, Switch, FormControlLabel } from '@mui/material';
 
 const NavBar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
-  const [isExpanded, setIsExpanded] = useState<Boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [isEnglish, setIsEnglish] = useState<boolean>(false);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIsEnglish(event.target.checked);
+  };
 
   return (
     <div className="absolute w-[100vw] h-[100px] top-0 left-0 flex justify-around items-center z-10">
@@ -25,6 +28,17 @@ const NavBar = () => {
         <Button onClick={() => setIsExpanded(!isExpanded)} href="/" variant="tertiary">
           Check Items
         </Button>
+         <FormControlLabel
+            control={
+              <Switch
+                checked={isEnglish}
+                onChange={handleChange}
+                color="primary"
+              />
+            }
+            sx={{color: 'white'}}
+            label={isEnglish ? 'EN' : 'CN'}
+          />
       </div>
       <div>
         {isLoggedIn ? (
