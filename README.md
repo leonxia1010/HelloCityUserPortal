@@ -2,7 +2,7 @@
 
 # Hello City Client
 
-A modern frontend project powered by Next.js 14, React 18, TypeScript, and Tailwind CSS.
+A modern frontend project powered by Next.js 14, React 18, TypeScript, Tailwind CSS and Jest.
 
 ## Requirements
 
@@ -45,6 +45,7 @@ A modern frontend project powered by Next.js 14, React 18, TypeScript, and Tailw
 - [React 18](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [Jest](https://jestjs.io/)
 
 ## Project Structure
 
