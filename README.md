@@ -45,6 +45,7 @@ A modern frontend project powered by Next.js 14, React 18, TypeScript, and Tailw
 - [React 18](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [MUI](https://mui.com/)
 
 ## Project Structure
 
@@ -53,7 +54,7 @@ A modern frontend project powered by Next.js 14, React 18, TypeScript, and Tailw
 - `src/app/layout.tsx`: Global layout and metadata
 - `src/app/page.tsx`: Home page entry
 - `tailwind.config.ts`, `postcss.config.mjs`: Styling configuration
-
+- `theme.ts`: MUI Styling configuration
 ## Notes
 
 - To customize fonts, favicon, or SEO, edit files in `src/app/fonts/`, `src/app/layout.tsx`, and `src/app/favicon.ico`.

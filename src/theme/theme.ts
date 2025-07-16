@@ -12,17 +12,29 @@ import '@fontsource/montserrat/600.css';
 declare module '@mui/material/styles' {
   interface Theme {
     gradients: {
-      homepageCTA: string;
-      modalCTAActive: string;
-      modalCTADisabled: string;
+      buttonPrimaryActive: string;
+      buttonModalActive: string;
+      buttonPrimaryDisabled: string;
+    };
+    customSpacing: {
+      buttonPaddingSm: string;
+      buttonFontSize: string;
     };
   }
   interface ThemeOptions {
     gradients?: {
-      homepageCTA?: string;
-      modalCTAActive?: string;
-      modalCTADisabled?: string;
+      buttonPrimaryActive?: string;
+      buttonModalActive?: string;
+      buttonPrimaryDisabled?: string;
     };
+    customSpacing?: Partial<Theme['customSpacing']>;
+  }
+}
+declare module '@mui/material/Button' {
+  interface ButtonPropsVariantOverrides {
+    primary: true;
+    secondary: true;
+    tertiary: true;
   }
 }
 
@@ -68,9 +80,101 @@ const websiteTheme = createTheme({
     subtitle2: { fontFamily: `'Inter', sans-serif` },
   },
   gradients: {
-    homepageCTA: 'linear-gradient(90deg, #FFA863, #FF75B5, #6FA3FF)',
-    modalCTAActive: 'linear-gradient(90deg, #FFB066, #80C3FF, #4788F2)',
-    modalCTADisabled: 'linear-gradient(90deg, #E2E8F0, #CBD5E1)',
+    buttonPrimaryActive: 'linear-gradient(90deg, #FFA863, #FF75B5, #6FA3FF)',
+    buttonModalActive: 'linear-gradient(90deg, #FFB066, #80C3FF, #4788F2)',
+    buttonPrimaryDisabled: 'linear-gradient(90deg, #E2E8F0, #CBD5E1)',
+  },
+  components: {
+    MuiButton: {
+      variants: [
+        {
+          props: { variant: 'primary'},
+          style: ({ theme }) => ({
+            background: theme.gradients.buttonPrimaryActive,
+            color: theme.palette.common.white,
+            padding: theme.customSpacing.buttonPaddingSm,
+            borderRadius: '2rem',
+            boxShadow: theme.shadows[5],
+            textTransform: 'none',
+            fontWeight: 500,
+            '&:hover': {
+              filter: 'brightness(110%)',
+              boxShadow: theme.shadows[8],
+            },
+          }),
+        },
+        {
+          props: { variant: 'primary', disabled: true},
+          style: ({ theme }) => ({
+            background: theme.gradients.buttonPrimaryDisabled,
+            boxShadow: 'none',
+            '&.Mui-disabled': {
+              color: '#E53935', // <- override default disabled color
+            },
+          }),
+        },
+        {
+          props: {variant: 'secondary'},
+          style: ({ theme }) => ({
+            background: theme.gradients.buttonModalActive,
+            color: theme.palette.common.white,
+            padding: theme.customSpacing.buttonPaddingSm,
+            borderRadius: '2rem',
+            boxShadow: theme.shadows[5],
+            textTransform: 'none',
+            fontWeight: 500,
+            '&:hover': {
+              filter: 'brightness(110%)',
+              boxShadow: theme.shadows[8],
+            },
+          }),
+        },
+        {
+          props: {variant: 'secondary', disabled: true},
+          style: () => ({
+            background: "#F3F3F3",
+            border: `1px solid #DCDCDC`,
+            '&.Mui-disabled': {
+              color: '#A0A0A0', // <- override default disabled color
+            },
+          }),
+        },
+        {
+          props: { variant: 'tertiary'},
+          style: ({ theme }) => ({
+            background: 'transparent',
+            color: theme.palette.common.white,
+            textTransform: 'none',
+            fontWeight: 500,
+            '&:hover': {
+              filter: 'brightness(110%)',
+              borderBottom: `2px solid ${theme.palette.common.white}`,
+              boxShadow: theme.shadows[8],
+            },
+          }),
+        },
+        {
+          props: { variant: 'tertiary', disabled: true},
+          style: () => ({
+            '&.Mui-disabled': {
+              color: '#BBBBBB', // <- override default disabled color
+            },
+          }),
+        }
+      ],
+    },
+  },
+  customSpacing: {
+    buttonPaddingSm: '0.5rem 2rem',
+    buttonFontSize: '1.125rem',
+  },
+  customBorderRadius: {
+    esm: '0.5rem',     // 8px
+    sm: '0.75rem',     // rounded xl 12px
+    md: '1rem',       // 16px
+    lg: '2rem',       // 32px
+    xl: '3rem',       // 64px
+    full: '9999px',
   },
 } as ThemeOptions);
 

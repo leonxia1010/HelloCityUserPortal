@@ -1,77 +1,52 @@
 'use client';
 
-
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useTheme } from '@mui/material/styles';
 import { Button, Switch } from '@mui/material';
-
+import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 const NavBar = () => {
-  const theme = useTheme();
   const [isLoggedIn, setIsLoggedIn] = useState<Boolean>(false);
   const [isExpanded, setIsExpanded] = useState<Boolean>(false);
-  console.log('NavBar rendered successfully');
-
-
-  const linkStyle =
-    'px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-600 transition';
 
   return (
-    <div className="flex justify-around items-center py-4">
-     
+    <div className="absolute w-[100vw] h-[100px] top-0 left-0 flex justify-around items-center z-10">
+      <img src="/images/Logo.png" alt="HelloCity Logo" width={'120px'} />
       <div className="flex gap-2">
-        {isLoggedIn ? (
-          <>
-            <Button component={Link} href="/" color="primary" variant="contained">
-              Profile
-            </Button>
-            <Link href="/" className={linkStyle}>
-              Logout
-            </Link>
-            <Link href="/" className={linkStyle}>
-              Language
-            </Link>
-          </>
-        ) : (
-          <Button color="secondary" variant="contained">
-            Auth
-          </Button>
-        )}
-
-
-        <Button color="secondary" variant="contained">
+        <Button component={Link} href="/" variant="tertiary">
           Home
         </Button>
-        <Button component={Link} href="/" color="primary" variant="contained">
-          Chatbot
+        <Button component={Link} href="/" variant="tertiary">
+          Chat
         </Button>
-        <Button component={Link} href="/" color="primary" variant="contained">
-          About
+        <Button component={Link} href="/" variant="tertiary">
+          FAQ
         </Button>
-        <Button onClick={()=>setIsExpanded(!isExpanded)} href="/" color="primary" variant="contained">
+        <Button onClick={() => setIsExpanded(!isExpanded)} href="/" variant="tertiary">
           Check Items
         </Button>
-        <Switch defaultChecked size="small" />
-        <Button
-          variant="contained"
-          sx={{
-            background: theme.gradients.homepageCTA,
-            color: '#fff',
-            borderRadius: '999px',
-            px: 3,
-            py: 1.5,
-            textTransform: 'none',
-            fontWeight: 600,
-            fontSize: '1rem',
-            transition: 'opacity 0.2s ease-in-out',
-            '&:hover': {
-              opacity: 0.9,
-              background: theme.gradients.homepageCTA,
-            },
-          }}
-        >
-          Get Started
+      </div>
+      <div>
+        {isLoggedIn ? (
+          <>
+            <Button component={Link} href="/" variant="tertiary">
+              Profile
+            </Button>
+            <Button component={Link} href="/" variant="tertiary">
+              Logout
+            </Button>
+            <Button component={Link} href="/" variant="tertiary">
+              Language
+            </Button>
+          </>
+        ) : (
+          <Button variant="tertiary">
+            Sign In
+          </Button>
+        )}
+        
+        <Button component={Link} href="/" variant="primary">
+          Try HelloCity
         </Button>
       </div>
     </div>

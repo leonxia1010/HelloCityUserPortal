@@ -1,44 +1,8 @@
 'use client';
 
 import { Typography, Button, Stack } from '@mui/material';
-import { styled } from '@mui/material/styles';
 
 export default function Example() {
-  const GradientButton = styled(Button)(({ theme }) => ({
-    background: theme.gradients?.homepageCTA,
-    color: '#fff',
-    padding: '0.75rem 2rem',
-    borderRadius: '2rem',
-    textTransform: 'none',
-    fontWeight: 600,
-    fontFamily: `'Cabinet Grotesk', sans-serif`,
-    '&:hover': {
-      opacity: 0.9,
-    },
-  }));
-
-  const GradientButton2 = styled(Button)(({ theme }) => ({
-    background: theme.gradients?.modalCTAActive,
-    color: '#fff',
-    padding: '0.75rem 2rem',
-    borderRadius: '2rem',
-    textTransform: 'none',
-    fontWeight: 600,
-    fontFamily: `'Cabinet Grotesk', sans-serif`,
-    '&:hover': {
-      opacity: 0.9,
-    },
-  }));
-
-  const DisabledGradientButton = styled(Button)(({ theme }) => ({
-    background: theme.gradients?.modalCTADisabled,
-    color: theme.palette.text.disabled,
-    padding: '0.75rem 2rem',
-    borderRadius: '2rem',
-    textTransform: 'none',
-    fontWeight: 600,
-    fontFamily: `'Cabinet Grotesk', sans-serif`,
-  }));
 
   return (
     <Stack spacing={4} sx={{ padding: 4 }}>
@@ -63,12 +27,6 @@ export default function Example() {
         <Button variant="contained" disabled>Disabled</Button>
       </Stack>
 
-
-      <Stack direction="row" spacing={2}>
-        <GradientButton>CTA Gradient</GradientButton>
-        <GradientButton2>modalCTAActive</GradientButton2>
-        <DisabledGradientButton disabled>Disabled Gradient</DisabledGradientButton>
-      </Stack>
     </Stack>
   );
 }

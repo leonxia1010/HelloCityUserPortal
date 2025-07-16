@@ -20,13 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body>
+      <body className="relative">
         <AppRouterCacheProvider>
             <StyledEngineProvider injectFirst>
               <ThemeProvider theme={websiteTheme}>
                 <CssBaseline />
-                <NavBar/>
-                {children}
+                <NavBar />
+                <div className='relative'>
+                  {children}
+                </div>
               </ThemeProvider>
             </StyledEngineProvider>
           </AppRouterCacheProvider>
