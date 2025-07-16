@@ -8,10 +8,10 @@ import '@fontsource/inter/600.css';
 import '@fontsource/montserrat/600.css';
 
 
-// Extend MUI theme with custom `gradients`
+// Extend MUI theme with custom `backgroundGradients`
 declare module '@mui/material/styles' {
   interface Theme {
-    gradients: {
+    backgroundGradients: {
       buttonPrimaryActive: string;
       buttonModalActive: string;
       buttonPrimaryDisabled: string;
@@ -22,7 +22,7 @@ declare module '@mui/material/styles' {
     };
   }
   interface ThemeOptions {
-    gradients?: {
+    backgroundGradients?: {
       buttonPrimaryActive?: string;
       buttonModalActive?: string;
       buttonPrimaryDisabled?: string;
@@ -52,7 +52,6 @@ const websiteTheme = createTheme({
     info: {
       main: '#8AA8FF', 
     },
-    divider: '#3C4CCC', 
     action: {
       disabled: '#CBD5E1',
       disabledBackground: '#E2E8F0', 
@@ -79,7 +78,7 @@ const websiteTheme = createTheme({
     // Custom use (e.g., chatbot)
     subtitle2: { fontFamily: `'Inter', sans-serif` },
   },
-  gradients: {
+  backgroundGradients: {
     buttonPrimaryActive: 'linear-gradient(90deg, #FFA863, #FF75B5, #6FA3FF)',
     buttonModalActive: 'linear-gradient(90deg, #FFB066, #80C3FF, #4788F2)',
     buttonPrimaryDisabled: 'linear-gradient(90deg, #E2E8F0, #CBD5E1)',
@@ -90,7 +89,7 @@ const websiteTheme = createTheme({
         {
           props: { variant: 'primary'},
           style: ({ theme }) => ({
-            background: theme.gradients.buttonPrimaryActive,
+            background: theme.backgroundGradients.buttonPrimaryActive,
             color: theme.palette.common.white,
             padding: theme.customSpacing.buttonPaddingSm,
             borderRadius: '2rem',
@@ -106,7 +105,7 @@ const websiteTheme = createTheme({
         {
           props: { variant: 'primary', disabled: true},
           style: ({ theme }) => ({
-            background: theme.gradients.buttonPrimaryDisabled,
+            background: theme.backgroundGradients.buttonPrimaryDisabled,
             boxShadow: 'none',
             '&.Mui-disabled': {
               color: '#E53935', // <- override default disabled color
@@ -116,7 +115,7 @@ const websiteTheme = createTheme({
         {
           props: {variant: 'secondary'},
           style: ({ theme }) => ({
-            background: theme.gradients.buttonModalActive,
+            background: theme.backgroundGradients.buttonModalActive,
             color: theme.palette.common.white,
             padding: theme.customSpacing.buttonPaddingSm,
             borderRadius: '2rem',
