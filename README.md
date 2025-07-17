@@ -2,7 +2,7 @@
 
 # Hello City Client
 
-A modern frontend project powered by Next.js 14, React 18, TypeScript, and Tailwind CSS.
+A modern frontend project powered by Next.js 14, React 18, TypeScript, Tailwind CSS and Jest.
 
 ## Requirements
 
@@ -39,12 +39,36 @@ A modern frontend project powered by Next.js 14, React 18, TypeScript, and Tailw
 
 4. **Open** [http://localhost:3000](http://localhost:3000) **in your browser.**
 
+## Unit Tests
+
+Unit tests must be passed before creating a pull request.
+
+Run the tests from your terminal with the following scripts (All commands are already defined in package.json):
+
+```bash
+# run all tests once
+npm run test
+
+# watch mode (reruns on file changes)
+npm run test:watch // will run unit test
+
+# generate a coverage report
+npm run test:coverage
+```
+
+By default, Jest looks for tests in either of these places:
+
+- Any file inside a `__tests__` directory (recursive search)
+- Any file whose name matches one of the patterns:
+  `*.test.ts`, `*.test.tsx`, `*.spec.ts`,` *.spec.tsx`
+
 ## Tech Stack
 
 - [Next.js 14](https://nextjs.org/)
 - [React 18](https://react.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [Jest](https://jestjs.io/)
 
 ## Project Structure
 
@@ -53,6 +77,7 @@ A modern frontend project powered by Next.js 14, React 18, TypeScript, and Tailw
 - `src/app/layout.tsx`: Global layout and metadata
 - `src/app/page.tsx`: Home page entry
 - `tailwind.config.ts`, `postcss.config.mjs`: Styling configuration
+- `jest.config.ts`,`jest.setup.ts`: Jest (Unit Tests) config
 
 ## Notes
 
