@@ -12,16 +12,14 @@ interface UserData {
   Username: string;
   Nickname: string;
   Avatar: string;
-  Status: 'online' | 'offline' | 'busy' | 'away';
   LastJoinDate: string;
 }
 
-const UserProfileCard = ({Username, Nickname, Avatar, Status, LastJoinDate} : UserData) => {
+const UserProfileCard = ({Username, Nickname, Avatar, LastJoinDate} : UserData) => {
    const defaultUserData: UserData = {
     Username: 'UnknownUser',
     Nickname: 'UnknownNickname',
     Avatar: '/avatar.jpg',
-    Status: 'offline',
     LastJoinDate: '2023-01-01'
   };
 
@@ -33,21 +31,20 @@ const UserProfileCard = ({Username, Nickname, Avatar, Status, LastJoinDate} : Us
       Username: Username || defaultUserData.Username,
       Nickname: Nickname || defaultUserData.Nickname,
       Avatar: Avatar || defaultUserData.Avatar,
-      Status: Status || defaultUserData.Status,
       LastJoinDate: LastJoinDate || defaultUserData.LastJoinDate
     };
     
     setUserData(mergedData);
-  }, [Username, Nickname, Avatar, Status, LastJoinDate]);
+  }, [Username, Nickname, Avatar, LastJoinDate]);
 
 
   // 状态指示器颜色
-  const statusColors = {
-    'online': 'bg-green-500',
-    'offline': 'bg-gray-400',
-    'busy': 'bg-red-500',
-    'away': 'bg-yellow-500'
-  };
+  // const statusColors = {
+  //   'online': 'bg-green-500',
+  //   'offline': 'bg-gray-400',
+  //   'busy': 'bg-red-500',
+  //   'away': 'bg-yellow-500'
+  // };
 
   return (
     <div className="flex justify-center items-center p-4">
@@ -68,7 +65,6 @@ const UserProfileCard = ({Username, Nickname, Avatar, Status, LastJoinDate} : Us
                   )}
                 </div>
               </div>
-              <div className={`absolute bottom-1 right-1 w-5 h-5 rounded-full border-2 border-white ${statusColors[userData.Status]}`}></div>
             </div>
             
             <div className="ml-4">
