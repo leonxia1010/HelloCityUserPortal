@@ -5,10 +5,7 @@ import '@fontsource/ibm-plex-sans/400.css';     // Regular
 import '@fontsource/ibm-plex-sans/700.css';     // Bold
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/600.css';
-import '@fontsource/montserrat/600.css';
 
-
-// Extend MUI theme with custom `backgroundGradients`
 declare module '@mui/material/styles' {
   interface Theme {
     backgroundGradients: {

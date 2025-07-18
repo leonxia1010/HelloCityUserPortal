@@ -19,7 +19,9 @@ export default function Example() {
       <Typography variant="subtitle2">Subtitle2 Inter</Typography>
       <Typography variant="button">Button IBM Plex Sans</Typography>
 
-
+      <Typography variant="h5">
+        Color configurations
+      </Typography>
       <Stack direction="row" spacing={2}>
         <Button variant="contained" color="primary">Primary</Button>
         <Button variant="contained" color="secondary">Secondary</Button>

@@ -3,6 +3,7 @@ import { ThemeProvider, CssBaseline } from '@mui/material';
 import websiteTheme from '../src/theme/theme';
 
 import { withThemeFromJSXProvider } from '@storybook/addon-themes';
+import './storybook-fonts.css';
 
 export const decorators = [
   withThemeFromJSXProvider({
