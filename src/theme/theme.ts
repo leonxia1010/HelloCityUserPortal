@@ -70,7 +70,10 @@ const websiteTheme = createTheme({
     body1: { fontFamily: `'IBM Plex Sans', sans-serif` },
     body2: { fontFamily: `'IBM Plex Sans', sans-serif` },
     caption: { fontFamily: `'IBM Plex Sans', sans-serif` },
-    button: { fontFamily: `'IBM Plex Sans', sans-serif` },
+    button: { 
+      fontFamily: `'IBM Plex Sans', sans-serif` ,
+      textTransform: 'none'
+    },
 
     // Custom use (e.g., chatbot)
     subtitle2: { fontFamily: `'Inter', sans-serif` },

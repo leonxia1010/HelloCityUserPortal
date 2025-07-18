@@ -5,7 +5,7 @@ import { Typography, Button, Stack } from '@mui/material';
 export default function Example() {
 
   return (
-    <Stack spacing={4} sx={{ padding: 4 }}>
+    <Stack spacing={3} sx={{ padding: 4 }}>
 
       <Typography variant="h1">H1 Cabinet Grotesk</Typography>
       <Typography variant="h2">H2 Cabinet Grotesk</Typography>
@@ -28,7 +28,31 @@ export default function Example() {
         <Button variant="contained" color="info">Info</Button>
         <Button variant="contained" disabled>Disabled</Button>
       </Stack>
-
+      <Typography variant="h5">
+        Button configurations
+      </Typography>
+      <Stack
+        direction="row"
+        spacing={2}
+        alignItems="center" // or "flex-start"
+        sx={{ height: "150px", background: "#404040", borderRadius: "36px"}}
+      >
+        <Button variant="primary" color="primary">
+          <Typography variant="button">
+            Primary
+          </Typography>
+        </Button>
+        <Button variant="secondary" color="secondary">
+          <Typography variant="button">
+            Secondary
+          </Typography>
+        </Button>
+        <Button variant="tertiary">
+          <Typography variant="button">
+            Tertiary
+          </Typography>
+        </Button>
+      </Stack>
     </Stack>
   );
 }
