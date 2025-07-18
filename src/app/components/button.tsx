@@ -12,18 +12,16 @@ interface ButtonProps {
 //this part will be removed once apllied MUI
 //----------------------
 const baseStyles = "rounded-xl px-6 py-3 font-semibold transition";
+const commonEnabledGradient = "text-white shadow-md hover:brightness-110 hover:shadow-lg";
+const commonDisabledGradient = "bg-disabled-gradient text-gray-400 shadow-none cursor-not-allowed opacity-70";
 const buttonStyles: Record<ButtonProps["variant"], { enabled: string; disabled: string }> = {
     primary: {
-        enabled:
-            "bg-primary-gradient text-white shadow-md hover:brightness-110 hover:shadow-lg",
-        disabled:
-            "bg-disabled-gradient text-gray-400 shadow-none cursor-not-allowed opacity-70",
+        enabled: `bg-primary-gradient ${commonEnabledGradient}`,
+        disabled: commonDisabledGradient,
     },
     primary_register: {
-        enabled:
-            "bg-modal-gradient text-white shadow-md hover:brightness-110 hover:shadow-lg",
-        disabled:
-            "bg-disabled-gradient text-gray-400 shadow-none cursor-not-allowed opacity-70",
+        enabled: `bg-modal-gradient ${commonEnabledGradient}`,
+        disabled: commonDisabledGradient,
     },
     secondary: {
         enabled:
