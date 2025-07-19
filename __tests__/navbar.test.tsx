@@ -3,29 +3,45 @@ import NavBar from '@/components/NavBar';
 import React from 'react';
 
 describe('NavBar', () => {
-  it('renders the Logo and Nav buttons', () => {
+  beforeEach(() => {
     render(<NavBar />);
+  });
 
+  it('renders the Logo and Nav buttons', () => {
     expect(screen.getByAltText('HelloCity Logo')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Home/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Chat/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Try HelloCity/i })).toBeInTheDocument();
+
+    const homeLink = screen.getByRole('link', { name: /Home/i });
+    expect(homeLink).toBeInTheDocument();
+    expect(homeLink).toHaveAttribute('href', '/');
+    
+    const chatLink = screen.getByRole('link', { name: /Chat/i });
+    expect(chatLink).toBeInTheDocument();
+    // page component not implemented
+    // expect(chatLink).toHaveAttribute('href', '/chat');
+
+    const ctaLink = screen.getByRole('link', { name: /Try HelloCity/i });
+    expect(ctaLink).toBeInTheDocument();
+    // expect(ctaLink).toHaveAttribute('href', '/chat');
   });
 
   it('toggles language label between CN and EN', () => {
-    render(<NavBar />);
     const toggle = screen.getByRole('checkbox');
 
-    // Initially: CN label visible, both labels are rendered but only one is visible
+    // Initially CN label visible, both labels are rendered but only one is visible
     expect(screen.getByText(/cn/i)).toBeInTheDocument();
     expect(screen.queryByText(/en/i)).not.toBeInTheDocument();
 
     fireEvent.click(toggle);
 
-    // Now: EN label visible
+    // EN label visible
     expect(screen.getByText(/en/i)).toBeInTheDocument();
     expect(screen.queryByText(/cn/i)).not.toBeInTheDocument();
   });
 
-  //NavBar Login Test in
+  it('adds correct classNames between classes', ()=>{
+    const element = screen.getByRole('link', { name: /Home/i });
+
+    //expect(element).toHaveClass('')
+  })
+  //NavBar Login Test incomplete
 });

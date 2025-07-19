@@ -47,11 +47,11 @@ const websiteTheme = createTheme({
       contrastText: '#000000',
     },
     info: {
-      main: '#8AA8FF', 
+      main: '#8AA8FF',
     },
     action: {
       disabled: '#CBD5E1',
-      disabledBackground: '#E2E8F0', 
+      disabledBackground: '#E2E8F0',
     },
     text: {
       disabled: '#CBD5E1',
@@ -60,18 +60,36 @@ const websiteTheme = createTheme({
   typography: {
     fontFamily: `'IBM Plex Sans', sans-serif`,
 
-    h1: { fontFamily: `'Cabinet Grotesk', sans-serif` },
-    h2: { fontFamily: `'Cabinet Grotesk', sans-serif` },
-    h3: { fontFamily: `'Cabinet Grotesk', sans-serif` },
-    h4: { fontFamily: `'Cabinet Grotesk', sans-serif` },
-    h5: { fontFamily: `'Cabinet Grotesk', sans-serif` },
-    h6: { fontFamily: `'Cabinet Grotesk', sans-serif` },
+    h1: {
+      fontFamily: `'Cabinet Grotesk', sans-serif`,
+      fontWeight: 700,
+    },
+    h2: {
+      fontFamily: `'Cabinet Grotesk', sans-serif`,
+      fontWeight: 700,
+    },
+    h3: {
+      fontFamily: `'Cabinet Grotesk', sans-serif`,
+      fontWeight: 700,
+    },
+    h4: {
+      fontFamily: `'Cabinet Grotesk', sans-serif`,
+      fontWeight: 700,
+    },
+    h5: {
+      fontFamily: `'Cabinet Grotesk', sans-serif`,
+      fontWeight: 700,
+    },
+    h6: {
+      fontFamily: `'Cabinet Grotesk', sans-serif`,
+      fontWeight: 700,
+    },
 
     body1: { fontFamily: `'IBM Plex Sans', sans-serif` },
     body2: { fontFamily: `'IBM Plex Sans', sans-serif` },
     caption: { fontFamily: `'IBM Plex Sans', sans-serif` },
-    button: { 
-      fontFamily: `'IBM Plex Sans', sans-serif` ,
+    button: {
+      fontFamily: `'IBM Plex Sans', sans-serif`,
       textTransform: 'none'
     },
 
@@ -87,7 +105,7 @@ const websiteTheme = createTheme({
     MuiButton: {
       variants: [
         {
-          props: { variant: 'primary'},
+          props: { variant: 'primary' },
           style: ({ theme }) => ({
             background: theme.backgroundGradients.buttonPrimaryActive,
             color: theme.palette.common.white,
@@ -103,7 +121,7 @@ const websiteTheme = createTheme({
           }),
         },
         {
-          props: { variant: 'primary', disabled: true},
+          props: { variant: 'primary', disabled: true },
           style: ({ theme }) => ({
             background: theme.backgroundGradients.buttonPrimaryDisabled,
             boxShadow: 'none',
@@ -113,7 +131,7 @@ const websiteTheme = createTheme({
           }),
         },
         {
-          props: {variant: 'secondary'},
+          props: { variant: 'secondary' },
           style: ({ theme }) => ({
             background: theme.backgroundGradients.buttonModalActive,
             color: theme.palette.common.white,
@@ -129,7 +147,7 @@ const websiteTheme = createTheme({
           }),
         },
         {
-          props: {variant: 'secondary', disabled: true},
+          props: { variant: 'secondary', disabled: true },
           style: () => ({
             background: "#F3F3F3",
             border: `1px solid #DCDCDC`,
@@ -139,7 +157,7 @@ const websiteTheme = createTheme({
           }),
         },
         {
-          props: { variant: 'tertiary'},
+          props: { variant: 'tertiary' },
           style: ({ theme }) => ({
             background: 'transparent',
             color: theme.palette.common.white,
@@ -153,7 +171,7 @@ const websiteTheme = createTheme({
           }),
         },
         {
-          props: { variant: 'tertiary', disabled: true},
+          props: { variant: 'tertiary', disabled: true },
           style: () => ({
             '&.Mui-disabled': {
               color: '#BBBBBB', // <- override default disabled color

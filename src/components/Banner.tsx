@@ -2,7 +2,7 @@ import React from 'react'
 import { Typography, Button } from '@mui/material';
 const Banner = () => {
   return (
-    <div className="relative w-[100vw] h-[57vh] bg-[url('/images/banner-image.jpeg')] bg-[length:100%] bg-center text-left">
+    <div className="relative w-screen h-[57vh] bg-[url('/images/banner-image.jpeg')] bg-cover bg-center bg-no-repeat text-left">
       <div className="absolute inset-0 bg-black/30" />
       <div className="relative text-white pt-24 w-[70%] ml-[20vw]">
         <Typography variant="h2" sx={{ marginTop: '10vh'}}>

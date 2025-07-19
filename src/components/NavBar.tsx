@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button, Switch, FormControlLabel } from '@mui/material';
 
 const NavBar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [isLoggedIn, _setIsLoggedIn] = useState<boolean>(false);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [isEnglish, setIsEnglish] = useState<boolean>(false);
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -13,10 +13,10 @@ const NavBar = () => {
   };
 
   return (
-    <div className="absolute w-[100vw] h-[100px] top-0 left-0 flex justify-around items-center z-10">
-      <img src="/images/Logo.png" alt="HelloCity Logo" width={'120px'} />
+    <div className="fixed w-[100vw] pt-5 top-0 left-0 flex justify-around items-center z-10">
+      <img src="/images/Logo.png" alt="HelloCity Logo" width={120} />
       <div className="flex gap-2">
-        <Button component={Link} href="/" variant="tertiary">
+        <Button component={Link} href="/" variant="tertiary" passHref>
           Home
         </Button>
         <Button component={Link} href="/" variant="tertiary">
@@ -40,6 +40,7 @@ const NavBar = () => {
             label={isEnglish ? 'EN' : 'CN'}
           />
       </div>
+      
       <div>
         {isLoggedIn ? (
           <>

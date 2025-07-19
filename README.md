@@ -62,6 +62,19 @@ By default, Jest looks for tests in either of these places:
 - Any file whose name matches one of the patterns:
   `*.test.ts`, `*.test.tsx`, `*.spec.ts`,` *.spec.tsx`
 
+5. **Run Storybook**
+## Command
+Storybook is an application that allows developers to create samples of frontend elements
+
+The interactive components allows developers to see different variations of elements efficiently
+By default, Storybook renders for .stories.tsx files in:
+
+- `stories` directory (recursive search)
+
+Add new packages to Storybook is done in `main.ts` under `.storybook` directory
+```bash
+npm run storybook
+```
 ## Tech Stack
 
 - [Next.js 14](https://nextjs.org/)
@@ -70,6 +83,7 @@ By default, Jest looks for tests in either of these places:
 - [Tailwind CSS](https://tailwindcss.com/)
 - [MUI](https://mui.com/)
 - [Jest](https://jestjs.io/)
+- [Storybook](https://storybook.js.org/)
 
 ## Project Structure
 
