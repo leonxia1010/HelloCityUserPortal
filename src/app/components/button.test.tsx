@@ -3,66 +3,72 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Button from "./button"; // adjust path if needed
 
-describe("Button Component", () => {
-    it("renders with correct text", () => {
-        render(<Button variant="primary">Click Me</Button>);
-        expect(screen.getByText("Click Me")).toBeInTheDocument();
-    });
+interface RenderButtonProps {
+    variant: "primary" | "primary_register" | "secondary" | "tertiary";
+    disabled?: boolean;
+}
 
-    it("applies enabled styles when not disabled", () => {
-        render(<Button variant="primary">Enabled</Button>);
-        const button = screen.getByText("Enabled");
-        expect(button).toHaveClass("bg-primary-gradient");
-        expect(button).toHaveClass("text-white");
-        expect(button).not.toHaveClass("cursor-not-allowed");
-    });
+//variant
+const variantList: RenderButtonProps["variant"][] = [
+    "primary",
+    "primary_register",
+    "secondary",
+    "tertiary"
+];
 
-    it("applies disabled styles when disabled", () => {
-        render(
-            <Button variant="primary" disabled>
-                Disabled
-            </Button>
-        );
-        const button = screen.getByText("Disabled");
-        expect(button).toHaveClass("bg-disabled-gradient");
-        expect(button).toHaveClass("cursor-not-allowed");
-        expect(button).toBeDisabled();
-    });
+//variant style
+const expectedClass: Record<string, string> = {
+    primary: "bg-primary-gradient",
+    primary_register: "bg-modal-gradient",
+    secondary: "bg-white",
+    tertiary: "text-primary"
+};
 
-    it("calls onClick when clicked and not disabled", () => {
+//generate variant × enabled/disabled
+const cases = variantList.flatMap((variant) => [
+    { variant, disabled: false },
+    { variant, disabled: true }
+]);
+
+//button function
+const renderButton = ({
+    variant,
+    disabled,
+    onClick
+}: RenderButtonProps & { onClick?: () => void }) => {
+    render(
+        <Button variant={variant} disabled={disabled} onClick={onClick}>
+            Click Me
+        </Button>
+    );
+    return screen.getByRole("button", { name: /click me/i });
+};
+
+//main test
+test.each(cases)(
+    "renders %s button as %s with correct style and click behavior",
+    ({ variant, disabled }) => {
         const handleClick = jest.fn();
-        render(
-            <Button variant="secondary" onClick={handleClick}>
-                Clickable
-            </Button>
-        );
-        fireEvent.click(screen.getByText("Clickable"));
-        expect(handleClick).toHaveBeenCalledTimes(1);
-    });
+        const button = renderButton({ variant, disabled, onClick: handleClick });
 
-    it("does not call onClick when disabled", () => {
-        const handleClick = jest.fn();
-        render(
-            <Button variant="secondary" onClick={handleClick} disabled>
-                No Click
-            </Button>
-        );
-        fireEvent.click(screen.getByText("No Click"));
-        expect(handleClick).not.toHaveBeenCalled();
-    });
+        expect(button).toBeInTheDocument();
 
-    it("renders correct styles for all variants", () => {
-        const variants: ("primary" | "primary_register" | "secondary" | "tertiary")[] = [
-            "primary",
-            "primary_register",
-            "secondary",
-            "tertiary",
-        ];
+        //variant style & enable/disable test
+        if (disabled) {
+            expect(button).toBeDisabled();
+            expect(button).toHaveClass("cursor-not-allowed");
+        } else {
+            expect(button).not.toBeDisabled();
+            expect(button).toHaveClass(expectedClass[variant]);
+        }
 
-        variants.forEach((variant) => {
-            render(<Button variant={variant}>{variant}</Button>);
-            const button = screen.getByText(variant);
-            expect(button).toBeInTheDocument();
-        });
-    });
-});
+        //onclick test
+        fireEvent.click(button);
+
+        if (disabled) {
+            expect(handleClick).not.toHaveBeenCalled();
+        } else {
+            expect(handleClick).toHaveBeenCalledTimes(1);
+        }
+    }
+);
