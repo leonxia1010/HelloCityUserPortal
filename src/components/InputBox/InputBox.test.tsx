@@ -11,6 +11,7 @@ describe('InputBox component', () => {
         value=""
         onChange={() => {}}
         placeholder="Enter your name"
+        fieldType="name"
       />
     );
     expect(screen.getByPlaceholderText('Enter your name')).toBeInTheDocument();
@@ -24,6 +25,7 @@ describe('InputBox component', () => {
         value="invalid"
         onChange={() => {}}
         errorMessage="Invalid email"
+        fieldType="email"
       />
     );
     expect(screen.getByText('Invalid email')).toBeInTheDocument();
@@ -38,6 +40,7 @@ describe('InputBox component', () => {
         value=""
         onChange={handleChange}
         disabled
+        fieldType="phone"
       />
     );
 
@@ -57,6 +60,7 @@ describe('InputBox component', () => {
         label="Name"
         value=""
         onChange={handleChange}
+        fieldType="name"
       />
     );
 
@@ -75,6 +79,7 @@ describe('InputBox validation', () => {
           value={val}
           onChange={(e) => setVal(e.target.value)}
           required
+          fieldType="phone"
         />
       );
     };
@@ -95,6 +100,7 @@ describe('InputBox validation', () => {
           value={val}
           onChange={(e) => setVal(e.target.value)}
           required
+          fieldType="email"
         />
       );
     };
@@ -113,6 +119,7 @@ describe('InputBox validation', () => {
         value="invalid"
         onChange={() => {}}
         errorMessage="Invalid email"
+        fieldType="email"
       />
     );
 

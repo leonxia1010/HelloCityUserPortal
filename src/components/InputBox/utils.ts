@@ -16,7 +16,7 @@ export const getDefaultPlaceholder = (type: string): string => {
       return 'Please enter your email';
     case 'password':
       return 'Please enter your password';
-    case 'repeatpassword':
+    case 'repeatPassword':
       return 'Please repeat your password';
     case 'name':
       return 'Please enter your name';
@@ -33,7 +33,7 @@ export const getInputType = (type: string): 'text' | 'email' | 'password' | 'tel
     case 'email':
       return 'email';
     case 'password':
-    case 'repeatpassword':
+    case 'repeatPassword':
       return 'password';
     case 'phone':
       return 'tel';
@@ -44,7 +44,7 @@ export const getInputType = (type: string): 'text' | 'email' | 'password' | 'tel
 
 // Field-specific validation logic
 export const validationRules: Record<string, {
-  validate: (value: string, isRepeat?: boolean) => boolean;
+  validate: (value: string, compareTo?: string) => boolean;
   error: string;
 }> = {
   name: {
@@ -59,11 +59,8 @@ export const validationRules: Record<string, {
     validate: isStrongPassword,
     error: 'Password must be 6-20 characters with uppercase, lowercase, number, and special character.',
   },
-  repeatpassword: {
-    validate: (v) => {
-      const origin = (document.querySelector('input[name="password"]') as HTMLInputElement)?.value || '';
-      return v === origin;
-    },
+  repeatPassword: {
+    validate: (v, original) => v === original,
     error: 'Passwords do not match.',
   },
   phone: {

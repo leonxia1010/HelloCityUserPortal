@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { ComponentMeta } from '@storybook/react-vite';
+import type { Meta } from '@storybook/react-vite';
 import InputBox from './InputBox';
 
 export default {
   title: 'InputBox',
   component: InputBox,
-} as ComponentMeta<typeof InputBox>;
+} as Meta<typeof InputBox>;
 
 export const InteractiveDemo = () => {
   const [name, setName] = useState('');
@@ -46,7 +46,7 @@ export const InteractiveDemo = () => {
       />
       <InputBox
         label="Repeat Password"
-        fieldType="repeatpassword"
+        fieldType="repeatPassword"
         value={repeatPassword}
         onChange={(e) => setRepeatPassword(e.target.value)}
         originalPassword={password}
@@ -61,7 +61,6 @@ export const EmailError = {
     label: 'Email',
     fieldType: 'email',
     value: 'invalid-email',
-    showError: true,
     errorMessage: 'Please enter a valid email address.',
   },
 };

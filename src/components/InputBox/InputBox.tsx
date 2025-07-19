@@ -29,7 +29,7 @@ const InputBox: React.FC<InputBoxProps> = ({
 
   const normalizedFieldType = fieldType || label.toLowerCase().replace(/\s/g, '');
   const inputType =
-    (normalizedFieldType === 'password' || normalizedFieldType === 'repeatpassword')
+    (normalizedFieldType === 'password' || normalizedFieldType === 'repeatPassword')
       ? (showPassword ? 'text' : 'password')
       : getInputType(normalizedFieldType);
   const finalPlaceholder = placeholder ?? getDefaultPlaceholder(normalizedFieldType);
@@ -47,7 +47,7 @@ const InputBox: React.FC<InputBoxProps> = ({
       }
     } else if (rule) {
       const isValid =
-        normalizedFieldType === 'repeatpassword'
+        normalizedFieldType === 'repeatPassword'
           ? rule.validate(value, originalPassword)
           : rule.validate(value);
 
@@ -88,7 +88,7 @@ const InputBox: React.FC<InputBoxProps> = ({
         }}
         required={required}
         InputProps={
-          (normalizedFieldType === 'password' || normalizedFieldType === 'repeatpassword')
+          (normalizedFieldType === 'password' || normalizedFieldType === 'repeatPassword')
             ? {
                 endAdornment: (
                   <InputAdornment position="end">

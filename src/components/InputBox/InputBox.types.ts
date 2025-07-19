@@ -14,4 +14,5 @@ export interface InputBoxProps {
   required?: boolean;
   errorMessage?: string; // External error message
   autoComplete?: boolean;
+  originalPassword?: string; // For repeatPassword validation
 }
