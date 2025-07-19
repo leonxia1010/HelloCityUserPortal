@@ -38,10 +38,21 @@ describe('NavBar', () => {
     expect(screen.queryByText(/cn/i)).not.toBeInTheDocument();
   });
 
-  it('adds correct classNames between classes', ()=>{
-    const element = screen.getByRole('link', { name: /Home/i });
+  it('has correct Tailwind classes on the outermost div', () => {
+    const { container } = render(<NavBar />);
+    const outerDiv = container.firstChild as HTMLElement;
 
-    //expect(element).toHaveClass('')
-  })
+    expect(outerDiv).toHaveClass(
+      'fixed',
+      'w-[100vw]',
+      'pt-5',
+      'top-0',
+      'left-0',
+      'flex',
+      'justify-around',
+      'items-center',
+      'z-10'
+    );
+  });
   //NavBar Login Test incomplete
 });
