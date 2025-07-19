@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 export type InputVariant = 'Primary' | 'Secondary' | 'Tertiary';
@@ -13,7 +12,6 @@ export interface InputBoxProps {
   variant?: InputVariant;
   disabled?: boolean;
   required?: boolean;
-  showError?: boolean; // External error control
   errorMessage?: string; // External error message
   autoComplete?: boolean;
 }

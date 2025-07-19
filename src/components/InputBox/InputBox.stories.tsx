@@ -8,16 +8,14 @@ export default {
 } as ComponentMeta<typeof InputBox>;
 
 export const InteractiveDemo = () => {
-    const [name, setName] = useState('');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
-
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', width: '400px' }}>
-      
       <InputBox
         label="Name"
         fieldType="name"
@@ -30,9 +28,8 @@ export const InteractiveDemo = () => {
         fieldType="phone"
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
+        required
       />
-      
-      
       <InputBox
         label="Email"
         fieldType="email"
@@ -55,7 +52,6 @@ export const InteractiveDemo = () => {
         originalPassword={password}
         required
       />
-      
     </div>
   );
 };

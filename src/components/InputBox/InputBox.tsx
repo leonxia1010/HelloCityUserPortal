@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
@@ -8,7 +8,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { InputBoxProps } from './InputBox.types';
 import styles from './InputBox.module.scss';
-import { validationRules, getDefaultPlaceholder, getInputType } from './InputBox.utils';
+import { validationRules, getDefaultPlaceholder, getInputType } from './utils';
 
 const InputBox: React.FC<InputBoxProps> = ({
   value,
@@ -19,14 +19,13 @@ const InputBox: React.FC<InputBoxProps> = ({
   variant = 'Primary',
   disabled = false,
   required = false,
-  showError: externalShowError = false,
   errorMessage: externalErrorMessage = '',
   autoComplete = false,
   originalPassword = '',
 }) => {
-  const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [touched, setTouched] = useState(false);
 
   const normalizedFieldType = fieldType || label.toLowerCase().replace(/\s/g, '');
   const inputType =
@@ -36,31 +35,32 @@ const InputBox: React.FC<InputBoxProps> = ({
   const finalPlaceholder = placeholder ?? getDefaultPlaceholder(normalizedFieldType);
   const maxLength = 20;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-    const rule = validationRules[normalizedFieldType];
+  useEffect(() => {
+    if (!touched) return;
 
-    if (required && !newValue.trim()) {
-      setShowError(true);
-      setErrorMessage(`${label} is required.`);
+    const rule = validationRules[normalizedFieldType];
+    let currentError = '';
+
+    if (!value.trim()) {
+      if (required) {
+        currentError = `${label} is required.`;
+      }
     } else if (rule) {
       const isValid =
         normalizedFieldType === 'repeatpassword'
-          ? rule.validate(newValue, originalPassword)
-          : rule.validate(newValue);
+          ? rule.validate(value, originalPassword)
+          : rule.validate(value);
 
       if (!isValid) {
-        setShowError(true);
-        setErrorMessage(rule.error);
-      } else {
-        setShowError(false);
-        setErrorMessage('');
+        currentError = rule.error;
       }
-    } else {
-      setShowError(false);
-      setErrorMessage('');
     }
 
+    setErrorMessage(currentError);
+  }, [value, touched, required, originalPassword, label, normalizedFieldType]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!touched) setTouched(true);
     onChange(e);
   };
 
@@ -72,14 +72,14 @@ const InputBox: React.FC<InputBoxProps> = ({
     <div className={`${styles['input-box-wrapper']} ${variant.toLowerCase()}`}>
       <TextField
         fullWidth
-        label={label.charAt(0).toUpperCase() + label.slice(1)} // ✅ 解决测试问题
+        label={label.charAt(0).toUpperCase() + label.slice(1)}
         type={inputType}
         value={value}
         onChange={handleChange}
         placeholder={finalPlaceholder}
         variant="outlined"
-        error={showError || externalShowError}
-        helperText={showError || externalShowError ? errorMessage || externalErrorMessage : ''}
+        error={!!(errorMessage || externalErrorMessage)}
+        helperText={errorMessage || externalErrorMessage || ' '}
         disabled={disabled}
         inputProps={{
           maxLength,
