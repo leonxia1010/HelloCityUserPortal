@@ -20,10 +20,8 @@ const UserProfileCard: React.FC<UserData> = ({UserName, PreferredName, Avatar, L
 
 
   return (
-    //     顶部用户信息区域
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-white rounded-2xl shadow-xl hover:shadow-2xl flex items-center gap-2">
               <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center border-4 border-white ">
-                  {/* 绘制默认头像 */}
                   {!Avatar ? (
                     <span className="material-icons text-7xl text-gray-400">
                       account_circle
@@ -38,7 +36,6 @@ const UserProfileCard: React.FC<UserData> = ({UserName, PreferredName, Avatar, L
 
               <div className="text-indigo-200">@{PreferredName || "UnknownNickname"}</div>
               <div className="text-sm mt-1 flex items-center gap-1">
-                {/* 绘制钟表图像 */}
                 <span className="material-icons text-indigo-200 ">
                   access_time
                 </span>
