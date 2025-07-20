@@ -3,13 +3,18 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { Button, Switch, FormControlLabel } from '@mui/material';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslation } from '@/hooks/useTranslation';
 
 const NavBar = () => {
   const [isLoggedIn, _setIsLoggedIn] = useState<boolean>(false);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const [isEnglish, setIsEnglish] = useState<boolean>(false);
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsEnglish(event.target.checked);
+  const { isEnglish, setLanguage } = useLanguage();
+  const { t } = useTranslation();
+
+  const handleLanguageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newLanguage = event.target.checked ? 'en' : 'zh';
+    setLanguage(newLanguage);
   };
 
   return (
@@ -17,56 +22,55 @@ const NavBar = () => {
       <img src="/images/Logo.png" alt="HelloCity Logo" width={120} />
       <div className="flex gap-2">
         <Button component={Link} href="/" variant="tertiary" passHref>
-          Home
+          {t('Home')}
         </Button>
         <Button component={Link} href="/" variant="tertiary">
-          Chat
+          {t('Chat')}
         </Button>
         <Button component={Link} href="/" variant="tertiary">
-          FAQ
+          {t('FAQ')}
         </Button>
         <Button onClick={() => setIsExpanded(!isExpanded)} href="/" variant="tertiary">
-          Check Items
+          {t('Check Items')}
         </Button>
-         <FormControlLabel
-            control={
-              <Switch
-                checked={isEnglish}
-                onChange={handleChange}
-                color="primary"
-              />
-            }
-            sx={{color: 'white'}}
-            label={isEnglish ? 'EN' : 'CN'}
-          />
+        <FormControlLabel
+          control={
+            <Switch
+              checked={isEnglish}
+              onChange={handleLanguageChange}
+              color="primary"
+            />
+          }
+          sx={{ color: 'white' }}
+          label={isEnglish ? 'EN' : 'CN'}
+        />
       </div>
-      
+
       <div>
         {isLoggedIn ? (
           <>
             <Button component={Link} href="/" variant="tertiary">
-              Profile
+              {t('Profile')}
             </Button>
             <Button component={Link} href="/" variant="tertiary">
-              Logout
+              {t('Logout')}
             </Button>
             <Button component={Link} href="/" variant="tertiary">
-              Language
+              {t('Language')}
             </Button>
           </>
         ) : (
           <Button variant="tertiary">
-            Sign In
+            {t('Sign In')}
           </Button>
         )}
-        
+
         <Button component={Link} href="/" variant="primary">
-          Try HelloCity
+          {t('Try HelloCity')}
         </Button>
       </div>
     </div>
   );
 };
-
 
 export default NavBar;
