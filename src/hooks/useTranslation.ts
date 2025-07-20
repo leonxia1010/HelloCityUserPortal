@@ -1,6 +1,10 @@
 import { useLanguage } from '@/contexts/LanguageContext'
 
-const translations = {
+type TranslationDictionary = {
+    [key: string]: string;
+};
+
+const translations: Record<'en' | 'zh', TranslationDictionary> = {
     en: {
         Home: 'Home',
         Chat: 'Chat',

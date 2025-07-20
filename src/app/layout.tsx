@@ -5,6 +5,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '@/theme/theme';
 import { LanguageProvider } from '@/contexts/LanguageContext';
+import { I18nProvider } from '@/contexts/I18nProvider';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,9 +24,11 @@ export default function RootLayout({
       <body className={inter.className}>
         <AppRouterCacheProvider>
           <ThemeProvider theme={theme}>
-            <LanguageProvider>
-              {children}
-            </LanguageProvider>
+            <I18nProvider>
+              <LanguageProvider>
+                {children}
+              </LanguageProvider>
+            </I18nProvider>
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>

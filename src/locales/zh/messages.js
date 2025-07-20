@@ -1,1 +1,1 @@
-/*eslint-disable*/module.exports={messages:JSON.parse("{}")};
+/*eslint-disable*/module.exports={messages:JSON.parse("{\"Home\":\"首页\",\"Chat\":\"聊天\",\"FAQ\":\"常见问题\",\"Check Items\":\"检查项目\",\"Profile\":\"个人资料\",\"Logout\":\"登出\",\"Sign In\":\"登录\",\"Try HelloCity\":\"试用 HelloCity\"}")};
