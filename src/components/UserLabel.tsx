@@ -13,7 +13,7 @@ const UserProfileCard: React.FC<UserData> = ({UserName, PreferredName, Avatar, L
   
   return (
     <div className="bg-gradient-to-r from-indigo-600 to-purple-600 p-6 text-white rounded-2xl shadow-xl hover:shadow-2xl flex items-center gap-2">
-      <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center border-4 border-white ">
+      <div className="w-20 h-20 rounded-full bg-white flex items-center justify-center border-4 border-white" data-testid="avatar-container">
         {!Avatar ? (
           <span className="material-icons text-7xl text-gray-400">
             account_circle
