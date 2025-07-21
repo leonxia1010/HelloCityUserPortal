@@ -6,9 +6,28 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import { InputBoxProps } from './InputBox.types';
 import styles from './InputBox.module.scss';
 import { validationRules, getDefaultPlaceholder, getInputType } from './utils';
+
+
+
+export type InputVariant = 'Primary' | 'Secondary' | 'Tertiary';
+export type InputFieldType = 'name' | 'email' | 'password' | 'repeatPassword' | 'phone';
+
+export interface InputBoxProps {
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  label: string; // Displayed above the input
+  fieldType: InputFieldType; // Used for validation and input behavior
+  placeholder?: string;
+  variant?: InputVariant;
+  disabled?: boolean;
+  required?: boolean;
+  errorMessage?: string; // External error message
+  autoComplete?: boolean;
+  originalPassword?: string; // For repeatPassword validation
+}
+
 
 const InputBox: React.FC<InputBoxProps> = ({
   value,
@@ -17,8 +36,8 @@ const InputBox: React.FC<InputBoxProps> = ({
   fieldType,
   placeholder,
   variant = 'Primary',
-  disabled = false,
-  required = false,
+  disabled,
+  required,
   errorMessage: externalErrorMessage = '',
   autoComplete = false,
   originalPassword = '',
