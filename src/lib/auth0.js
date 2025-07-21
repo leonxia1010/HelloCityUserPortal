@@ -1,5 +1,4 @@
 // lib/auth0.js
-
 import { Auth0Client } from "@auth0/nextjs-auth0/server";
 
 // Initialize the Auth0 client 
@@ -19,3 +18,4 @@ export const auth0 = new Auth0Client({
         audience: process.env.AUTH0_AUDIENCE,
     }
 });
+// conclusion: The Auth0 client is now initialized and can be used in your application for authentication purposes.

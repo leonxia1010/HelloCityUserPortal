@@ -16,3 +16,4 @@ export const config = {
         "/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)",
     ],
 };
+// conclusion: The middleware function uses Auth0 to handle authentication for all routes except static files and metadata files.
