@@ -25,9 +25,11 @@ const page = () => {
     e.preventDefault();
     if (formData.password != formData.confirmPassword){
       alert("Password doesn't match with Confirm Password")
+      return;
     }
     if (!emailRegex.test(formData.email)) {
       alert("Invalid email format");
+      return;
     }
     // send data to API here
     try {
@@ -42,8 +44,8 @@ const page = () => {
 
       console.log('Success:', response.data);
       // optionally show success alert or redirect
-      if (response.data?.userId) {
-        localStorage.setItem('userId', response.data.userId);
+      if (response.data.data?.userId) {
+        localStorage.setItem('userId', response.data.data?.userId);
       } else {
         console.warn('userId not found in response');
       }

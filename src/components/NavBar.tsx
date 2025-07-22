@@ -55,8 +55,8 @@ const NavBar = () => {
             </Button>
           </>
         ) : (
-          <Button variant="tertiary">
-            Sign In
+          <Button variant="tertiary" component={Link} href="/auth">
+            Sign Up
           </Button>
         )}
         
