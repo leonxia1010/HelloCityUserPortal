@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { ThemeProvider } from '@mui/material/styles';
+import websiteTheme from '../../theme';
 
 export const metadata: Metadata = {
   title: 'HelloCity – Landing Assistant for new cities',
@@ -14,7 +16,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
+      <ThemeProvider theme={websiteTheme}>
       <body>{children}</body>
+      </ThemeProvider>
     </html>
   );
 }
