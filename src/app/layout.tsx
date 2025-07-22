@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@mui/material/styles';
-import websiteTheme from '../../theme';
+import websiteTheme from '../Theme/theme';
 
 export const metadata: Metadata = {
   title: 'HelloCity – Landing Assistant for new cities',
