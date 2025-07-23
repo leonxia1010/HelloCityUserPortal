@@ -9,7 +9,11 @@ import { Trans } from '@lingui/react';
 const NavBar = () => {
   const [isLoggedIn, _setIsLoggedIn] = useState<boolean>(false);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const { isEnglish, setLanguage } = useLanguage();
+
+  // Get the language and setLanguage from the LanguageContext.tsx
+  const { language, setLanguage, isLanguage } = useLanguage();
+
+  const isEnglish = isLanguage('en');
 
   const handleLanguageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newLanguage = event.target.checked ? 'en' : 'zh';
