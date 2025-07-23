@@ -1,19 +1,36 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import NavBar from '@/components/NavBar';
 import React from 'react';
+import { LanguageProvider } from '@/contexts/LanguageContext';
+import { I18nProvider } from '@/contexts/I18nProvider';
+
+const TestWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <LanguageProvider>
+    <I18nProvider>
+      {children}
+    </I18nProvider>
+  </LanguageProvider>
+);
 
 describe('NavBar', () => {
   beforeEach(() => {
-    render(<NavBar />);
+    // Clear localStorage to ensure a clean state for each test
+    localStorage.clear();
   });
 
   it('renders the Logo and Nav buttons', () => {
+    render(
+      <TestWrapper>
+        <NavBar />
+      </TestWrapper>
+    );
+
     expect(screen.getByAltText('HelloCity Logo')).toBeInTheDocument();
 
     const homeLink = screen.getByRole('link', { name: /Home/i });
     expect(homeLink).toBeInTheDocument();
     expect(homeLink).toHaveAttribute('href', '/');
-    
+
     const chatLink = screen.getByRole('link', { name: /Chat/i });
     expect(chatLink).toBeInTheDocument();
     // page component not implemented
@@ -24,22 +41,36 @@ describe('NavBar', () => {
     // expect(ctaLink).toHaveAttribute('href', '/chat');
   });
 
-  it('toggles language label between CN and EN', () => {
+  it('toggles language label between CN and EN', async () => {
+    render(
+      <TestWrapper>
+        <NavBar />
+      </TestWrapper>
+    );
+
     const toggle = screen.getByRole('checkbox');
 
-    // Initially CN label visible, both labels are rendered but only one is visible
-    expect(screen.getByText(/cn/i)).toBeInTheDocument();
-    expect(screen.queryByText(/en/i)).not.toBeInTheDocument();
+    expect(screen.getByText('EN')).toBeInTheDocument();
 
     fireEvent.click(toggle);
 
-    // EN label visible
-    expect(screen.getByText(/en/i)).toBeInTheDocument();
-    expect(screen.queryByText(/cn/i)).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('CN')).toBeInTheDocument();
+    });
+
+    fireEvent.click(toggle);
+
+    await waitFor(() => {
+      expect(screen.getByText('EN')).toBeInTheDocument();
+    });
   });
 
   it('has correct Tailwind classes on the outermost div', () => {
-    const { container } = render(<NavBar />);
+    const { container } = render(
+      <TestWrapper>
+        <NavBar />
+      </TestWrapper>
+    );
     const outerDiv = container.firstChild as HTMLElement;
 
     expect(outerDiv).toHaveClass(
@@ -54,5 +85,73 @@ describe('NavBar', () => {
       'z-10'
     );
   });
+
+  it('displays English navigation items by default', () => {
+    render(
+      <TestWrapper>
+        <NavBar />
+      </TestWrapper>
+    );
+
+    // It would display English navigation items by default
+    expect(screen.getByText('Home')).toBeInTheDocument();
+    expect(screen.getByText('Chat')).toBeInTheDocument();
+    expect(screen.getByText('FAQ')).toBeInTheDocument();
+    expect(screen.getByText('Check Items')).toBeInTheDocument();
+    expect(screen.getByText('Sign In')).toBeInTheDocument();
+    expect(screen.getByText('Try HelloCity')).toBeInTheDocument();
+  });
+
+  it('switches to Chinese and updates translations', async () => {
+    render(
+      <TestWrapper>
+        <NavBar />
+      </TestWrapper>
+    );
+
+    const toggle = screen.getByRole('checkbox');
+
+    // Switch to Chinese
+    fireEvent.click(toggle);
+
+    await waitFor(() => {
+      expect(screen.getByText('首页')).toBeInTheDocument();
+      expect(screen.getByText('聊天')).toBeInTheDocument();
+      expect(screen.getByText('常见问题')).toBeInTheDocument();
+      expect(screen.getByText('检查项目')).toBeInTheDocument();
+      expect(screen.getByText('登录')).toBeInTheDocument();
+      expect(screen.getByText('试用 HelloCity')).toBeInTheDocument();
+    });
+  });
+
+  it('switches back to English from Chinese', async () => {
+    render(
+      <TestWrapper>
+        <NavBar />
+      </TestWrapper>
+    );
+
+    const toggle = screen.getByRole('checkbox');
+
+    // Switch to Chinese
+    fireEvent.click(toggle);
+
+    await waitFor(() => {
+      expect(screen.getByText('首页')).toBeInTheDocument();
+    });
+
+    // Switch back to English
+    fireEvent.click(toggle);
+
+    await waitFor(() => {
+      expect(screen.getByText('Home')).toBeInTheDocument();
+      expect(screen.getByText('Chat')).toBeInTheDocument();
+      expect(screen.getByText('FAQ')).toBeInTheDocument();
+      expect(screen.getByText('Check Items')).toBeInTheDocument();
+      expect(screen.getByText('Sign In')).toBeInTheDocument();
+      expect(screen.getByText('Try HelloCity')).toBeInTheDocument();
+    });
+  });
+
   //NavBar Login Test incomplete
 });

@@ -7,13 +7,13 @@ const nextConfig = {
         esmExternals: 'loose'
     },
     webpack: (config) => {
-        // 添加Lingui的loader支持
+        // Add Lingui loader support
         config.module.rules.push({
             test: /\.po$/,
             use: ['@lingui/loader']
         });
 
-        // 解决客户端构建中模块的问题
+        // Resolve module issues in client-side builds
         config.resolve.fallback = {
             ...config.resolve.fallback,
             fs: false,
