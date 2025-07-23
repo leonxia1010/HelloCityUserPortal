@@ -93,6 +93,5 @@ describe('Userlabel component test', () => {
     const avatar = screen.getByAltText('User Avatar');
     expect(avatar).toHaveAttribute('width', '64');
     expect(avatar).toHaveAttribute('height', '64');
-});
-
+  });
 });
