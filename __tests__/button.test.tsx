@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import Button from "./button"; // adjust path if needed
+import Button from "../src/components/button"; // adjust path if needed
 
 interface RenderButtonProps {
     variant: "primary" | "primary_register" | "secondary" | "tertiary";
