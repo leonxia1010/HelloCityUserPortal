@@ -54,7 +54,7 @@ describe('Userlabel component test', () => {
     expect(screen.queryByAltText('User Avatar')).not.toBeInTheDocument();
   });
 
-  it('applies the correct style classes', () => {
+  it('Applies the correct style classes', () => {
     const { container } = render(<UserProfileCard {...mockUserData} />);
     const card = container.firstChild;
     expect(card).toHaveClass('bg-gradient-to-r');
