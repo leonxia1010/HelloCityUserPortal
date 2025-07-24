@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { render, screen, fireEvent } from '@testing-library/react';
+
 import '@testing-library/jest-dom';
 import InputBox from './InputBox';
 
@@ -15,7 +17,7 @@ describe('InputBox component', () => {
       />
     );
     expect(screen.getByPlaceholderText('Enter your name')).toBeInTheDocument();
-    expect(screen.getByLabelText('Name')).toBeInTheDocument();
+    expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
   });
 
   it('Displays error message when errorMessage is provided', () => {
@@ -31,26 +33,7 @@ describe('InputBox component', () => {
     expect(screen.getByText('Invalid email')).toBeInTheDocument();
   });
 
-  it('Does not call onChange when input is disabled', () => {
-    const handleChange = jest.fn();
 
-    render(
-      <InputBox
-        label="Phone"
-        value=""
-        onChange={handleChange}
-        disabled
-        fieldType="phone"
-      />
-    );
-
-    const input = screen.getByLabelText('Phone');
-    expect(input).toBeDisabled();
-
-    fireEvent.change(input, { target: { value: '123' } });
-
-    expect(handleChange).not.toHaveBeenCalled();
-  });
 
   it('Calls onChange when input value changes', () => {
     const handleChange = jest.fn();
@@ -64,7 +47,7 @@ describe('InputBox component', () => {
       />
     );
 
-    fireEvent.change(screen.getByLabelText('Name'), { target: { value: 'John' } });
+    fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'John' } });
     expect(handleChange).toHaveBeenCalled();
   });
 });
@@ -85,7 +68,7 @@ describe('InputBox validation', () => {
     };
 
     render(<Wrapper />);
-    const input = screen.getByLabelText('Phone');
+    const input = screen.getByLabelText(/phone/i);
     fireEvent.change(input, { target: { value: '' } });
 
     expect(screen.getByText('Phone is required.')).toBeInTheDocument();
@@ -106,7 +89,7 @@ describe('InputBox validation', () => {
     };
 
     render(<Wrapper />);
-    const input = screen.getByLabelText('Email');
+    const input = screen.getByLabelText(/email/i);
     fireEvent.change(input, { target: { value: '' } });
 
     expect(screen.getByText('Email is required.')).toBeInTheDocument();

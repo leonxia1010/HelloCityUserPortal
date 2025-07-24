@@ -9,25 +9,22 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import styles from './InputBox.module.scss';
 import { validationRules, getDefaultPlaceholder, getInputType } from './utils';
 
-
-
 export type InputVariant = 'Primary' | 'Secondary' | 'Tertiary';
 export type InputFieldType = 'name' | 'email' | 'password' | 'repeatPassword' | 'phone';
 
 export interface InputBoxProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  label: string; // Displayed above the input
-  fieldType: InputFieldType; // Used for validation and input behavior
+  label: string;
+  fieldType: InputFieldType;
   placeholder?: string;
   variant?: InputVariant;
   disabled?: boolean;
   required?: boolean;
-  errorMessage?: string; // External error message
+  errorMessage?: string;
   autoComplete?: boolean;
-  originalPassword?: string; // For repeatPassword validation
+  originalPassword?: string;
 }
-
 
 const InputBox: React.FC<InputBoxProps> = ({
   value,
@@ -53,6 +50,7 @@ const InputBox: React.FC<InputBoxProps> = ({
       : getInputType(normalizedFieldType);
   const finalPlaceholder = placeholder ?? getDefaultPlaceholder(normalizedFieldType);
   const maxLength = 20;
+  const inputId = `input-${normalizedFieldType}`;
 
   useEffect(() => {
     if (!touched) return;
@@ -90,6 +88,7 @@ const InputBox: React.FC<InputBoxProps> = ({
   return (
     <div className={`${styles['input-box-wrapper']} ${variant.toLowerCase()}`}>
       <TextField
+        id={inputId}
         fullWidth
         label={label.charAt(0).toUpperCase() + label.slice(1)}
         type={inputType}
@@ -100,12 +99,13 @@ const InputBox: React.FC<InputBoxProps> = ({
         error={!!(errorMessage || externalErrorMessage)}
         helperText={errorMessage || externalErrorMessage || ' '}
         disabled={disabled}
+        required={required}
         inputProps={{
+          id: inputId,
           maxLength,
           autoComplete: autoComplete ? 'on' : 'off',
           name: normalizedFieldType,
         }}
-        required={required}
         InputProps={
           (normalizedFieldType === 'password' || normalizedFieldType === 'repeatPassword')
             ? {
