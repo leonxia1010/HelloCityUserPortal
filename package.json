@@ -72,5 +72,9 @@
     "ts-node": "^10.9.2",
     "typescript": "^5",
     "vitest": "^3.2.4"
+  },
+  "optionalDependencies": {
+    "@next/swc-linux-x64-gnu": "^15.4.3",
+    "@next/swc-linux-x64-musl": "^15.4.3"
   }
 }
