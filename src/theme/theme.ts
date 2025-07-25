@@ -1,5 +1,6 @@
 'use client';
 
+import type { MenuProps } from '@mui/material/Menu';
 import type { ThemeOptions } from '@mui/material/styles';
 import { createTheme } from '@mui/material/styles';
 import '@fontsource/ibm-plex-sans/400.css'; // Regular
@@ -152,48 +153,6 @@ const websiteTheme = createTheme({
         },
       ],
     },
-    MuiMenu: {
-      styleOverrides: {
-        paper: ({ theme }) => ({
-          overflow: 'visible',
-          boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
-          marginTop: theme.spacing(1.5),
-          minWidth: '12rem',
-          '& .MuiMenuItem-root': {
-            '& .MuiListItemIcon-root, & .MuiTypography-root': {
-              color: theme.palette.text.secondary,
-              transition: 'color 0.15s',
-            },
-            '&:hover, &.Mui-focusVisible': {
-              '& .MuiListItemIcon-root, & .MuiTypography-root': {
-                color: theme.palette.primary.main,
-              },
-            },
-          },
-        }),
-      },
-      variants: [
-        {
-          props: { layout: 'vertical' },
-          style: () => ({
-            '& .MuiMenu-list': {
-              display: 'flex',
-              flexDirection: 'column',
-            },
-          }),
-        },
-        {
-          props: { layout: 'horizontal' },
-          style: () => ({
-            '& .MuiMenu-list': {
-              display: 'grid',
-              gridTemplateColumns: 'repeat(5, 1fr)',
-              gap: '0.5rem',
-            },
-          }),
-        },
-      ],
-    },
   },
   customSpacing: {
     buttonPaddingSm: '0.5rem 2rem',
@@ -206,6 +165,9 @@ const websiteTheme = createTheme({
     lg: '2rem', // 32px
     xl: '3rem', // 64px
     full: '9999px',
+  },
+  customShadows: {
+    dropdown: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
   },
 } as ThemeOptions);
 
