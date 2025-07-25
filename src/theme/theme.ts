@@ -1,39 +1,12 @@
 'use client';
 
-import { createTheme, ThemeOptions } from '@mui/material/styles';
-import '@fontsource/ibm-plex-sans/400.css';     // Regular
-import '@fontsource/ibm-plex-sans/700.css';     // Bold
+import type { MenuProps } from '@mui/material/Menu';
+import type { ThemeOptions } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
+import '@fontsource/ibm-plex-sans/400.css'; // Regular
+import '@fontsource/ibm-plex-sans/700.css'; // Bold
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/600.css';
-
-declare module '@mui/material/styles' {
-  interface Theme {
-    backgroundGradients: {
-      buttonPrimaryActive: string;
-      buttonModalActive: string;
-      buttonPrimaryDisabled: string;
-    };
-    customSpacing: {
-      buttonPaddingSm: string;
-      buttonFontSize: string;
-    };
-  }
-  interface ThemeOptions {
-    backgroundGradients?: {
-      buttonPrimaryActive?: string;
-      buttonModalActive?: string;
-      buttonPrimaryDisabled?: string;
-    };
-    customSpacing?: Partial<Theme['customSpacing']>;
-  }
-}
-declare module '@mui/material/Button' {
-  interface ButtonPropsVariantOverrides {
-    primary: true;
-    secondary: true;
-    tertiary: true;
-  }
-}
 
 const websiteTheme = createTheme({
   palette: {
@@ -90,7 +63,7 @@ const websiteTheme = createTheme({
     caption: { fontFamily: `'IBM Plex Sans', sans-serif` },
     button: {
       fontFamily: `'IBM Plex Sans', sans-serif`,
-      textTransform: 'none'
+      textTransform: 'none',
     },
 
     // Custom use (e.g., chatbot)
@@ -149,7 +122,7 @@ const websiteTheme = createTheme({
         {
           props: { variant: 'secondary', disabled: true },
           style: () => ({
-            background: "#F3F3F3",
+            background: '#F3F3F3',
             border: `1px solid #DCDCDC`,
             '&.Mui-disabled': {
               color: '#A0A0A0', // <- override default disabled color
@@ -177,7 +150,49 @@ const websiteTheme = createTheme({
               color: '#BBBBBB', // <- override default disabled color
             },
           }),
-        }
+        },
+      ],
+    },
+    MuiMenu: {
+      // Config menu style here for code maintainability and readability
+      styleOverrides: {
+        paper: ({ theme }) => ({
+          overflow: 'visible',
+          filter: theme.customShadows?.dropdown,
+          marginTop: theme.spacing(1.5),
+          minWidth: '12rem',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            display: 'block',
+            top: 0,
+            right: 14,
+            width: 10,
+            height: 10,
+            backgroundColor: theme.palette.background.paper,
+            transform: 'translateY(-50%) rotate(45deg)',
+          },
+        }),
+      },
+      variants: [
+        {
+          props: { variant: 'vertical' } as unknown as Partial<MenuProps>,
+          style: () => ({
+            '& .MuiMenu-list': {
+              display: 'flex',
+              flexDirection: 'column',
+            },
+          }),
+        },
+        {
+          props: { variant: 'horizontal' } as unknown as Partial<MenuProps>,
+          style: () => ({
+            '& .MuiMenu-list': {
+              display: 'flex',
+              flexDirection: 'row',
+            },
+          }),
+        },
       ],
     },
   },
@@ -186,12 +201,15 @@ const websiteTheme = createTheme({
     buttonFontSize: '1.125rem',
   },
   customBorderRadius: {
-    esm: '0.5rem',     // 8px
-    sm: '0.75rem',     // rounded xl 12px
-    md: '1rem',       // 16px
-    lg: '2rem',       // 32px
-    xl: '3rem',       // 64px
+    esm: '0.5rem', // 8px
+    sm: '0.75rem', // rounded xl 12px
+    md: '1rem', // 16px
+    lg: '2rem', // 32px
+    xl: '3rem', // 64px
     full: '9999px',
+  },
+  customShadows: {
+    dropdown: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
   },
 } as ThemeOptions);
 
