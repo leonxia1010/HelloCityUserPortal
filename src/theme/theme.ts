@@ -59,7 +59,6 @@ const websiteTheme = createTheme({
   },
   typography: {
     fontFamily: `'IBM Plex Sans', sans-serif`,
-
     h1: {
       fontFamily: `'Cabinet Grotesk', sans-serif`,
       fontWeight: 700,

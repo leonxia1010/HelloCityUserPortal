@@ -18,7 +18,6 @@ const Banner = () => {
       });
       setUserData(response.data);
       console.log(response.data)
-      console.log('User get submitted')
     } catch (error) {
       console.error('Failed to fetch user:', error);
     }
