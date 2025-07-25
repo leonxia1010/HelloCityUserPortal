@@ -1,16 +1,9 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import NavBar from '@/components/NavBar';
 import React from 'react';
-import { LanguageProvider } from '@/contexts/LanguageContext';
-import { I18nProvider } from '@/contexts/I18nProvider';
+import { I18nTestWrapper } from '../src/utils/testUtils/TestWrapper';
 
-const TestWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <LanguageProvider>
-    <I18nProvider>
-      {children}
-    </I18nProvider>
-  </LanguageProvider>
-);
+
 
 describe('NavBar', () => {
   beforeEach(() => {
@@ -20,9 +13,9 @@ describe('NavBar', () => {
 
   it('renders the Logo and Nav buttons', () => {
     render(
-      <TestWrapper>
+      <I18nTestWrapper>
         <NavBar />
-      </TestWrapper>
+      </I18nTestWrapper>
     );
 
     expect(screen.getByAltText('HelloCity Logo')).toBeInTheDocument();
@@ -43,9 +36,9 @@ describe('NavBar', () => {
 
   it('toggles language label between CN and EN', async () => {
     render(
-      <TestWrapper>
+      <I18nTestWrapper>
         <NavBar />
-      </TestWrapper>
+      </I18nTestWrapper>
     );
 
     const toggle = screen.getByRole('checkbox');
@@ -67,9 +60,9 @@ describe('NavBar', () => {
 
   it('has correct Tailwind classes on the outermost div', () => {
     const { container } = render(
-      <TestWrapper>
+      <I18nTestWrapper>
         <NavBar />
-      </TestWrapper>
+      </I18nTestWrapper>
     );
     const outerDiv = container.firstChild as HTMLElement;
 
@@ -88,9 +81,9 @@ describe('NavBar', () => {
 
   it('displays English navigation items by default', () => {
     render(
-      <TestWrapper>
+      <I18nTestWrapper>
         <NavBar />
-      </TestWrapper>
+      </I18nTestWrapper>
     );
 
     // It would display English navigation items by default
@@ -104,9 +97,9 @@ describe('NavBar', () => {
 
   it('switches to Chinese and updates translations', async () => {
     render(
-      <TestWrapper>
+      <I18nTestWrapper>
         <NavBar />
-      </TestWrapper>
+      </I18nTestWrapper>
     );
 
     const toggle = screen.getByRole('checkbox');
@@ -126,9 +119,9 @@ describe('NavBar', () => {
 
   it('switches back to English from Chinese', async () => {
     render(
-      <TestWrapper>
+      <I18nTestWrapper>
         <NavBar />
-      </TestWrapper>
+      </I18nTestWrapper>
     );
 
     const toggle = screen.getByRole('checkbox');
