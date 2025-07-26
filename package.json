@@ -40,7 +40,6 @@
     "@storybook/addon-docs": "^9.0.17",
     "@storybook/addon-onboarding": "^9.0.17",
     "@storybook/addon-themes": "^9.0.17",
-    "@storybook/addon-vitest": "^9.0.17",
     "@storybook/nextjs-vite": "^9.0.17",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
@@ -70,6 +69,7 @@
     "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "typescript": "^5",
+    "vite": "^5.2.0",
     "vitest": "^3.2.4"
   },
   "optionalDependencies": {
