@@ -1,0 +1,58 @@
+.homepage-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-family: 'Cabinet Grotesk', sans-serif;
+}
+
+/* Background image full cover */
+.banner-background {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/banner-image.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  z-index: -1;
+}
+
+/* Blur overlays */
+.blur-top {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 7vh;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+
+  @media (max-width:768px){
+    height: auto;
+    flex-direction: column;
+    padding: 10px;
+  }
+}
+
+
+/* Main content */
+.homepage-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  @media(max-width:768px){
+    margin-top: 140px;
+    padding: 0 16px;
+  }
+}
