@@ -189,7 +189,6 @@ const websiteTheme = createTheme({
               display: 'grid',
               gridTemplateColumns: 'repeat(5, 1fr)',
               gap: '0.5rem',
-              textAlign: 'center',
             },
           }),
         },
