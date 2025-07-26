@@ -1,0 +1,166 @@
+import React from 'react';
+
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { render, screen, within, waitFor, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+
+import type { DropdownOption } from '@/components/Dropdown';
+import Dropdown from '@/components/Dropdown';
+import '@testing-library/jest-dom';
+
+const renderWithTheme = (ui: React.ReactElement) => {
+  const theme = createTheme();
+  return render(<ThemeProvider theme={theme}>{ui}</ThemeProvider>);
+};
+
+describe('DropDown component', () => {
+  const baseOptions: DropdownOption[] = [
+    {
+      label: 'Profile',
+      value: 'profile',
+      icon: AccountCircleIcon,
+      divider: false,
+      onClick: jest.fn(),
+    },
+    {
+      label: 'Logout',
+      value: 'logout',
+      icon: null,
+      divider: true,
+      onClick: jest.fn(),
+    },
+  ];
+
+  // render test
+  it('Renders only trigger button on initial load', () => {
+    renderWithTheme(<Dropdown anchorElContent={<span>open</span>} dropdownOptions={baseOptions} />);
+    const button = screen.getByRole('button');
+    const menu = screen.queryByRole('menu');
+    expect(button).toBeInTheDocument();
+    expect(button).not.toHaveAttribute('aria-expanded');
+    expect(menu).not.toBeInTheDocument();
+  });
+
+  it('Opens menu and renders items on button click', async () => {
+    renderWithTheme(<Dropdown anchorElContent={<span>open</span>} dropdownOptions={baseOptions} />);
+    await userEvent.click(screen.getByRole('button'));
+
+    const menu = await screen.findByRole('menu');
+    expect(menu).toBeVisible();
+
+    const menuItem = await screen.findAllByRole('menuitem');
+    expect(menuItem).toHaveLength(baseOptions.length);
+
+    expect(menuItem[0]).toHaveTextContent('Profile');
+    expect(menuItem[1]).toHaveTextContent('Logout');
+
+    expect(within(menuItem[0]).getByTestId('profile-icon')).toBeVisible();
+    expect(within(menuItem[1]).queryByTestId('logout-icon')).not.toBeInTheDocument();
+  });
+
+  it('Renders Divider when option.divider=true', async () => {
+    renderWithTheme(<Dropdown anchorElContent={<span>Open</span>} dropdownOptions={baseOptions} />);
+    await userEvent.click(screen.getByRole('button'));
+
+    const separators = await screen.findAllByRole('separator');
+    expect(separators).toHaveLength(1);
+  });
+
+  it('Items are rendered vertically when layout = vertical', async () => {
+    renderWithTheme(
+      <Dropdown
+        anchorElContent={<span>Open</span>}
+        dropdownOptions={baseOptions}
+        layout="vertical"
+      />,
+    );
+    await userEvent.click(screen.getByRole('button'));
+
+    const list = document.querySelector('.MuiMenu-list');
+    expect(list).toHaveClass('MuiMenu-list');
+  });
+
+  it('Items are rendered horizontally when layout = horizontal', async () => {
+    renderWithTheme(
+      <Dropdown
+        anchorElContent={<span>Open</span>}
+        dropdownOptions={baseOptions}
+        layout="horizontal"
+      />,
+    );
+    await userEvent.click(screen.getByRole('button'));
+
+    const list = document.querySelector('.MuiMenu-list');
+    expect(list).toHaveClass('MuiMenu-list');
+  });
+
+  it('User label is rendered if showUserLabel = true', async () => {
+    renderWithTheme(
+      <Dropdown anchorElContent={<span>Open</span>} dropdownOptions={baseOptions} showUserLabel />,
+    );
+    await userEvent.click(screen.getByRole('button'));
+
+    expect(await screen.findByText(/Leon/i)).toBeInTheDocument();
+  });
+
+  it('Applied centered text align when textAlign = true', async () => {
+    renderWithTheme(
+      <Dropdown
+        anchorElContent={<span>Open</span>}
+        dropdownOptions={baseOptions}
+        textAlignCenter
+      />,
+    );
+    await userEvent.click(screen.getByRole('button'));
+
+    const typography = await screen.findByText('Profile');
+    expect(typography).toHaveStyle({ textAlign: 'center', flexGrow: 1 });
+  });
+
+  //   close menu test and onclick event
+  it('Onclick fired and menu closes after clicking an item', async () => {
+    const spy = jest.fn();
+    const options: DropdownOption[] = [{ label: 'Profile', value: 'profile', onClick: spy }];
+    renderWithTheme(<Dropdown anchorElContent={<span>Open</span>} dropdownOptions={options} />);
+
+    await userEvent.click(screen.getByRole('button'));
+    expect(await screen.findByRole('menu')).toBeInTheDocument();
+
+    await userEvent.click(screen.getByText('Profile'));
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith('profile');
+
+    await waitFor(() => {
+      expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+    });
+  });
+
+  it('Menu closes after clicking outside', async () => {
+    renderWithTheme(<Dropdown anchorElContent={<span>Open</span>} dropdownOptions={baseOptions} />);
+
+    await userEvent.click(screen.getByRole('button'));
+    expect(await screen.findByRole('menu')).toBeInTheDocument();
+
+    const backdrop = document.querySelector('.MuiBackdrop-root');
+    if (backdrop) {
+      fireEvent.click(backdrop);
+    }
+
+    await waitFor(() => {
+      expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+    });
+  });
+
+  it('Menu closes after press esc', async () => {
+    renderWithTheme(<Dropdown anchorElContent={<span>Open</span>} dropdownOptions={baseOptions} />);
+
+    await userEvent.click(screen.getByRole('button'));
+    expect(await screen.findByRole('menu')).toBeInTheDocument();
+
+    await userEvent.keyboard('{Escape}');
+    await waitFor(() => {
+      expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+    });
+  });
+});
