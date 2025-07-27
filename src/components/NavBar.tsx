@@ -6,7 +6,7 @@ import { Button, Switch, FormControlLabel, Avatar } from '@mui/material';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 
 import { Dropdown } from '.';
-import { userMenuOptions, LanguageMenuOptions } from './dropdownMenuOptions';
+import { userMenuOptions, languageMenuOptions } from './dropdownMenuOptions';
 
 const NavBar = () => {
   const [isLoggedIn, _setIsLoggedIn] = useState<boolean>(false);
@@ -39,7 +39,7 @@ const NavBar = () => {
         />
         <Dropdown
           anchorElContent={<LanguageOutlinedIcon />}
-          dropdownOptions={LanguageMenuOptions}
+          dropdownOptions={languageMenuOptions}
           layout="horizontal"
           textAlignCenter
         ></Dropdown>
