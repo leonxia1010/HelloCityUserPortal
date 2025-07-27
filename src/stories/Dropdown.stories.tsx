@@ -181,7 +181,7 @@ const meta: Meta<typeof DropdownDisplay> = {
   },
 } satisfies Meta<typeof DropdownDisplay>;
 export default meta;
-export const UserMenu: StoryObj<typeof DropdownDisplay> = {
+export const Primary: StoryObj<typeof DropdownDisplay> = {
   args: {
     dropdownOptions: userMenuDisplayOptions,
     layout: 'vertical',
@@ -194,7 +194,7 @@ export const UserMenu: StoryObj<typeof DropdownDisplay> = {
   },
 };
 
-export const LanguageMenu: StoryObj<typeof DropdownDisplay> = {
+export const Horizontal: StoryObj<typeof DropdownDisplay> = {
   args: {
     dropdownOptions: languageMenuDisplayOptions,
     layout: 'horizontal',

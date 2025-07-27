@@ -47,17 +47,6 @@ const NavBar = () => {
 
       <div>
         {!isLoggedIn ? (
-          //   <>
-          //   <Button component={Link} href="/" variant="tertiary">
-          //     Profile
-          //   </Button>
-          //   <Button component={Link} href="/" variant="tertiary">
-          //     Logout
-          //   </Button>
-          //   <Button component={Link} href="/" variant="tertiary">
-          //     Language
-          //   </Button>
-          // </>
           <Dropdown
             anchorElContent={
               <Avatar
