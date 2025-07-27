@@ -1,5 +1,5 @@
 import React from 'react';
-import type { Meta, StoryObj } from '@storybook/react-webpack5';
+import type { Meta, StoryObj } from '@storybook/nextjs-vite';
 import { Button, Stack, Box } from '@mui/material';
 
 interface ButtonDisplayProps {
