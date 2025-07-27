@@ -19,6 +19,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^4.8.0",
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
@@ -28,6 +29,7 @@
     "@mui/icons-material": "^7.2.0",
     "@mui/material": "^7.2.0",
     "@mui/material-nextjs": "^7.2.0",
+    "auth0": "^4.27.0",
     "clsx": "^2.1.1",
     "material-icons": "^1.13.14",
     "next": "14.2.30",
@@ -42,6 +44,7 @@
     "@storybook/addon-themes": "^9.0.17",
     "@storybook/addon-vitest": "^9.0.17",
     "@storybook/nextjs-vite": "^9.0.17",
+    "@storybook/react-webpack5": "^9.0.17",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.3.0",
@@ -70,7 +73,6 @@
     "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "typescript": "^5",
-    "vite": "^5.2.0",
     "vitest": "^3.2.4"
   },
   "optionalDependencies": {
