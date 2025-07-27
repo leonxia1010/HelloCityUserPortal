@@ -49,6 +49,25 @@ const DropDown: React.FC<DropdownProps> = ({
     setAnchorEl(null);
   };
 
+  // Check popup direction and alignment and Dynamically calculate margin in order not to overlay the anchor element
+  const getMenuMarginTopSx = () => {
+    const isPopupUp = anchorOrigin.vertical === 'top';
+    const isVerticalCenter = anchorOrigin.vertical === 'center';
+    let marginTop = '0.5rem';
+
+    if (isPopupUp) {
+      marginTop = '-0.5rem';
+    } else if (isVerticalCenter) {
+      marginTop = '0rem'; // No margin needed when vertically centered
+    }
+
+    return {
+      '& .MuiPaper-root': {
+        marginTop,
+      },
+    };
+  };
+
   return (
     <React.Fragment>
       {/* AnchorEL */}
@@ -71,14 +90,15 @@ const DropDown: React.FC<DropdownProps> = ({
         transformOrigin={transformOrigin}
         anchorOrigin={anchorOrigin}
         layout={layout}
+        sx={getMenuMarginTopSx()}
       >
         {/* User label area, will update when userprofile global statement is ready */}
-        {showUserLabel && (
+        {showUserLabel && layout === 'vertical' && (
           <MenuItem sx={{ minHeight: 'auto', alignItems: 'flex-start' }}>
             <UserProfileCard Avatar={'/images/banner-image.jpeg'} UserName="Leon" />
           </MenuItem>
         )}
-        {showUserLabel && <Divider />}
+        {showUserLabel && layout === 'vertical' && <Divider />}
         {/* Dropdown Settings & Preferences area */}
         {dropdownOptions.map((option: DropdownOption) => {
           return (
@@ -93,7 +113,7 @@ const DropDown: React.FC<DropdownProps> = ({
                   {option.label}
                 </Typography>
               </MenuItem>
-              {option.divider && <Divider />}
+              {option.divider && layout === 'vertical' && <Divider />}
             </React.Fragment>
           );
         })}
