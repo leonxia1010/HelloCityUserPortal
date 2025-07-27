@@ -163,4 +163,33 @@ describe('DropDown component', () => {
       expect(screen.queryByRole('menu')).not.toBeInTheDocument();
     });
   });
+
+  // dynamic margin top calculator
+  it('uses negative margin when popup opens upward (vertical="top")', async () => {
+    renderWithTheme(
+      <Dropdown
+        anchorElContent={<span>Open</span>}
+        dropdownOptions={[{ label: 'A', value: 'a', onClick: jest.fn() }]}
+        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      />,
+    );
+
+    await userEvent.click(screen.getByRole('button'));
+    const paper = document.querySelector('.MuiPaper-root') as HTMLElement;
+    expect(paper).toHaveStyle({ marginTop: '-0.5rem' });
+  });
+
+  it('uses zero margin when vertically centered (vertical="center")', async () => {
+    renderWithTheme(
+      <Dropdown
+        anchorElContent={<span>Open</span>}
+        dropdownOptions={[{ label: 'A', value: 'a', onClick: jest.fn() }]}
+        anchorOrigin={{ vertical: 'center', horizontal: 'right' }}
+      />,
+    );
+
+    await userEvent.click(screen.getByRole('button'));
+    const paper = document.querySelector('.MuiPaper-root') as HTMLElement;
+    expect(paper).toHaveStyle({ marginTop: '0rem' });
+  });
 });
