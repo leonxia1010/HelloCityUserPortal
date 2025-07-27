@@ -11,6 +11,7 @@ export const createUser = async (newUser: User) => {
   return response;
 }
 
+// Used in demo, currently unused, waiting for new ticket
 export const fetchUser = async (newUserId: string) => {
   const response = await axios.get(`http://localhost:5000/api/${newUserId}`, {
     headers: {
