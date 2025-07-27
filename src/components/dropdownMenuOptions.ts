@@ -3,9 +3,9 @@ import Logout from '@mui/icons-material/Logout';
 import PaymentOutlinedIcon from '@mui/icons-material/PaymentOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 
-import type { DropdownOption } from './Dropdown';
+import type { DropdownOptionProps } from './Dropdown';
 
-export const userMenuOptions: DropdownOption[] = [
+export const userMenuOptions: DropdownOptionProps[] = [
   {
     label: 'Profile',
     value: 'profile',
@@ -43,7 +43,7 @@ export const userMenuOptions: DropdownOption[] = [
   },
 ];
 
-export const languageMenuOptions: DropdownOption[] = [
+export const languageMenuOptions: DropdownOptionProps[] = [
   {
     label: '简体中文',
     value: 'zh-CN',

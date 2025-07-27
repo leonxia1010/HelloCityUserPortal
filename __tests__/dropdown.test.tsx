@@ -1,41 +1,35 @@
 import React from 'react';
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { render, screen, within, waitFor, fireEvent } from '@testing-library/react';
+import { screen, within, waitFor, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import type { DropdownOption } from '@/components/Dropdown';
+import type { DropdownOptionProps } from '@/components/Dropdown';
 import Dropdown from '@/components/Dropdown';
-import '@testing-library/jest-dom';
+import renderWithTheme from '@/test-utils/renderWithTheme';
 
-const renderWithTheme = (ui: React.ReactElement) => {
-  const theme = createTheme();
-  return render(<ThemeProvider theme={theme}>{ui}</ThemeProvider>);
-};
+const baseOptions: DropdownOptionProps[] = [
+  {
+    label: 'Profile',
+    value: 'profile',
+    icon: AccountCircleIcon,
+    divider: false,
+    onClick: jest.fn(),
+  },
+  {
+    label: 'Logout',
+    value: 'logout',
+    icon: null,
+    divider: true,
+    onClick: jest.fn(),
+  },
+];
 
 describe('DropDown component', () => {
-  const baseOptions: DropdownOption[] = [
-    {
-      label: 'Profile',
-      value: 'profile',
-      icon: AccountCircleIcon,
-      divider: false,
-      onClick: jest.fn(),
-    },
-    {
-      label: 'Logout',
-      value: 'logout',
-      icon: null,
-      divider: true,
-      onClick: jest.fn(),
-    },
-  ];
-
   // render test
   it('Renders only trigger button on initial load', () => {
     renderWithTheme(<Dropdown anchorElContent={<span>open</span>} dropdownOptions={baseOptions} />);
-    const button = screen.getByRole('button');
+    const button = screen.getByRole('button', { name: /open menu/i });
     const menu = screen.queryByRole('menu');
     expect(button).toBeInTheDocument();
     expect(button).not.toHaveAttribute('aria-expanded');
@@ -44,7 +38,7 @@ describe('DropDown component', () => {
 
   it('Opens menu and renders items on button click', async () => {
     renderWithTheme(<Dropdown anchorElContent={<span>open</span>} dropdownOptions={baseOptions} />);
-    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
 
     const menu = await screen.findByRole('menu');
     expect(menu).toBeVisible();
@@ -61,7 +55,7 @@ describe('DropDown component', () => {
 
   it('Renders Divider when option.divider=true', async () => {
     renderWithTheme(<Dropdown anchorElContent={<span>Open</span>} dropdownOptions={baseOptions} />);
-    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
 
     const separators = await screen.findAllByRole('separator');
     expect(separators).toHaveLength(1);
@@ -75,7 +69,7 @@ describe('DropDown component', () => {
         layout="vertical"
       />,
     );
-    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
 
     const list = document.querySelector('.MuiMenu-list');
     expect(list).toHaveClass('MuiMenu-list');
@@ -89,7 +83,7 @@ describe('DropDown component', () => {
         layout="horizontal"
       />,
     );
-    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
 
     const list = document.querySelector('.MuiMenu-list');
     expect(list).toHaveClass('MuiMenu-list');
@@ -99,7 +93,7 @@ describe('DropDown component', () => {
     renderWithTheme(
       <Dropdown anchorElContent={<span>Open</span>} dropdownOptions={baseOptions} showUserLabel />,
     );
-    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
 
     expect(await screen.findByText(/Leon/i)).toBeInTheDocument();
   });
@@ -112,7 +106,7 @@ describe('DropDown component', () => {
         textAlignCenter
       />,
     );
-    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
 
     const typography = await screen.findByText('Profile');
     expect(typography).toHaveStyle({ textAlign: 'center', flexGrow: 1 });
@@ -121,10 +115,10 @@ describe('DropDown component', () => {
   //   close menu test and onclick event
   it('Onclick fired and menu closes after clicking an item', async () => {
     const spy = jest.fn();
-    const options: DropdownOption[] = [{ label: 'Profile', value: 'profile', onClick: spy }];
+    const options: DropdownOptionProps[] = [{ label: 'Profile', value: 'profile', onClick: spy }];
     renderWithTheme(<Dropdown anchorElContent={<span>Open</span>} dropdownOptions={options} />);
 
-    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
     expect(await screen.findByRole('menu')).toBeInTheDocument();
 
     await userEvent.click(screen.getByText('Profile'));
@@ -139,7 +133,7 @@ describe('DropDown component', () => {
   it('Menu closes after clicking outside', async () => {
     renderWithTheme(<Dropdown anchorElContent={<span>Open</span>} dropdownOptions={baseOptions} />);
 
-    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
     expect(await screen.findByRole('menu')).toBeInTheDocument();
 
     const backdrop = document.querySelector('.MuiBackdrop-root');
@@ -155,7 +149,7 @@ describe('DropDown component', () => {
   it('Menu closes after press esc', async () => {
     renderWithTheme(<Dropdown anchorElContent={<span>Open</span>} dropdownOptions={baseOptions} />);
 
-    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
     expect(await screen.findByRole('menu')).toBeInTheDocument();
 
     await userEvent.keyboard('{Escape}');
@@ -174,7 +168,7 @@ describe('DropDown component', () => {
       />,
     );
 
-    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
     const paper = document.querySelector('.MuiPaper-root') as HTMLElement;
     expect(paper).toHaveStyle({ marginTop: '-0.5rem' });
   });
@@ -188,7 +182,7 @@ describe('DropDown component', () => {
       />,
     );
 
-    await userEvent.click(screen.getByRole('button'));
+    await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
     const paper = document.querySelector('.MuiPaper-root') as HTMLElement;
     expect(paper).toHaveStyle({ marginTop: '0rem' });
   });

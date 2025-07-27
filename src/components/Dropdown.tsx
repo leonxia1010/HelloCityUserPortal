@@ -10,9 +10,9 @@ import Typography from '@mui/material/Typography';
 
 import UserProfileCard from './UserLabel';
 
-export interface DropdownProps {
+interface DropdownProps {
   anchorElContent: React.ReactNode;
-  dropdownOptions: DropdownOption[];
+  dropdownOptions: DropdownOptionProps[];
   showUserLabel?: boolean;
   textAlignCenter?: boolean;
   layout?: 'vertical' | 'horizontal'; // Specify whether the dropdown items should be laid out vertically or horizontally
@@ -23,7 +23,7 @@ export interface DropdownProps {
   anchorOrigin?: { horizontal: 'left' | 'center' | 'right'; vertical: 'top' | 'center' | 'bottom' };
 }
 
-export interface DropdownOption {
+export interface DropdownOptionProps {
   label: string; // Display text shown in the menu
   value: string; // Unique value returned when selected
   icon?: React.ElementType | null; // Optional: Icon displayed before the label
@@ -34,7 +34,7 @@ export interface DropdownOption {
 const DropDown: React.FC<DropdownProps> = ({
   anchorElContent,
   dropdownOptions,
-  showUserLabel = false,
+  showUserLabel,
   textAlignCenter,
   layout = 'vertical',
   transformOrigin = { horizontal: 'right', vertical: 'top' },
@@ -78,6 +78,7 @@ const DropDown: React.FC<DropdownProps> = ({
         aria-controls={open ? 'account-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
+        aria-label="open menu"
       >
         {anchorElContent}
       </IconButton>
@@ -100,7 +101,7 @@ const DropDown: React.FC<DropdownProps> = ({
         )}
         {showUserLabel && layout === 'vertical' && <Divider />}
         {/* Dropdown Settings & Preferences area */}
-        {dropdownOptions.map((option: DropdownOption) => {
+        {dropdownOptions.map((option: DropdownOptionProps) => {
           return (
             <React.Fragment key={option.value}>
               <MenuItem onClick={() => option.onClick(option.value)}>
