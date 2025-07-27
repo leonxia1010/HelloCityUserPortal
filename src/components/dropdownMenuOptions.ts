@@ -43,7 +43,7 @@ export const userMenuOptions: DropdownOption[] = [
   },
 ];
 
-export const LanguageMenuOptions: DropdownOption[] = [
+export const languageMenuOptions: DropdownOption[] = [
   {
     label: '简体中文',
     value: 'zh-CN',
