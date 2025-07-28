@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import NavBar from '@/components/NavBar';
 import React from 'react';
-import { I18nTestWrapper } from '../src/utils/testUtils/TestWrapper';
+import { I18nTestWrapper } from './utils/TestWrapper';
 
 
 
