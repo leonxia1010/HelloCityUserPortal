@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { render, screen, fireEvent } from '@testing-library/react';
-
 import '@testing-library/jest-dom';
 import InputBox from './InputBox';
 
@@ -32,8 +30,6 @@ describe('InputBox component', () => {
     );
     expect(screen.getByText('Invalid email')).toBeInTheDocument();
   });
-
-
 
   it('Calls onChange when input value changes', () => {
     const handleChange = jest.fn();
