@@ -53,6 +53,7 @@ const ProfileImageUploader = ()=>{
   return(
       <div className='flex flex-col items-center justify-center
           border-2 rounded-xl
+          max-w-96
           min-w-[30dvw]'>
         <Box sx={{
           bgcolor: 'primary.main',
