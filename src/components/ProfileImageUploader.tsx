@@ -2,7 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 
-import { Box, Button, Typography, Container, CircularProgress } from '@mui/material';
+import { Box, Button, Typography, CircularProgress } from '@mui/material';
 import { useTheme } from '@mui/material/styles'
 import Image from 'next/image';
 
@@ -51,17 +51,9 @@ const ProfileImageUploader = ()=>{
   }
 
   return(
-      <Container maxWidth = "sm" sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection:'column',
-        '@media (min-width:600px)': {
-          px: 0,  
-        },
-      }} 
-      className='border-2 rounded-xl pl-0 pr-0'
-      >
+      <div className='flex flex-col items-center justify-center
+          border-2 rounded-xl
+          min-w-[30dvw]'>
         <Box sx={{
           bgcolor: 'primary.main',
           background: backgroundGradients.buttonPrimaryActive,
@@ -119,7 +111,7 @@ const ProfileImageUploader = ()=>{
         )}
 
         {/* Buttons to upload or remove photos */}
-          <div className="flex justify-center flex-wrap w-3/5">
+          <div className="flex justify-center flex-wrap w-4/5">
             <Button
               variant='secondary'
               component='label'
@@ -144,8 +136,7 @@ const ProfileImageUploader = ()=>{
               </Button>
             )}
           </div>
-
-      </Container>
+        </div>
   )
 }
 
