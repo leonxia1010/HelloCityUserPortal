@@ -74,7 +74,7 @@ const websiteTheme = createTheme({
     },
     h4: {
       fontFamily: `'Cabinet Grotesk', sans-serif`,
-      fontWeight: 1100,
+      fontWeight: 700,
     },
     h5: {
       fontFamily: `'Cabinet Grotesk', sans-serif`,
