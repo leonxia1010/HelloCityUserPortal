@@ -9,13 +9,11 @@ i18n.loadLocaleData({
     zh: { plurals: () => 0 },
 })
 
-// 预加载翻译
 i18n.load({
     en: enMessages,
     zh: zhMessages,
 })
 
-// 激活默认语言
 i18n.activate('en')
 
 export { i18n }
