@@ -42,7 +42,7 @@ const NavBar = () => {
           dropdownOptions={languageMenuOptions}
           layout="horizontal"
           textAlignCenter
-        ></Dropdown>
+        />
       </div>
 
       <div>
@@ -57,7 +57,7 @@ const NavBar = () => {
             }
             dropdownOptions={userMenuOptions}
             showUserLabel
-          ></Dropdown>
+          />
         ) : (
           <Button variant="tertiary">Sign In</Button>
         )}
