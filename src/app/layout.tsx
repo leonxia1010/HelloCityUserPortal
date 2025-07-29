@@ -25,7 +25,7 @@ export default function RootLayout({
             <StyledEngineProvider injectFirst>
               <ThemeProvider theme={websiteTheme}>
                 <CssBaseline />
-                <NavBar />
+                {/* <NavBar /> */}
                 <div className='relative'>
                   {children}
                 </div>
