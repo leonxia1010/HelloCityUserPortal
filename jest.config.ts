@@ -2,16 +2,16 @@
  * For a detailed explanation regarding each configuration property, visit:
  * https://jestjs.io/docs/configuration
  */
-
-import type { Config } from 'jest';
-import nextJest from 'next/jest.js';
+import nextJest from 'next/jest';
+import type { InitialOptionsTsJest } from 'ts-jest';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 const createJestConfig = nextJest({
   // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
   dir: './',
 });
 
-const config: Config = {
+const config: InitialOptionsTsJest = {
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
@@ -166,10 +166,10 @@ const config: Config = {
   // testLocationInResults: false,
 
   // The glob patterns Jest uses to detect test files
-  // testMatch: [
-  //   "**/__tests__/**/*.?([mc])[jt]s?(x)",
-  //   "**/?(*.)+(spec|test).?([mc])[jt]s?(x)"
-  // ],
+  testMatch: [
+    "**/__tests__/**/*.?([mc])[jt]s?(x)",
+    "**/?(*.)+(spec|test).?([mc])[jt]s?(x)"
+  ],
 
   // An array of regexp pattern strings that are matched against all test paths, matched tests are skipped
   // testPathIgnorePatterns: [

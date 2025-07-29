@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { Button, Switch, FormControlLabel } from '@mui/material';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Trans } from '@lingui/react';
+import Link from 'next/link';
 
 const NavBar = () => {
   const [isLoggedIn, _setIsLoggedIn] = useState<boolean>(false);
