@@ -6,6 +6,9 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 import { defaultUser } from '@/types/User.types';
 
 describe('createUser API', () => {
+  beforeAll(() => {
+    process.env.NEXT_PUBLIC_BACKEND_URL = 'http://localhost:5000';
+  });
   it('sends POST request to correct URL with user data', async () => {
     const mockResponse = { data: { data: { userId: '12345' } } };
     mockedAxios.post.mockResolvedValue(mockResponse);
