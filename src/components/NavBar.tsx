@@ -37,13 +37,7 @@ const NavBar = () => {
           <Trans id="Check Items">Check Items</Trans>
         </Button>
         <FormControlLabel
-          control={
-            <Switch
-              checked={isEnglish}
-              onChange={handleLanguageChange}
-              color="primary"
-            />
-          }
+          control={<Switch checked={isEnglish} onChange={handleLanguageChange} color="primary" />}
           sx={{ color: 'white' }}
           label={isEnglish ? 'EN' : 'CN'}
         />
