@@ -13,7 +13,7 @@ if ! git diff --quiet; then
   exit 1
 fi
 
-echo "format:fix passed, proceeding with pre-push checks..."
+echo "✅ format:fix passed, proceeding with pre-push checks..."
 
 echo " Running tests ..."
 npm run test
@@ -22,7 +22,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-echo "tests passed, proceeding with pre-push checks..."
+echo "✅ tests passed, proceeding with pre-push checks..."
 
 echo "Extracting i18n strings ..."
 npm run lingui:extract
