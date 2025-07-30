@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Button, Switch, FormControlLabel, Avatar } from '@mui/material';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Trans } from '@lingui/react';
 import Link from 'next/link';
-import { Button, Switch, FormControlLabel, Avatar } from '@mui/material';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 
 import { Dropdown } from '.';
@@ -44,12 +44,6 @@ const NavBar = () => {
           control={<Switch checked={isEnglish} onChange={handleLanguageChange} color="primary" />}
           sx={{ color: 'white' }}
           label={isEnglish ? 'EN' : 'CN'}
-        />
-        <Dropdown
-          anchorElContent={<LanguageOutlinedIcon />}
-          dropdownOptions={languageMenuOptions}
-          layout="horizontal"
-          textAlignCenter
         />
       </div>
 
