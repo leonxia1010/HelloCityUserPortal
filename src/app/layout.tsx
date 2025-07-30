@@ -22,18 +22,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-<<<<<<< HEAD
     <html lang="en">
       <body className="relative">
-||||||| c27ae61
-    <html lang='en'>
-      <body className="relative">
-=======
-    <html lang="en">
-      <body className={inter.className}>
->>>>>>> main
         <AppRouterCacheProvider>
-<<<<<<< HEAD
           <StyledEngineProvider injectFirst>
             <ThemeProvider theme={websiteTheme}>
               <CssBaseline />
@@ -43,35 +34,6 @@ export default function RootLayout({
           </StyledEngineProvider>
         </AppRouterCacheProvider>
       </body>
-||||||| c27ae61
-            <StyledEngineProvider injectFirst>
-              <ThemeProvider theme={websiteTheme}>
-                <CssBaseline />
-                <NavBar />
-                <div className='relative'>
-                  {children}
-                </div>
-              </ThemeProvider>
-            </StyledEngineProvider>
-          </AppRouterCacheProvider>
-        </body>
-=======
-          <StyledEngineProvider injectFirst>
-            <ThemeProvider theme={websiteTheme}>
-              <CssBaseline />
-              <LanguageProvider>
-                <I18nProvider>
-                  <NavBar />
-                  <div className='relative'>
-                    {children}
-                  </div>
-                </I18nProvider>
-              </LanguageProvider>
-            </ThemeProvider>
-          </StyledEngineProvider>
-        </AppRouterCacheProvider>
-      </body>
->>>>>>> main
     </html>
   );
 }
