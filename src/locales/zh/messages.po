@@ -14,42 +14,41 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:25
+#: src/components/NavBar.tsx:28
 msgid "Home"
 msgstr "首页"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:25
-#: src/components/NavBar.tsx:40
+#: src/components/NavBar.tsx:31
 msgid "Chat"
 msgstr "聊天"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:43
+#: src/components/NavBar.tsx:34
 msgid "FAQ"
 msgstr "常见问题"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:46
+#: src/components/NavBar.tsx:37
 msgid "Check Items"
 msgstr "检查项目"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:65
+#: src/components/NavBar.tsx:50
 msgid "Profile"
 msgstr "个人资料"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:68
+#: src/components/NavBar.tsx:53
 msgid "Logout"
 msgstr "登出"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:74
+#: src/components/NavBar.tsx:59
 msgid "Sign In"
 msgstr "登录"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:77
+#: src/components/NavBar.tsx:62
 msgid "Try HelloCity"
 msgstr "试用 HelloCity"
