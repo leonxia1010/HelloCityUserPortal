@@ -19,20 +19,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang="en">
       <body className="relative">
         <AppRouterCacheProvider>
-            <StyledEngineProvider injectFirst>
-              <ThemeProvider theme={websiteTheme}>
-                <CssBaseline />
-                <NavBar />
-                <div className='relative'>
-                  {children}
-                </div>
-              </ThemeProvider>
-            </StyledEngineProvider>
-          </AppRouterCacheProvider>
-        </body>
+          <StyledEngineProvider injectFirst>
+            <ThemeProvider theme={websiteTheme}>
+              <CssBaseline />
+              <NavBar />
+              <div className="relative">{children}</div>
+            </ThemeProvider>
+          </StyledEngineProvider>
+        </AppRouterCacheProvider>
+      </body>
     </html>
   );
 }

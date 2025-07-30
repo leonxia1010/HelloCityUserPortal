@@ -1,8 +1,8 @@
 'use client';
 
 import { createTheme, ThemeOptions } from '@mui/material/styles';
-import '@fontsource/ibm-plex-sans/400.css';     // Regular
-import '@fontsource/ibm-plex-sans/700.css';     // Bold
+import '@fontsource/ibm-plex-sans/400.css'; // Regular
+import '@fontsource/ibm-plex-sans/700.css'; // Bold
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/600.css';
 
@@ -90,7 +90,7 @@ const websiteTheme = createTheme({
     caption: { fontFamily: `'IBM Plex Sans', sans-serif` },
     button: {
       fontFamily: `'IBM Plex Sans', sans-serif`,
-      textTransform: 'none'
+      textTransform: 'none',
     },
 
     // Custom use (e.g., chatbot)
@@ -149,7 +149,7 @@ const websiteTheme = createTheme({
         {
           props: { variant: 'secondary', disabled: true },
           style: () => ({
-            background: "#F3F3F3",
+            background: '#F3F3F3',
             border: `1px solid #DCDCDC`,
             '&.Mui-disabled': {
               color: '#A0A0A0', // <- override default disabled color
@@ -177,7 +177,7 @@ const websiteTheme = createTheme({
               color: '#BBBBBB', // <- override default disabled color
             },
           }),
-        }
+        },
       ],
     },
   },
@@ -186,11 +186,11 @@ const websiteTheme = createTheme({
     buttonFontSize: '1.125rem',
   },
   customBorderRadius: {
-    esm: '0.5rem',     // 8px
-    sm: '0.75rem',     // rounded xl 12px
-    md: '1rem',       // 16px
-    lg: '2rem',       // 32px
-    xl: '3rem',       // 64px
+    esm: '0.5rem', // 8px
+    sm: '0.75rem', // rounded xl 12px
+    md: '1rem', // 16px
+    lg: '2rem', // 32px
+    xl: '3rem', // 64px
     full: '9999px',
   },
 } as ThemeOptions);

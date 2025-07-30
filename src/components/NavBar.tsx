@@ -13,7 +13,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="fixed w-[100vw] pt-5 top-0 left-0 flex justify-around items-center z-10">
+    <div className="fixed left-0 top-0 z-10 flex w-[100vw] items-center justify-around pt-5">
       <img src="/images/Logo.png" alt="HelloCity Logo" width={120} />
       <div className="flex gap-2">
         <Button component={Link} href="/" variant="tertiary" passHref>
@@ -28,19 +28,13 @@ const NavBar = () => {
         <Button onClick={() => setIsExpanded(!isExpanded)} href="/" variant="tertiary">
           Check Items
         </Button>
-         <FormControlLabel
-            control={
-              <Switch
-                checked={isEnglish}
-                onChange={handleChange}
-                color="primary"
-              />
-            }
-            sx={{color: 'white'}}
-            label={isEnglish ? 'EN' : 'CN'}
-          />
+        <FormControlLabel
+          control={<Switch checked={isEnglish} onChange={handleChange} color="primary" />}
+          sx={{ color: 'white' }}
+          label={isEnglish ? 'EN' : 'CN'}
+        />
       </div>
-      
+
       <div>
         {isLoggedIn ? (
           <>
@@ -55,11 +49,9 @@ const NavBar = () => {
             </Button>
           </>
         ) : (
-          <Button variant="tertiary">
-            Sign In
-          </Button>
+          <Button variant="tertiary">Sign In</Button>
         )}
-        
+
         <Button component={Link} href="/" variant="primary">
           Try HelloCity
         </Button>
@@ -67,6 +59,5 @@ const NavBar = () => {
     </div>
   );
 };
-
 
 export default NavBar;

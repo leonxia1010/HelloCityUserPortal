@@ -13,7 +13,7 @@ describe('NavBar', () => {
     const homeLink = screen.getByRole('link', { name: /Home/i });
     expect(homeLink).toBeInTheDocument();
     expect(homeLink).toHaveAttribute('href', '/');
-    
+
     const chatLink = screen.getByRole('link', { name: /Chat/i });
     expect(chatLink).toBeInTheDocument();
     // page component not implemented
@@ -51,7 +51,7 @@ describe('NavBar', () => {
       'flex',
       'justify-around',
       'items-center',
-      'z-10'
+      'z-10',
     );
   });
   //NavBar Login Test incomplete
