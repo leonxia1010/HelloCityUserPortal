@@ -64,11 +64,10 @@ const NavBar = () => {
             <Button component={Link} href="/" variant="tertiary">
               <Trans id="Sign In">Sign In</Trans>
             </Button>
-          </>
-        ) : (
-          <Button variant="tertiary" component={Link} href="/auth">
-            Sign Up
-          </Button>
+            <Button variant="tertiary" component={Link} href="/auth">
+              Sign Up
+            </Button>
+          </div>
         )}
       </div>
     </div>
