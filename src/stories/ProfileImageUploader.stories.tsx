@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import ProfileImageUploader from './ProfileImageUploader';
+import ProfileImageUploader from '../components/ProfileImageUploader';
 
 const meta: Meta<typeof ProfileImageUploader> = {
   title: 'Components/ProfileImageUploader',
