@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import { Button, Switch, FormControlLabel } from '@mui/material';
+import { useLanguage } from '@/contexts/LanguageContext';
+import { Trans } from '@lingui/react';
 import Link from 'next/link';
 import styles from './NavBarCustom.module.scss';
 
@@ -12,10 +14,15 @@ type Props = {
 const NavBar = ({ isCustom = false }: Props) => {
   const [isLoggedIn, _setIsLoggedIn] = useState<boolean>(false);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const [isEnglish, setIsEnglish] = useState<boolean>(false);
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setIsEnglish(event.target.checked);
+  // Get the language and setLanguage from the LanguageContext.tsx
+  const { language, setLanguage, isLanguage } = useLanguage();
+
+  const isEnglish = isLanguage('en');
+
+  const handleLanguageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newLanguage = event.target.checked ? 'en' : 'zh';
+    setLanguage(newLanguage);
   };
 
   if (isCustom) {
@@ -81,22 +88,22 @@ const NavBar = ({ isCustom = false }: Props) => {
       <img src="/images/Logo.png" alt="HelloCity Logo" width={120} />
       <div className="flex gap-2">
         <Button component={Link} href="/" variant="tertiary" passHref>
-          Home
+          <Trans id="Home">Home</Trans>
         </Button>
         <Button component={Link} href="/" variant="tertiary">
-          Chat
+          <Trans id="Chat">Chat</Trans>
         </Button>
         <Button component={Link} href="/" variant="tertiary">
-          FAQ
+          <Trans id="FAQ">FAQ</Trans>
         </Button>
         <Button onClick={() => setIsExpanded(!isExpanded)} href="/" variant="tertiary">
-          Check Items
+          <Trans id="Check Items">Check Items</Trans>
         </Button>
         <FormControlLabel
           control={
             <Switch
               checked={isEnglish}
-              onChange={handleChange}
+              onChange={handleLanguageChange}
               color="primary"
             />
           }
@@ -107,26 +114,24 @@ const NavBar = ({ isCustom = false }: Props) => {
 
       <div>
         {isLoggedIn ? (
-          <>
+          <div className="flex gap-2">
             <Button component={Link} href="/" variant="tertiary">
-              Profile
+              <Trans id="Profile">Profile</Trans>
             </Button>
             <Button component={Link} href="/" variant="tertiary">
-              Logout
+              <Trans id="Logout">Logout</Trans>
             </Button>
-            <Button component={Link} href="/" variant="tertiary">
-              Language
-            </Button>
-          </>
+          </div>
         ) : (
-          <Button variant="tertiary">
-            Sign In
-          </Button>
+          <div className="flex gap-2">
+            <Button component={Link} href="/" variant="tertiary">
+              <Trans id="Sign In">Sign In</Trans>
+            </Button>
+            <Button component={Link} href="/" variant="primary">
+              <Trans id="Try HelloCity">Try HelloCity</Trans>
+            </Button>
+          </div>
         )}
-
-        <Button component={Link} href="/" variant="primary">
-          Try HelloCity
-        </Button>
       </div>
     </div>
   );
