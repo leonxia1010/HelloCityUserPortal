@@ -67,6 +67,9 @@ const NavBar = () => {
             <Button variant="tertiary" component={Link} href="/auth">
               Sign Up
             </Button>
+            <Button component={Link} href="/" variant="primary">
+              <Trans id="Try HelloCity">Try HelloCity</Trans>
+            </Button>
           </div>
         )}
       </div>
