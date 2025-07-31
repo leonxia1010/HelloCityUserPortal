@@ -10,7 +10,7 @@ pattern='^(feat|fix|chore|tools|test|docs|refactor|style|perf|ci|build|revert)\(
 
 if ! echo "$commit_msg" | grep -Eq "$pattern"; then
   echo ""
-  echo "❌ wrong format, please follow the commit message guidelines."
+  echo "❌ wrong format, please follow the commit message guideline."
   echo ""
   echo "✅ Correct format should be:"
   echo "   feat(frontend) : [SCRUM-69] description"
