@@ -3,13 +3,11 @@ export const isValidEmail = (email: string): boolean => {
   return emailRegex.test(email);
 };
 
-// Strong password rule: includes upper, lower, number, special character
 export const isStrongPassword = (password: string): boolean => {
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,20}$/;
   return passwordRegex.test(password);
 };
 
-// Get default placeholder based on field type
 export const getDefaultPlaceholder = (type: string): string => {
   switch (type) {
     case 'email':
@@ -27,7 +25,6 @@ export const getDefaultPlaceholder = (type: string): string => {
   }
 };
 
-// Get input HTML type based on field
 export const getInputType = (type: string): 'text' | 'email' | 'password' | 'tel' => {
   switch (type) {
     case 'email':
@@ -42,7 +39,6 @@ export const getInputType = (type: string): 'text' | 'email' | 'password' | 'tel
   }
 };
 
-// Field-specific validation logic
 export const validationRules: Record<string, {
   validate: (value: string, compareTo?: string) => boolean;
   error: string;
@@ -60,7 +56,7 @@ export const validationRules: Record<string, {
     error: 'Password must be 6-20 characters with uppercase, lowercase, number, and special character.',
   },
   repeatPassword: {
-    validate: (v, original) => v === original,
+    validate: (v, original = '') => v === original,
     error: 'Passwords do not match.',
   },
   phone: {
