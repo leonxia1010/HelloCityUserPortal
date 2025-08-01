@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
-import type { Meta } from '@storybook/react-vite';
+import type { Meta, StoryObj } from '@storybook/react-vite';
 import InputBox from './InputBox';
 
-export default {
+const meta: Meta<typeof InputBox> = {
   title: 'InputBox',
   component: InputBox,
-} as Meta<typeof InputBox>;
+};
+export default meta;
 
-export const InteractiveDemo = () => {
+export const Primary = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
@@ -56,7 +57,7 @@ export const InteractiveDemo = () => {
   );
 };
 
-export const EmailError = {
+export const EmailError: StoryObj<typeof InputBox> = {
   args: {
     label: 'Email',
     fieldType: 'email',
