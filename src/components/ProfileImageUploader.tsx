@@ -20,8 +20,7 @@ const ProfileImageUploader = ()=>{
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setErrorMessage(null)
     const file = event.target.files?.[0]
-    if(!file) 
-      {return}
+    if(!file) return
     if(!file.type.startsWith('image/') || file.size > 5 * 1024 *1024)
       {
         setErrorMessage('Invalid File size or type. Please upload an image file under 5MB')
@@ -45,9 +44,8 @@ const ProfileImageUploader = ()=>{
     setUploadStatus(null)
     setErrorMessage(null)
     
-    if (imageInputRef.current) {
-      imageInputRef.current.value = ''
-    }
+    imageInputRef.current!.value = ''
+    
   }
 
   return(
