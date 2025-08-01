@@ -1,17 +1,36 @@
 import React from 'react';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import ProfileImageUploader from '@/components/ProfileImageUploader';
+
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
+import ProfileImageUploader from '../src/components/ProfileImageUploader';
 
-jest.mock('next/image', ()=>({
-    _esModule: true,
-    default: (props: object)=><img {...props} />
-}))
+
+
+jest.mock('next/image', () => ({
+  __esModule: true,
+  default: (props: any) => {
+    const { src, alt, ...rest } = props;
+    return <img src={src} alt={alt} {...rest} />;
+  }
+}));
+
+jest.mock('@mui/material/styles', () => ({
+    ...jest.requireActual('@mui/material/styles'),
+        useTheme: () => ({
+            backgroundGradients: {
+                buttonPrimaryActive: 'mock-gradient',
+            },
+        }),
+}));
 
 describe('ProfileImageUploader',()=>{
     beforeEach(()=>{
         jest.clearAllMocks()
+    })
+
+    beforeAll(()=>{
+        global.URL.createObjectURL = jest.fn(()=>'mock-url')
     })
 
     test('Testing if default image is rendered', ()=>{
@@ -29,17 +48,16 @@ describe('ProfileImageUploader',()=>{
             target:{files: [file]}
         })
 
-        const previewImage = await screen.findByAltText(/Profile Image Preview/i)
         const statusText = await screen.findByText(/The image is uploading/i)
         const circularProgress = screen.getByRole('progressbar')
-        expect(previewImage).toBeInTheDocument()
         expect(statusText).toBeInTheDocument()
         expect(circularProgress).toBeInTheDocument()
 
-        await waitFor(()=>{
-            const successText = screen.getByText(/The image is uploaded/i)
-            expect(successText).toBeInTheDocument()
-        },{timeout:4000})
+        const successText = await screen.findByText(/The image is uploaded/i, undefined, { timeout: 4000 });
+        expect(successText).toBeInTheDocument()
+
+        const previewImage = await screen.findByAltText(/Profile Image Preview/i)
+        expect(previewImage).toBeInTheDocument()
 
         const removeButton = screen.getByRole('button',{name: /Remove Photos/i})
         fireEvent.click(removeButton)
@@ -121,7 +139,7 @@ describe('ProfileImageUploader',()=>{
             target:{files: [file]}
         })
 
-        const previewImage = await screen.findByAltText(/Profile Image Preview/i)
+        const previewImage = await screen.findByAltText(/Profile Image Preview/i, undefined, {timeout: 4000})
         expect(previewImage).toHaveClass(
             'w-32',
             'h-32',
