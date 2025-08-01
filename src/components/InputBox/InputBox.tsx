@@ -9,7 +9,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import styles from './InputBox.module.scss';
 import { validationRules, getDefaultPlaceholder, getInputType } from './utils';
 
-export type InputVariant = 'Primary' | 'Secondary' | 'Tertiary';
+export type InputVariant = 'primary' | 'secondary' | 'tertiary';
 export type InputFieldType = 'name' | 'email' | 'password' | 'repeatPassword' | 'phone';
 
 export interface InputBoxProps {
@@ -32,12 +32,12 @@ const InputBox: React.FC<InputBoxProps> = ({
   label,
   fieldType,
   placeholder,
-  variant = 'Primary',
+  variant = 'primary',
   disabled,
   required,
   errorMessage: externalErrorMessage = '',
-  autoComplete = false,
-  originalPassword = '',
+  autoComplete,
+  originalPassword,
 }) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -65,7 +65,7 @@ const InputBox: React.FC<InputBoxProps> = ({
     } else if (rule) {
       const isValid =
         normalizedFieldType === 'repeatPassword'
-          ? rule.validate(value, originalPassword)
+          ? rule.validate(value, originalPassword ?? '')
           : rule.validate(value);
 
       if (!isValid) {
@@ -86,7 +86,7 @@ const InputBox: React.FC<InputBoxProps> = ({
   };
 
   return (
-    <div className={`${styles['input-box-wrapper']} ${variant.toLowerCase()}`}>
+    <div className={`${styles['input-box-wrapper']} ${variant}`}>
       <TextField
         id={inputId}
         fullWidth
