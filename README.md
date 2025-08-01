@@ -79,6 +79,36 @@ Add new packages to Storybook is done in `main.ts` under `.storybook` directory
 npm run storybook
 ```
 
+## Husky
+
+Husky is a Git hook tool that helps enforce project standards before any Git actions, such as:
+
+- ✅ Automatically format code (e.g., Prettier)
+- ✅ Run lint checks (e.g., ESLint)
+- ✅ Enforce commit message format (e.g., `feat(scope) : [SCRUM-69] description`)
+- ✅ Prevent invalid commits or pushes
+
+### ✅ For Windows Users
+
+Just run:
+
+```bash
+npm install
+```
+
+Husky will be automatically initialized via the `prepare` script in `package.json`.
+
+---
+
+### ✅ For macOS / Linux Users
+
+In addition to `npm install`, you **must ensure `.husky/*` scripts are executable**:
+
+```bash
+npm install
+chmod +x .husky/*
+```
+
 ## Tech Stack
 
 - [Next.js 14](https://nextjs.org/)
