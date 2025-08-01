@@ -19,7 +19,7 @@
     "type-check": "tsc --noEmit",
     "extract": "lingui extract",
     "compile": "lingui compile",
-    "prepare": "husky install"
+    "prepare": "husky install && (chmod +x .husky/* || echo 'Skipping chmod on Windows')"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^4.8.0",
