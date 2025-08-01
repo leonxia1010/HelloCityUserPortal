@@ -6,6 +6,10 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Trans } from '@lingui/react';
 import Link from 'next/link';
 import styles from './NavBarCustom.module.scss';
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+
+import { Dropdown } from '.';
+import { userMenuOptions, languageMenuOptions } from './dropdownMenuOptions';
 
 type Props = {
   isCustom?: boolean;
