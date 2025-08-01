@@ -1,10 +1,14 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Button, Switch, FormControlLabel } from '@mui/material';
+import { Button, Switch, FormControlLabel, Avatar } from '@mui/material';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Trans } from '@lingui/react';
 import Link from 'next/link';
+import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+
+import { Dropdown } from '.';
+import { userMenuOptions, languageMenuOptions } from './dropdownMenuOptions';
 
 const NavBar = () => {
   const [isLoggedIn, _setIsLoggedIn] = useState<boolean>(false);
@@ -45,24 +49,26 @@ const NavBar = () => {
 
       <div>
         {isLoggedIn ? (
-          <div className="flex gap-2">
-            <Button component={Link} href="/" variant="tertiary">
-              <Trans id="Profile">Profile</Trans>
-            </Button>
-            <Button component={Link} href="/" variant="tertiary">
-              <Trans id="Logout">Logout</Trans>
-            </Button>
-          </div>
+          <Dropdown
+            anchorElContent={
+              <Avatar
+                sx={{ width: 40, height: 40, cursor: 'pointer' }}
+                src="/images/banner-image.jpeg"
+                alt="User Avatar"
+              />
+            }
+            dropdownOptions={userMenuOptions}
+            showUserLabel
+          />
         ) : (
-          <div className="flex gap-2">
-            <Button component={Link} href="/" variant="tertiary">
-              <Trans id="Sign In">Sign In</Trans>
-            </Button>
-            <Button component={Link} href="/" variant="primary">
-              <Trans id="Try HelloCity">Try HelloCity</Trans>
-            </Button>
-          </div>
+          <Button variant="tertiary">
+            <Trans id="Sign In">Sign In</Trans>
+          </Button>
         )}
+
+        <Button component={Link} href="/" variant="primary">
+          <Trans id="Try HelloCity">Try HelloCity</Trans>
+        </Button>
       </div>
     </div>
   );

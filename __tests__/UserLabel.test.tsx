@@ -23,7 +23,7 @@ const mockUserData = {
   LastJoinDate: '2023-10-15 14:30',
 };
 
-describe('Userlabel component test', () => {
+describe('UserLabel component test', () => {
   it('Correctly render incoming user data', () => {
     render(<UserProfileCard {...mockUserData} />);
     expect(screen.getByText('John')).toBeInTheDocument();

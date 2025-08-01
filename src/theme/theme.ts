@@ -1,39 +1,11 @@
 'use client';
 
-import { createTheme, ThemeOptions } from '@mui/material/styles';
+import type { ThemeOptions } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import '@fontsource/ibm-plex-sans/400.css'; // Regular
 import '@fontsource/ibm-plex-sans/700.css'; // Bold
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/600.css';
-
-declare module '@mui/material/styles' {
-  interface Theme {
-    backgroundGradients: {
-      buttonPrimaryActive: string;
-      buttonModalActive: string;
-      buttonPrimaryDisabled: string;
-    };
-    customSpacing: {
-      buttonPaddingSm: string;
-      buttonFontSize: string;
-    };
-  }
-  interface ThemeOptions {
-    backgroundGradients?: {
-      buttonPrimaryActive?: string;
-      buttonModalActive?: string;
-      buttonPrimaryDisabled?: string;
-    };
-    customSpacing?: Partial<Theme['customSpacing']>;
-  }
-}
-declare module '@mui/material/Button' {
-  interface ButtonPropsVariantOverrides {
-    primary: true;
-    secondary: true;
-    tertiary: true;
-  }
-}
 
 const websiteTheme = createTheme({
   palette: {
@@ -175,6 +147,48 @@ const websiteTheme = createTheme({
           style: () => ({
             '&.Mui-disabled': {
               color: '#BBBBBB', // <- override default disabled color
+            },
+          }),
+        },
+      ],
+    },
+    MuiMenu: {
+      styleOverrides: {
+        paper: ({ theme }) => ({
+          overflow: 'visible',
+          boxShadow: 'rgba(99, 99, 99, 0.2) 0px 2px 8px 0px',
+          // marginTop: theme.spacing(1.5),
+          minWidth: '12rem',
+          '& .MuiMenuItem-root': {
+            '& .MuiListItemIcon-root, & .MuiTypography-root': {
+              color: theme.palette.text.secondary,
+              transition: 'color 0.15s',
+            },
+            '&:hover, &.Mui-focusVisible': {
+              '& .MuiListItemIcon-root, & .MuiTypography-root': {
+                color: theme.palette.primary.main,
+              },
+            },
+          },
+        }),
+      },
+      variants: [
+        {
+          props: { layout: 'vertical' },
+          style: () => ({
+            '& .MuiMenu-list': {
+              display: 'flex',
+              flexDirection: 'column',
+            },
+          }),
+        },
+        {
+          props: { layout: 'horizontal' },
+          style: () => ({
+            '& .MuiMenu-list': {
+              display: 'grid',
+              gridTemplateColumns: 'repeat(5, 1fr)',
+              gap: '0.5rem',
             },
           }),
         },
