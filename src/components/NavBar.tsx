@@ -1,18 +1,15 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Button, Switch, FormControlLabel, Avatar } from '@mui/material';
-import { useLanguage } from '@/contexts/LanguageContext';
 import { Trans } from '@lingui/react';
+import { Button, Switch, FormControlLabel } from '@mui/material';
 import Link from 'next/link';
+
+import { useLanguage } from '@/contexts/LanguageContext';
+
+import { Dropdown } from '.';
+import { userMenuOptions, languageMenuOptions } from './dropdownMenuOptions';
 import styles from './NavBarCustom.module.scss';
-import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
-import { Dropdown } from '.';
-import { userMenuOptions, languageMenuOptions } from './dropdownMenuOptions';
-
-
-import { Dropdown } from '.';
-import { userMenuOptions, languageMenuOptions } from './dropdownMenuOptions';
 
 type Props = {
   isCustom?: boolean;
