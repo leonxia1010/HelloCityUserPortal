@@ -3,6 +3,14 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import InputBox from './InputBox';
 
+// TODO: 这个可能是因为合并的原因，但是应该把test文件放在一起，标准要统一
+// TODO: 这个文件我不手把手改了，照着其他几个文件的写法来改
+/**
+ * 1. 把render抽出来当个函数
+ * 2. 你能知道把validation当成一个describe，这很好，这一部分本身也是InputBox的一部分，所以你需要把两个describe合并成一个，统一叫InputBox component，第一部分叫Static UI styles and children components
+ * 3. 把onChange抽象成一个mock函数，然后测一下被call了几次
+ */
+
 describe('InputBox component', () => {
   it('Renders with label and placeholder', () => {
     render(

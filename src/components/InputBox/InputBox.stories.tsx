@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import InputBox from './InputBox';
 
+// TODO: 抽出去到stories文件夹里
+// TODO: primary里的每一个种类都可以变成一个storybook的例子
+// TODO: storybook是按照variant来划分的，不是按照状态分的，你这个是把正常状态和错误状态分城了两个，这是对storybook的理解出了问题
+
 const meta: Meta<typeof InputBox> = {
   title: 'InputBox',
   component: InputBox,
@@ -10,7 +14,7 @@ export default meta;
 
 export const Primary = () => {
   const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
+  // const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -31,13 +35,13 @@ export const Primary = () => {
         onChange={(e) => setPhone(e.target.value)}
         required
       />
-      <InputBox
+      {/* <InputBox
         label="Email"
         fieldType="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
-      />
+      /> */}
       <InputBox
         label="Password"
         fieldType="password"
@@ -56,6 +60,20 @@ export const Primary = () => {
     </div>
   );
 };
+
+export const Email = () => {
+  const [email, setEmail] = useState('');
+
+  return (
+    <InputBox
+      label="Email"
+      fieldType="email"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      required
+    />
+  )
+}
 
 export const EmailError: StoryObj<typeof InputBox> = {
   args: {
