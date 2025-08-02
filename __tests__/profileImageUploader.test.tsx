@@ -5,8 +5,6 @@ import '@testing-library/jest-dom';
 
 import ProfileImageUploader from '../src/components/ProfileImageUploader';
 
-
-
 jest.mock('next/image', () => ({
   __esModule: true,
   default: (props: any) => {
