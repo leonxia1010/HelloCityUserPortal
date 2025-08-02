@@ -6,6 +6,7 @@ import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import type { DropdownOptionProps } from './Dropdown';
 
 export const userMenuOptions: DropdownOptionProps[] = [
+  // TODO: 这些label是不是需要拿i18n的msg包一下呢？
   {
     label: 'Profile',
     value: 'profile',

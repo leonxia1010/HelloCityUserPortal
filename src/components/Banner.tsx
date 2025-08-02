@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography, Button } from '@mui/material';
+// TODO: input和下面的组件之间需要有且只有一空行
 const Banner = () => {
   return (
     <div className="relative h-[57vh] w-screen bg-[url('/images/banner-image.jpeg')] bg-cover bg-center bg-no-repeat text-left">

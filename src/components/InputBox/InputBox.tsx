@@ -42,6 +42,7 @@ const InputBox: React.FC<InputBoxProps> = ({
   const [errorMessage, setErrorMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [touched, setTouched] = useState(false);
+  // TODO: 其实这个touch不重要，因为即使用户没有focus在input上，错误的输入还是应该显示错误的提示消息（我可能理解的不完全对）
 
   const normalizedFieldType = fieldType || label.toLowerCase().replace(/\s/g, '');
   const inputType =
@@ -51,7 +52,7 @@ const InputBox: React.FC<InputBoxProps> = ({
         : 'password'
       : getInputType(normalizedFieldType);
   const finalPlaceholder = placeholder ?? getDefaultPlaceholder(normalizedFieldType);
-  const maxLength = 20;
+  const maxLength = 20; // TODO: 不需要，值没变且：只用了一次；就直接设置在参数里就可以了
   const inputId = `input-${normalizedFieldType}`;
 
   useEffect(() => {
@@ -64,7 +65,9 @@ const InputBox: React.FC<InputBoxProps> = ({
       if (required) {
         currentError = `${label} is required.`;
       }
+      // TODO: 这俩if套if，弯曲可以合并成一个条件
     } else if (rule) {
+      // TODO: 切记，少用else，比如说你这里，你如果觉得如果value是空字符串则不需要测试rule，那就把setErrorMessage挪到上面去，然后直接一个return;
       const isValid =
         normalizedFieldType === 'repeatPassword'
           ? rule.validate(value, originalPassword ?? '')
@@ -85,6 +88,7 @@ const InputBox: React.FC<InputBoxProps> = ({
 
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
+    // TODO: 如果这个函数就一行，那就没必要弄个别的函数包一下
   };
 
   return (
@@ -108,6 +112,7 @@ const InputBox: React.FC<InputBoxProps> = ({
           autoComplete: autoComplete ? 'on' : 'off',
           name: normalizedFieldType,
         }}
+        // TODO: 这俩InputProps的区别是什么呢？
         InputProps={
           normalizedFieldType === 'password' || normalizedFieldType === 'repeatPassword'
             ? {

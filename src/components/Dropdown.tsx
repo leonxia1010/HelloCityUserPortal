@@ -42,22 +42,25 @@ const DropDown: React.FC<DropdownProps> = ({
 }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  // TODO: 状态和函数之间需要加空行
   const handleClick = (event: React.MouseEvent<Element>) => {
     setAnchorEl(event.currentTarget as HTMLElement);
   };
+  // TODO: 函数和函数之间需要加空格，而且如果函数就一行逻辑那就没必要抽出来当一个函数
   const handleClose = () => {
     setAnchorEl(null);
   };
 
   // Check popup direction and alignment and Dynamically calculate margin in order not to overlay the anchor element
   const getMenuMarginTopSx = () => {
-    const isPopupUp = anchorOrigin.vertical === 'top';
+    const isPopupUp = anchorOrigin.vertical === 'top'; // TODO: 只用了一次的变量没必要声明一个，除非很难以理解
     const isVerticalCenter = anchorOrigin.vertical === 'center';
     let marginTop = '0.5rem';
 
     if (isPopupUp) {
       marginTop = '-0.5rem';
     } else if (isVerticalCenter) {
+      // TODO: 这两个条件天然互斥，所以不需要else，直接另一个if就可以了
       marginTop = '0rem'; // No margin needed when vertically centered
     }
 
