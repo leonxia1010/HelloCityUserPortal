@@ -4,9 +4,6 @@ import { CssBaseline, ThemeProvider, StyledEngineProvider } from '@mui/material'
 import { Inter } from "next/font/google";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v15-appRouter';
 import websiteTheme from '@/theme/theme';
-import NavBar from '@/components/NavBar';
-import { LanguageProvider } from '@/contexts/LanguageContext';
-import { I18nProvider } from '@/contexts/I18nProvider';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,14 +25,9 @@ export default function RootLayout({
           <StyledEngineProvider injectFirst>
             <ThemeProvider theme={websiteTheme}>
               <CssBaseline />
-              <LanguageProvider>
-                <I18nProvider>
-                  <NavBar />
-                  <div className='relative'>
-                    {children}
-                  </div>
-                </I18nProvider>
-              </LanguageProvider>
+              <div className='relative'>
+                {children}
+              </div>
             </ThemeProvider>
           </StyledEngineProvider>
         </AppRouterCacheProvider>
