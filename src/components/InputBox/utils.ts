@@ -8,6 +8,7 @@ export const isStrongPassword = (password: string): boolean => {
   return passwordRegex.test(password);
 };
 
+// TODO: 你所有的这些text都是要用来显示的，所以都得用i18n的msg来包一下
 export const getDefaultPlaceholder = (type: string): string => {
   switch (type) {
     case 'email':

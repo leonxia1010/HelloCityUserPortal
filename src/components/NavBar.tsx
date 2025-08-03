@@ -6,6 +6,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Trans } from '@lingui/react';
 import Link from 'next/link';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
+// TODO: 没用到的全删，包括languageMenuOptions/language
 
 import { Dropdown } from '.';
 import { userMenuOptions, languageMenuOptions } from './dropdownMenuOptions';
@@ -22,6 +23,7 @@ const NavBar = () => {
   const handleLanguageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newLanguage = event.target.checked ? 'en' : 'zh';
     setLanguage(newLanguage);
+    // TODO: 一行能解决的事没必要两行： setLanguage(event.target.checked ? 'en' : 'zh');
   };
 
   return (
@@ -46,7 +48,7 @@ const NavBar = () => {
           label={isEnglish ? 'EN' : 'CN'}
         />
       </div>
-
+      {/* TODO: 没必要在JSX里加空行，删 */}
       <div>
         {isLoggedIn ? (
           <Dropdown
