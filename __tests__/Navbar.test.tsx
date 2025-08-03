@@ -3,8 +3,6 @@ import NavBar from '@/components/NavBar';
 import React from 'react';
 import { I18nTestWrapper } from './utils/TestWrapper';
 
-
-
 describe('NavBar', () => {
   beforeEach(() => {
     // Clear localStorage to ensure a clean state for each test
@@ -15,7 +13,7 @@ describe('NavBar', () => {
     render(
       <I18nTestWrapper>
         <NavBar />
-      </I18nTestWrapper>
+      </I18nTestWrapper>,
     );
 
     expect(screen.getByAltText('HelloCity Logo')).toBeInTheDocument();
@@ -38,7 +36,7 @@ describe('NavBar', () => {
     render(
       <I18nTestWrapper>
         <NavBar />
-      </I18nTestWrapper>
+      </I18nTestWrapper>,
     );
 
     const toggle = screen.getByRole('checkbox');
@@ -62,7 +60,7 @@ describe('NavBar', () => {
     const { container } = render(
       <I18nTestWrapper>
         <NavBar />
-      </I18nTestWrapper>
+      </I18nTestWrapper>,
     );
     const outerDiv = container.firstChild as HTMLElement;
 
@@ -75,7 +73,7 @@ describe('NavBar', () => {
       'flex',
       'justify-around',
       'items-center',
-      'z-10'
+      'z-10',
     );
   });
 
@@ -83,7 +81,7 @@ describe('NavBar', () => {
     render(
       <I18nTestWrapper>
         <NavBar />
-      </I18nTestWrapper>
+      </I18nTestWrapper>,
     );
 
     // It would display English navigation items by default
@@ -99,7 +97,7 @@ describe('NavBar', () => {
     render(
       <I18nTestWrapper>
         <NavBar />
-      </I18nTestWrapper>
+      </I18nTestWrapper>,
     );
 
     const toggle = screen.getByRole('checkbox');
@@ -121,7 +119,7 @@ describe('NavBar', () => {
     render(
       <I18nTestWrapper>
         <NavBar />
-      </I18nTestWrapper>
+      </I18nTestWrapper>,
     );
 
     const toggle = screen.getByRole('checkbox');

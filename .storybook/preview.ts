@@ -8,7 +8,7 @@ import './storybook-fonts.css';
 export const decorators = [
   withThemeFromJSXProvider({
     themes: {
-      light: websiteTheme
+      light: websiteTheme,
     },
     Provider: ThemeProvider,
     GlobalStyles: CssBaseline,
@@ -30,7 +30,7 @@ const preview: Preview = {
       },
     },
     a11y: {
-      disable: false
+      disable: false,
     },
   },
 };
