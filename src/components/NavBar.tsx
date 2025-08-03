@@ -15,7 +15,7 @@ type Props = {
   isCustom?: boolean;
 };
 
-const NavBar = ({ isCustom = false }: Props) => {
+const NavBar = ({ isCustom }: Props) => {
   const [isLoggedIn, _setIsLoggedIn] = useState<boolean>(false);
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
