@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Button, Switch, FormControlLabel, Avatar } from '@mui/material';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Trans } from '@lingui/react';
+import { Trans } from '@lingui/react/macro';
 import Link from 'next/link';
 import LanguageOutlinedIcon from '@mui/icons-material/LanguageOutlined';
 
@@ -29,16 +29,16 @@ const NavBar = () => {
       <img src="/images/Logo.png" alt="HelloCity Logo" width={120} />
       <div className="flex gap-2">
         <Button component={Link} href="/" variant="tertiary" passHref>
-          <Trans id="Home" message="Home" />
+          <Trans>Home</Trans>
         </Button>
         <Button component={Link} href="/" variant="tertiary">
-          <Trans id="Chat" message="Chat" />
+          <Trans>Chat</Trans>
         </Button>
         <Button component={Link} href="/" variant="tertiary">
-          <Trans id="FAQ" message="FAQ" />
+          <Trans>FAQ</Trans>
         </Button>
         <Button onClick={() => setIsExpanded(!isExpanded)} href="/" variant="tertiary">
-          <Trans id="Check Items" message="Check Items" />
+          <Trans>Check Items</Trans>
         </Button>
         <FormControlLabel
           control={<Switch checked={isEnglish} onChange={handleLanguageChange} color="primary" />}
@@ -62,12 +62,12 @@ const NavBar = () => {
           />
         ) : (
           <Button variant="tertiary">
-            <Trans id="Sign In" message="Sign In" />
+            <Trans>Sign In</Trans>
           </Button>
         )}
 
         <Button component={Link} href="/" variant="primary">
-          <Trans id="Try HelloCity" message="Try HelloCity" />
+          <Trans>Try HelloCity</Trans>
         </Button>
       </div>
     </div>

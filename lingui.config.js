@@ -7,4 +7,5 @@ module.exports = {
     include: ['src'],
   }],
   format: 'po',
+  orderBy: 'messageId',
 };
