@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { Meta } from '@storybook/react-vite';
-import InputBox from './InputBox';
+import InputBox from '../components/InputBox/InputBox';
 
 export default {
   title: 'InputBox',
