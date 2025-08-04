@@ -1,13 +1,16 @@
 'use client'
-import React from 'react';
 import { Button, Typography } from '@mui/material';
 import { useState } from 'react';
-import { User, defaultUser } from '@/types/User.types';
-import { createUser } from '@/api/userApi';
+import type { User } from '@/user';
+import { defaultUser } from '@/types/User.types';
+import { createUser } from '@/types/User.types';
+
+import { Trans } from '@lingui/react';
 import PageOne from './PageOne';
 import PageTwo from './PageTwo';
+import { AxiosError } from 'axios';
 
-const page = () => {
+const Page = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [formData, setFormData] = useState<User>(defaultUser);
 
@@ -31,8 +34,10 @@ const page = () => {
       const response = await createUser(formData);
       localStorage.setItem('userId', response.data.data?.userId);
       
-    } catch (error: any) {
-      console.error('Error:', error.response?.data || error.message);
+    } catch (error: unknown) {
+      if (error instanceof AxiosError) {
+        console.error('Error:', error.response?.data || error.message);
+      }
     }
   };
   
@@ -47,21 +52,20 @@ const page = () => {
         </div>
 
         { pageNumber === 1 && <PageOne formData={formData} handleChange={handleChange}/>}
-
         { pageNumber === 2 && <PageTwo formData={formData} handleChange={handleChange}/>}
         
         <div className='flex gap-2'>
           { pageNumber > 1 &&
           <Button variant="contained" color="primary" sx={{mr: "auto" }} onClick={()=>{setPageNumber(pageNumber-1)}}>
-            Prev
+            <Trans id="Prev">Prev</Trans>
           </Button>}
 
           { pageNumber === 2 ?
           <Button variant="contained" color="primary" sx={{mr: "auto" }} type="submit">
-            I'm all set
+            <Trans id="I'm all set">I'm all set</Trans>
           </Button> :
           <Button variant="contained" color="primary" sx={{ml: "auto" }} onClick={()=>{setPageNumber(pageNumber+1)}}>
-            Next
+            <Trans id="Next">Next</Trans>
           </Button>}
         </div>
       </div>
@@ -69,4 +73,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

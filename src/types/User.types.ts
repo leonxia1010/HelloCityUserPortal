@@ -1,4 +1,4 @@
-import { Genders, Nationalities, Cities, Languages } from "@/enums/UserAttributes";
+import type { Genders, Nationalities, Cities, Languages } from "@/enums/UserAttributes";
 
 export type User = {
   username: string;

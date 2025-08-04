@@ -1,6 +1,5 @@
-import React from 'react'
-import { TextField } from '@mui/material'
-import type { User } from '@/types/User.types'
+import { TextField } from '@mui/material';
+import type { User } from '@/types/User.types';
 
 type PageOneProps = {
   formData: User;
@@ -11,7 +10,7 @@ const PageOne: React.FC<PageOneProps> = ({formData, handleChange}) => {
   return (
     <div className="flex justify-around flex-col gap-2 w-[50%]">
       <TextField 
-        label="UserName" 
+        label="UserName"
         name="username" 
         variant="outlined" 
         required 
@@ -19,13 +18,13 @@ const PageOne: React.FC<PageOneProps> = ({formData, handleChange}) => {
         onChange={handleChange}
       />
       <TextField 
-        label="Email" 
+        label="Email"
         name="email" 
         variant="outlined" 
         required 
         value={formData.email} 
         onChange={handleChange}
-        />
+      />
       <TextField 
         label="Password" 
         name="password" 
