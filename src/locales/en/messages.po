@@ -14,41 +14,56 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:32
+#: src/components/NavBar.tsx:31
 msgid "Home"
 msgstr "Home"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:35
+#: src/components/NavBar.tsx:34
 msgid "Chat"
 msgstr "Chat"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:38
+#: src/components/NavBar.tsx:37
 msgid "FAQ"
 msgstr "FAQ"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:41
+#: src/components/NavBar.tsx:40
 msgid "Check Items"
 msgstr "Check Items"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:65
+#: src/components/NavBar.tsx:63
 msgid "Sign In"
 msgstr "Sign In"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:70
+#: src/components/NavBar.tsx:67
 msgid "Try HelloCity"
 msgstr "Try HelloCity"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:50
+#: src/components/dropdownMenuOptions.tsx:12
+#~ msgid "Settings"
+#~ msgstr "Settings"
+
+#. js-lingui-explicit-id
+#: src/components/dropdownMenuOptions.tsx:13
+#~ msgid "Theme"
+#~ msgstr "Theme"
+
+#. js-lingui-explicit-id
+#: src/components/dropdownMenuOptions.tsx:14
+#~ msgid "Subscription"
+#~ msgstr "Subscription"
+
+#. js-lingui-explicit-id
+#: src/components/dropdownMenuOptions.tsx:11
 #~ msgid "Profile"
 #~ msgstr "Profile"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:53
+#: src/components/dropdownMenuOptions.tsx:15
 #~ msgid "Logout"
 #~ msgstr "Logout"
