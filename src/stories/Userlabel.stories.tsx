@@ -1,4 +1,4 @@
-import '../app/globals.css'; 
+import '../app/globals.css';
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import UserProfileCard from '../components/UserLabel';
 
