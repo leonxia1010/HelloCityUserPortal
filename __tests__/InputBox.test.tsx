@@ -1,7 +1,5 @@
 import React from 'react';
-
 import { render, screen, fireEvent } from '@testing-library/react';
-
 import '@testing-library/jest-dom';
 import InputBox from '../src/components/InputBox/InputBox';
 
@@ -14,7 +12,7 @@ describe('InputBox component', () => {
         onChange={() => { }}
         placeholder="Enter your name"
         fieldType="name"
-      />
+      />,
     );
     expect(screen.getByPlaceholderText('Enter your name')).toBeInTheDocument();
     expect(screen.getByLabelText(/name/i)).toBeInTheDocument();
@@ -28,24 +26,15 @@ describe('InputBox component', () => {
         onChange={() => { }}
         errorMessage="Invalid email"
         fieldType="email"
-      />
+      />,
     );
     expect(screen.getByText('Invalid email')).toBeInTheDocument();
   });
 
-
-
   it('Calls onChange when input value changes', () => {
     const handleChange = jest.fn();
 
-    render(
-      <InputBox
-        label="Name"
-        value=""
-        onChange={handleChange}
-        fieldType="name"
-      />
-    );
+    render(<InputBox label="Name" value="" onChange={handleChange} fieldType="name" />);
 
     fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'John' } });
     expect(handleChange).toHaveBeenCalled();
@@ -103,7 +92,7 @@ describe('InputBox validation', () => {
         onChange={() => { }}
         errorMessage="Invalid email"
         fieldType="email"
-      />
+      />,
     );
 
     expect(screen.getByText('Invalid email')).toBeInTheDocument();
