@@ -3,7 +3,7 @@ import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 
 import '@testing-library/jest-dom';
-import InputBox from './InputBox';
+import InputBox from '../src/components/InputBox/InputBox';
 
 describe('InputBox component', () => {
   it('Renders with label and placeholder', () => {
@@ -11,7 +11,7 @@ describe('InputBox component', () => {
       <InputBox
         label="Name"
         value=""
-        onChange={() => {}}
+        onChange={() => { }}
         placeholder="Enter your name"
         fieldType="name"
       />
@@ -25,7 +25,7 @@ describe('InputBox component', () => {
       <InputBox
         label="Email"
         value="invalid"
-        onChange={() => {}}
+        onChange={() => { }}
         errorMessage="Invalid email"
         fieldType="email"
       />
@@ -100,7 +100,7 @@ describe('InputBox validation', () => {
       <InputBox
         label="Email"
         value="invalid"
-        onChange={() => {}}
+        onChange={() => { }}
         errorMessage="Invalid email"
         fieldType="email"
       />
