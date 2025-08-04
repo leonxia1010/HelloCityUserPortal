@@ -6,31 +6,31 @@ import UserProfileCard from '../src/components/UserLabel';
 jest.mock('next/image', () => ({
   __esModule: true,
   default: (props: any) => (
-    <img 
-      src={props.src} 
-      alt={props.alt} 
-      width={props.width} 
-      height={props.height} 
+    <img
+      src={props.src}
+      alt={props.alt}
+      width={props.width}
+      height={props.height}
       className={props.className}
     />
   ),
 }));
 
 const mockUserData = {
-    UserName: 'John',
-    PreferredName: 'nikeJohn',
-    Avatar: 'https://example.com/avatar.jpg',
-    LastJoinDate: '2023-10-15 14:30',
-  };
+  UserName: 'John',
+  PreferredName: 'nikeJohn',
+  Avatar: 'https://example.com/avatar.jpg',
+  LastJoinDate: '2023-10-15 14:30',
+};
 
 describe('Userlabel component test', () => {
-  
+
   it('Correctly render incoming user data', () => {
     render(<UserProfileCard {...mockUserData} />);
     expect(screen.getByText('John')).toBeInTheDocument();
     expect(screen.getByText('@nikeJohn')).toBeInTheDocument();
     expect(screen.getByText(/last login: 2023-10-15 14:30/i)).toBeInTheDocument();
-    
+
     const avatar = screen.getByAltText('User Avatar');
     expect(avatar).toBeInTheDocument();
     expect(avatar).toHaveAttribute('src', 'https://example.com/avatar.jpg');
@@ -58,13 +58,13 @@ describe('Userlabel component test', () => {
     const { container } = render(<UserProfileCard {...mockUserData} />);
     const card = container.firstChild;
     expect(card).toHaveClass('bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl shadow-xl hover:shadow-2xl');
-    
+
     const avatarContainer = screen.getByTestId('avatar-container');
     expect(avatarContainer).toHaveClass('w-20 h-20 rounded-full border-4 border-white');
-    
+
     const userName = screen.getByText('John');
     expect(userName).toHaveClass('text-xl font-bold');
-    
+
     const nickname = screen.getByText('@nikeJohn');
     expect(nickname).toHaveClass('text-indigo-200');
   });

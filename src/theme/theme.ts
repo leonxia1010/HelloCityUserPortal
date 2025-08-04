@@ -1,6 +1,7 @@
 'use client';
 
-import { createTheme, ThemeOptions } from '@mui/material/styles';
+import type { ThemeOptions } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import '@fontsource/ibm-plex-sans/400.css';     // Regular
 import '@fontsource/ibm-plex-sans/700.css';     // Bold
 import '@fontsource/inter/400.css';

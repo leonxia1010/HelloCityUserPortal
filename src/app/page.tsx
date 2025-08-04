@@ -8,6 +8,7 @@ export default function Home() {
       {/* Logout link(must use <a> link to define Auth0 component) */}
       <a href="/auth/logout" >Logout</a>
       {/* conclusion: The Home component renders a simple layout with login and logout links. */}
+      <a href="/getAccessToken">Get Access Token</a>
     </div>
   );
 }

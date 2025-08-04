@@ -1,4 +1,5 @@
 import type { NextRequest } from "next/server";
+
 import { auth0 } from "./lib/auth0";
 
 export async function middleware(request: NextRequest) {
@@ -17,3 +18,5 @@ export const config = {
     ],
 };
 // conclusion: The middleware function uses Auth0 to handle authentication for all routes except static files and metadata files.
+
+
