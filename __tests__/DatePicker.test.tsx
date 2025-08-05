@@ -35,7 +35,7 @@ describe('DatePicker component', () => {
       expect(input).toBeDisabled();
     });
   });
-  
+
   describe('User Experience', () => {
     it('calls onChange when date is changed manually', () => {
       const handleChange = jest.fn();
