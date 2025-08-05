@@ -22,7 +22,7 @@ const DatePicker: React.FC<DatePickerProps> = ({
 }) => {
   return (
 
-    <div style={{ width: '300px' }}>
+    <div className="w-[300px]">
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <MUIDatePicker
         value={value}

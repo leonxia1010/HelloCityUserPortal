@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import Banner from '@/components/Banner';
+import Banner from '../src/components/Banner';
 
 describe('BannerText', () => {
   beforeEach(() => {

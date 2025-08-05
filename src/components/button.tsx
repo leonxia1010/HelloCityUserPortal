@@ -40,7 +40,7 @@ const buttonStyles: Record<ButtonProps["variant"], { enabled: string; disabled: 
 const Button: FC<ButtonProps> = ({
   variant,
   children,
-  disabled = false,
+  disabled,
   onClick,
 }) => {
   const buttonClass = clsx(
