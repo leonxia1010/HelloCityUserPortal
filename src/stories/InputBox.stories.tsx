@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import type { Meta } from '@storybook/react-vite';
 import InputBox from '@/components/InputBox';
 
-
-
 const meta: Meta<typeof InputBox> = {
   title: 'InputBox',
   component: InputBox,

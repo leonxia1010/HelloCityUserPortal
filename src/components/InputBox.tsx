@@ -43,7 +43,6 @@ const InputBox: React.FC<InputBoxProps> = ({
   const [showPassword, setShowPassword] = useState(false);
   const [touched, setTouched] = useState(false);
 
-
   const normalizedFieldType = fieldType || label.toLowerCase().replace(/\s/g, '');
   const inputType =
     normalizedFieldType === 'password' || normalizedFieldType === 'repeatPassword'
@@ -54,31 +53,31 @@ const InputBox: React.FC<InputBoxProps> = ({
   const finalPlaceholder = placeholder ?? getDefaultPlaceholder(normalizedFieldType);
   const inputId = `input-${normalizedFieldType}`;
 
-useEffect(() => {
-  if (!touched) return;
+  useEffect(() => {
+    if (!touched) return;
 
-  const rule = validationRules[normalizedFieldType];
-  let currentError = '';
+    const rule = validationRules[normalizedFieldType];
+    let currentError = '';
 
-  if (!value.trim() && required ) {
+    if (!value.trim() && required) {
       currentError = `${label} is required.`;
-    setErrorMessage(currentError);
-    return;
-  }
-
-  if (rule) {
-    const isValid =
-      normalizedFieldType === 'repeatPassword'
-        ? rule.validate(value, originalPassword ?? '')
-        : rule.validate(value);
-
-    if (!isValid) {
-      currentError = rule.error;
+      setErrorMessage(currentError);
+      return;
     }
-    setErrorMessage(currentError);
-    return;
-  }
-}, [value, touched, required, originalPassword, label, normalizedFieldType]);
+
+    if (rule) {
+      const isValid =
+        normalizedFieldType === 'repeatPassword'
+          ? rule.validate(value, originalPassword ?? '')
+          : rule.validate(value);
+
+      if (!isValid) {
+        currentError = rule.error;
+      }
+      setErrorMessage(currentError);
+      return;
+    }
+  }, [value, touched, required, originalPassword, label, normalizedFieldType]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!touched) setTouched(true);
@@ -102,7 +101,7 @@ useEffect(() => {
         required={required}
         inputProps={{
           id: inputId,
-          maxLength:20,
+          maxLength: 20,
           autoComplete: autoComplete ? 'on' : 'off',
           name: normalizedFieldType,
         }}
@@ -113,7 +112,7 @@ useEffect(() => {
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
-                      onClick={()=> setShowPassword((prev) => !prev)}
+                      onClick={() => setShowPassword((prev) => !prev)}
                       edge="end"
                       aria-label="toggle password visibility"
                     >
