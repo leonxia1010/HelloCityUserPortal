@@ -22,11 +22,7 @@ export const SingleDate: Story = {
 
     return (
       <div className="w-full max-w-xs">
-        <DatePicker
-          value={value}
-          onChange={(newValue) => setValue(newValue)}
-          label="Pick a date"
-        />
+        <DatePicker value={value} onChange={(newValue) => setValue(newValue)} label="Pick a date" />
       </div>
     );
   },

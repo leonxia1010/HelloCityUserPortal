@@ -14,35 +14,28 @@ interface DatePickerProps {
   disabled?: boolean;
 }
 
-const DatePicker: React.FC<DatePickerProps> = ({
-  value,
-  onChange,
-  label,
-  disabled = false,
-}) => {
+const DatePicker: React.FC<DatePickerProps> = ({ value, onChange, label, disabled = false }) => {
   return (
-
     <div className="w-[300px]">
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <MUIDatePicker
-        value={value}
-        onChange={onChange}
-        disabled={disabled}
-        label={label}
-        enableAccessibleFieldDOMStructure={false}
-        slots={{ textField: TextField }}
-        slotProps={{
-          textField: {
-            fullWidth: true,
-            inputProps: {
-              'aria-label': label || 'datepicker',
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <MUIDatePicker
+          value={value}
+          onChange={onChange}
+          disabled={disabled}
+          label={label}
+          enableAccessibleFieldDOMStructure={false}
+          slots={{ textField: TextField }}
+          slotProps={{
+            textField: {
+              fullWidth: true,
+              inputProps: {
+                'aria-label': label || 'datepicker',
+              },
             },
-          },
-        }}
-        
-      />
-    </LocalizationProvider>
-      </div>
+          }}
+        />
+      </LocalizationProvider>
+    </div>
   );
 };
 

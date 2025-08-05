@@ -17,7 +17,7 @@
   background-image: url('/images/banner-image.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center ;
+  background-position: center;
   z-index: -1;
 }
 
@@ -42,7 +42,6 @@
   }
 }
 
-
 /* Main content */
 .homepage-content {
   position: relative;
@@ -54,7 +53,7 @@
   align-items: center;
   text-align: center;
 
-  @media(max-width:768px){
+  @media (max-width: 768px) {
     margin-top: 140px;
     padding: 0 16px;
   }
