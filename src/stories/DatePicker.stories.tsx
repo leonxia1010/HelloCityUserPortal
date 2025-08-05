@@ -4,7 +4,6 @@ import type { Meta, StoryObj } from '@storybook/react-vite';
 import React, { useState } from 'react';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
-
 import DatePicker from '../components/DatePicker';
 
 const meta: Meta<typeof DatePicker> = {

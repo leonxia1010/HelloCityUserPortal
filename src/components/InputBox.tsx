@@ -6,8 +6,8 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import styles from './InputBox.module.scss';
-import { validationRules, getDefaultPlaceholder, getInputType } from './utils';
+import styles from '@/components/InputBox.module.scss';
+import { validationRules, getDefaultPlaceholder, getInputType } from '@/components/InputUtils';
 
 export type InputVariant = 'primary' | 'secondary' | 'tertiary';
 export type InputFieldType = 'name' | 'email' | 'password' | 'repeatPassword' | 'phone';
@@ -51,7 +51,6 @@ const InputBox: React.FC<InputBoxProps> = ({
         : 'password'
       : getInputType(normalizedFieldType);
   const finalPlaceholder = placeholder ?? getDefaultPlaceholder(normalizedFieldType);
-  const maxLength = 20;
   const inputId = `input-${normalizedFieldType}`;
 
   useEffect(() => {
@@ -60,11 +59,13 @@ const InputBox: React.FC<InputBoxProps> = ({
     const rule = validationRules[normalizedFieldType];
     let currentError = '';
 
-    if (!value.trim()) {
-      if (required) {
-        currentError = `${label} is required.`;
-      }
-    } else if (rule) {
+    if (!value.trim() && required) {
+      currentError = `${label} is required.`;
+      setErrorMessage(currentError);
+      return;
+    }
+
+    if (rule) {
       const isValid =
         normalizedFieldType === 'repeatPassword'
           ? rule.validate(value, originalPassword ?? '')
@@ -73,18 +74,14 @@ const InputBox: React.FC<InputBoxProps> = ({
       if (!isValid) {
         currentError = rule.error;
       }
+      setErrorMessage(currentError);
+      return;
     }
-
-    setErrorMessage(currentError);
   }, [value, touched, required, originalPassword, label, normalizedFieldType]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!touched) setTouched(true);
     onChange(e);
-  };
-
-  const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
   };
 
   return (
@@ -104,17 +101,18 @@ const InputBox: React.FC<InputBoxProps> = ({
         required={required}
         inputProps={{
           id: inputId,
-          maxLength,
+          maxLength: 20,
           autoComplete: autoComplete ? 'on' : 'off',
           name: normalizedFieldType,
         }}
+        // TODO: 这俩InputProps的区别是什么呢？
         InputProps={
           normalizedFieldType === 'password' || normalizedFieldType === 'repeatPassword'
             ? {
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
-                      onClick={togglePasswordVisibility}
+                      onClick={() => setShowPassword((prev) => !prev)}
                       edge="end"
                       aria-label="toggle password visibility"
                     >

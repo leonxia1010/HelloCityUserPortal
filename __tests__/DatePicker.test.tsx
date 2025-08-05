@@ -15,7 +15,7 @@ const renderDatePicker = (props: {
 
 describe('DatePicker component', () => {
   describe('UI Style', () => {
-    it('renders with label', () => {
+    it('Renders with label', () => {
       renderDatePicker({
         value: dayjs(),
         onChange: jest.fn(),
@@ -24,7 +24,7 @@ describe('DatePicker component', () => {
       expect(screen.getByLabelText('Pick a date')).toBeInTheDocument();
     });
 
-    it('disables the input when disabled is true', () => {
+    it('Disables the input when disabled is true', () => {
       renderDatePicker({
         value: dayjs(),
         onChange: jest.fn(),
@@ -37,7 +37,7 @@ describe('DatePicker component', () => {
   });
 
   describe('User Experience', () => {
-    it('calls onChange when date is changed manually', () => {
+    it('Calls onChange when date is changed manually', () => {
       const handleChange = jest.fn();
       renderDatePicker({
         value: dayjs('2025-08-01'),

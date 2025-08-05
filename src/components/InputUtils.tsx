@@ -1,3 +1,5 @@
+import type { ReactNode } from 'react';
+
 export const isValidEmail = (email: string): boolean => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
@@ -8,7 +10,7 @@ export const isStrongPassword = (password: string): boolean => {
   return passwordRegex.test(password);
 };
 
-export const getDefaultPlaceholder = (type: string): string => {
+export const getDefaultPlaceholder = (type: string): ReactNode => {
   switch (type) {
     case 'email':
       return 'Please enter your email';
@@ -43,7 +45,7 @@ export const validationRules: Record<
   string,
   {
     validate: (value: string, compareTo?: string) => boolean;
-    error: string;
+    error: ReactNode;
   }
 > = {
   name: {
