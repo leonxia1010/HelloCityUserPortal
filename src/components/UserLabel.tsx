@@ -1,7 +1,6 @@
 'use client';
 
-
-import React from 'react'
+import React from 'react';
 
 import Image from 'next/image';
 interface UserData {
@@ -21,7 +20,7 @@ const UserProfileCard: React.FC<UserData> = ({ UserName, PreferredName, Avatar, 
         {!Avatar ? (
           <span className="material-icons text-7xl text-gray-400">account_circle</span>
         ) : (
-          <Image src={Avatar} alt="User Avatar" width={64} height={64} className="rounded-full" />
+          <img src={Avatar} alt="User Avatar" width={64} height={64} className="rounded-full" />
         )}
       </div>
       <div>
