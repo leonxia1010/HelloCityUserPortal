@@ -1,9 +1,9 @@
 'use client'
 import { Button, Typography } from '@mui/material';
 import { useState } from 'react';
-import type { User } from '@/user';
+import type { User } from '@/types/User.types';
 import { defaultUser } from '@/types/User.types';
-import { createUser } from '@/types/User.types';
+import { createUser } from '@/api/userApi';
 
 import { Trans } from '@lingui/react';
 import PageOne from './PageOne';
@@ -28,12 +28,10 @@ const Page = () => {
       alert("Invalid email format");
       return;
     }
-
     try {
       console.log('Form Sent: ', formData);
       const response = await createUser(formData);
       localStorage.setItem('userId', response.data.data?.userId);
-      
     } catch (error: unknown) {
       if (error instanceof AxiosError) {
         console.error('Error:', error.response?.data || error.message);
@@ -59,7 +57,6 @@ const Page = () => {
           <Button variant="contained" color="primary" sx={{mr: "auto" }} onClick={()=>{setPageNumber(pageNumber-1)}}>
             <Trans id="Prev">Prev</Trans>
           </Button>}
-
           { pageNumber === 2 ?
           <Button variant="contained" color="primary" sx={{mr: "auto" }} type="submit">
             <Trans id="I'm all set">I'm all set</Trans>
