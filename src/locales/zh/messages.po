@@ -14,26 +14,41 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/components/Banner.tsx:19
-#: src/components/Banner.tsx:46
+#: src/app/auth/page.tsx:65
+msgid "Prev"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/app/auth/page.tsx:70
+msgid "I'm all set"
+msgstr "我准备好了"
+
+#. js-lingui-explicit-id
+#: src/app/auth/page.tsx:81
+msgid "Next"
+msgstr "下一步"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:18
+#: src/components/Banner.tsx:45
 msgid "banner.title1"
 msgstr ""
 
 #. js-lingui-explicit-id
-#: src/components/Banner.tsx:22
-#: src/components/Banner.tsx:49
+#: src/components/Banner.tsx:21
+#: src/components/Banner.tsx:48
 msgid "banner.title2"
 msgstr "自信"
 
 #. js-lingui-explicit-id
-#: src/components/Banner.tsx:26
-#: src/components/Banner.tsx:53
+#: src/components/Banner.tsx:25
+#: src/components/Banner.tsx:52
 msgid "banner.paragraph"
 msgstr "获取个性化指导、逐步清单和时间规划，帮助你顺利融入任何城市。无论你是游客、学生，还是移民。"
 
 #. js-lingui-explicit-id
-#: src/components/Banner.tsx:33
-#: src/components/Banner.tsx:60
+#: src/components/Banner.tsx:32
+#: src/components/Banner.tsx:59
 msgid "banner.cta"
 msgstr "现在就试试：HelloCity"
 
@@ -118,12 +133,12 @@ msgid "Check Items"
 msgstr "检查项目"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:120
+#: src/components/NavBar.tsx:121
 msgid "Sign In"
 msgstr "登录"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:125
+#: src/components/NavBar.tsx:127
 msgid "Try HelloCity"
 msgstr "试用 HelloCity"
 
@@ -158,16 +173,24 @@ msgid "Repeat Password"
 msgstr "重复密码"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:50
 #~ msgid "Profile"
 #~ msgstr "个人资料"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:53
 #~ msgid "Logout"
 #~ msgstr "登出"
 
 #: src/components/Banner.tsx:17
 #: src/components/Banner.tsx:44
 #~ msgid "banner.title1"
-#~ msgstr "探索你的城市"
+#~ msgstr "探索你的城市======="
+
+#~ msgid "Email"
+#~ msgstr "电子邮件"
+
+#: src/app/auth/page.tsx:65
+#~ msgid "Prev"
+#~ msgstr "上一步"
+
+#~ msgid "UserName"
+#~ msgstr "用户名>>>>>>> main"

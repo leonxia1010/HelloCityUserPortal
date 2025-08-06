@@ -12,9 +12,11 @@ export default function HomePage() {
   return (
     <div className={styles['homepage-container']}>
       <div className={styles['banner-background']} />
+
       <div className={styles['blur-top']}>
         <NavBar isCustom />
       </div>
+
       <div className={styles['homepage-content']}>
         <Banner isCustom />
       </div>
