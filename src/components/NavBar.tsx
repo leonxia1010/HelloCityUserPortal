@@ -47,13 +47,7 @@ const NavBar = ({ isCustom }: Props) => {
             Check Items
           </Button>
           <FormControlLabel
-            control={
-              <Switch
-                checked={isEnglish}
-                onChange={handleChange}
-                color="primary"
-              />
-            }
+            control={<Switch checked={isEnglish} onChange={handleChange} color="primary" />}
             sx={{ color: 'white' }}
             label={isEnglish ? 'EN' : 'CN'}
           />
@@ -73,9 +67,7 @@ const NavBar = ({ isCustom }: Props) => {
               </Button>
             </>
           ) : (
-            <Button variant="tertiary">
-              Sign In
-            </Button>
+            <Button variant="tertiary">Sign In</Button>
           )}
 
           <Button component={Link} href="/" variant="primary">

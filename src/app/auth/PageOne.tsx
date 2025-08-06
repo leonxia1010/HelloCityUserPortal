@@ -4,47 +4,47 @@ import type { User } from '@/types/User.types';
 type PageOneProps = {
   formData: User;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+};
 
-const PageOne: React.FC<PageOneProps> = ({formData, handleChange}) => {
+const PageOne: React.FC<PageOneProps> = ({ formData, handleChange }) => {
   return (
-    <div className="flex justify-around flex-col gap-2 w-[50%]">
-      <TextField 
+    <div className="flex w-[50%] flex-col justify-around gap-2">
+      <TextField
         label="UserName"
-        name="username" 
-        variant="outlined" 
-        required 
-        value={formData.username} 
+        name="username"
+        variant="outlined"
+        required
+        value={formData.username}
         onChange={handleChange}
       />
-      <TextField 
+      <TextField
         label="Email"
-        name="email" 
-        variant="outlined" 
-        required 
-        value={formData.email} 
+        name="email"
+        variant="outlined"
+        required
+        value={formData.email}
         onChange={handleChange}
       />
-      <TextField 
-        label="Password" 
-        name="password" 
-        variant="outlined" 
-        required 
-        type='password' 
-        value={formData.password} 
+      <TextField
+        label="Password"
+        name="password"
+        variant="outlined"
+        required
+        type="password"
+        value={formData.password}
         onChange={handleChange}
       />
-      <TextField 
-        label="Confirm Password" 
-        name="confirmPassword" 
-        variant="outlined" 
-        required 
-        type='password' 
-        value={formData.confirmPassword} 
+      <TextField
+        label="Confirm Password"
+        name="confirmPassword"
+        variant="outlined"
+        required
+        type="password"
+        value={formData.confirmPassword}
         onChange={handleChange}
       />
-    </div> 
-  )
-}
+    </div>
+  );
+};
 
-export default PageOne
+export default PageOne;

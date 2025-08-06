@@ -1,4 +1,4 @@
-import type { Genders, Nationalities, Cities, Languages } from "@/enums/UserAttributes";
+import type { Genders, Nationalities, Cities, Languages } from '@/enums/UserAttributes';
 
 export type User = {
   username: string;
@@ -19,5 +19,5 @@ export const defaultUser: User = {
   gender: '',
   nationality: '',
   city: '',
-  language: ''
+  language: '',
 };

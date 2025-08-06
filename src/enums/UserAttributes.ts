@@ -5,7 +5,7 @@ export enum Genders {
   PreferNotToSay = 'Prefer Not To Say',
 }
 export const genderOptions = Object.values(Genders);
-  
+
 export enum Cities {
   Sydney = 'Sydney',
   Melbourne = 'Melbourne',

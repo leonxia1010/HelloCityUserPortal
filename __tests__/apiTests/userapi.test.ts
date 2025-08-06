@@ -13,11 +13,12 @@ describe('createUser API', () => {
     const mockResponse = { data: { data: { userId: '12345' } } };
     mockedAxios.post.mockResolvedValue(mockResponse);
 
-    const newUser = {...defaultUser, 
+    const newUser = {
+      ...defaultUser,
       username: 'paul',
       email: 'paul@example.com',
       password: 'abc123',
-      confirmPassword: 'abc123'
+      confirmPassword: 'abc123',
     };
 
     const response = await createUser(newUser);
@@ -28,9 +29,9 @@ describe('createUser API', () => {
       {
         headers: {
           'Content-Type': 'application/json',
-          'Accept': '*/*'
-        }
-      }
+          Accept: '*/*',
+        },
+      },
     );
 
     expect(response).toEqual(mockResponse);
@@ -43,15 +44,12 @@ describe('createUser API', () => {
 
     const response = await fetchUser(newUserId);
 
-    expect(mockedAxios.get).toHaveBeenCalledWith(
-      `http://localhost:5000/api/${newUserId}`,
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': '*/*'
-        }
-      }
-    );
+    expect(mockedAxios.get).toHaveBeenCalledWith(`http://localhost:5000/api/${newUserId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: '*/*',
+      },
+    });
 
     expect(response).toEqual(mockResponse);
   });
