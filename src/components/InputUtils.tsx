@@ -16,17 +16,17 @@ export const isStrongPassword = (password: string): boolean => {
 export const getDefaultPlaceholder = (type: string): string => {
   switch (type) {
     case 'email':
-      return i18n._('Please enter your email');
+      return i18n._(/* id: "placeholder.email" */ 'Please enter your email');
     case 'password':
-      return i18n._('Please enter your password');
+      return i18n._(/* id: "placeholder.password" */ 'Please enter your password');
     case 'repeatPassword':
-      return i18n._('Please repeat your password');
+      return i18n._(/* id: "placeholder.repeatPassword" */ 'Please repeat your password');
     case 'name':
-      return i18n._('Please enter your name');
+      return i18n._(/* id: "placeholder.name" */ 'Please enter your name');
     case 'phone':
-      return i18n._('Please enter your phone number');
+      return i18n._(/* id: "placeholder.phone" */ 'Please enter your phone number');
     default:
-      return i18n._('Please enter value');
+      return i18n._(/* id: "placeholder.default" */ 'Please enter value');
   }
 };
 
@@ -53,26 +53,26 @@ export const validationRules: Record<
 > = {
   name: {
     validate: (v) => v.trim() !== '' && /^[a-zA-Z\s]+$/.test(v),
-    error: <Trans>Only letters are allowed and name is required.</Trans>,
+    error: <Trans id="validation.nameError">Only letters are allowed and name is required.</Trans>,
   },
   email: {
     validate: isValidEmail,
-    error: <Trans>Please enter a valid email address.</Trans>,
+    error: <Trans id="validation.emailError">Please enter a valid email address.</Trans>,
   },
   password: {
     validate: isStrongPassword,
     error: (
-      <Trans>
+      <Trans id="validation.passwordError">
         Password must be 6-20 characters with uppercase, lowercase, number, and special character.
       </Trans>
     ),
   },
   repeatPassword: {
     validate: (v, original = '') => v === original,
-    error: <Trans>Passwords do not match.</Trans>,
+    error: <Trans id="validation.repeatPasswordError">Passwords do not match.</Trans>,
   },
   phone: {
     validate: (v) => /^\d+$/.test(v),
-    error: <Trans>Only numbers are allowed.</Trans>,
+    error: <Trans id="validation.phoneError">Only numbers are allowed.</Trans>,
   },
 };

@@ -14,6 +14,66 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:56
+msgid "validation.nameError"
+msgstr "只能包含字母且姓名不能为空"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:60
+msgid "validation.emailError"
+msgstr "请输入有效的邮箱地址"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:65
+msgid "validation.passwordError"
+msgstr "密码必须包含大小写字母、数字和特殊字符，长度为6-20位"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:72
+msgid "validation.repeatPasswordError"
+msgstr "两次密码输入不匹配"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:76
+msgid "validation.phoneError"
+msgstr "只允许输入数字"
+
+#. js-lingui-explicit-id
+#: src/components/InputBox.tsx:71
+msgid "{field} is required."
+msgstr "{field} 为必填项。"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:19
+msgid "Please enter your email"
+msgstr "请输入您的邮箱"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:21
+msgid "Please enter your password"
+msgstr "请输入您的密码"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:23
+msgid "Please repeat your password"
+msgstr "请重复输入密码"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:25
+msgid "Please enter your name"
+msgstr "请输入您的姓名"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:27
+msgid "Please enter your phone number"
+msgstr "请输入您的手机号"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:29
+msgid "Please enter value"
+msgstr "请输入内容"
+
+#. js-lingui-explicit-id
 #: src/components/NavBar.tsx:87
 msgid "Home"
 msgstr "首页"
@@ -42,6 +102,31 @@ msgstr "登录"
 #: src/components/NavBar.tsx:125
 msgid "Try HelloCity"
 msgstr "试用 HelloCity"
+
+#. js-lingui-explicit-id
+#: src/stories/InputBox.stories.tsx:35
+msgid "Name"
+msgstr "姓名"
+
+#. js-lingui-explicit-id
+#: src/stories/InputBox.stories.tsx:49
+msgid "Phone"
+msgstr "手机号"
+
+#. js-lingui-explicit-id
+#: src/stories/InputBox.stories.tsx:84
+msgid "Email"
+msgstr "邮箱"
+
+#. js-lingui-explicit-id
+#: src/stories/InputBox.stories.tsx:102
+msgid "Password"
+msgstr "密码"
+
+#. js-lingui-explicit-id
+#: src/stories/InputBox.stories.tsx:109
+msgid "Repeat Password"
+msgstr "重复密码"
 
 #. js-lingui-explicit-id
 #: src/components/NavBar.tsx:50

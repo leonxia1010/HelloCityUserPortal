@@ -3,15 +3,14 @@ import type { Meta } from '@storybook/react-vite';
 import InputBox from '@/components/InputBox';
 import { Trans, I18nProvider } from '@lingui/react';
 import { i18n } from '@/i18n';
-import { messages as enMessages } from '/src/locales/en/messages.js';
-import { messages as zhMessages } from '/src/locales/zh/messages.js';
+import { messages as enMessages } from '@/locales/en/messages';
+import { messages as zhMessages } from '@/locales/zh/messages';
 
-// Load messages
 i18n.load({
   en: enMessages,
   zh: zhMessages,
 });
-i18n.activate('en');
+i18n.activate('zh'); 
 
 const meta: Meta<typeof InputBox> = {
   title: 'InputBox',
@@ -27,7 +26,7 @@ const meta: Meta<typeof InputBox> = {
 
 export default meta;
 
-// Name field
+
 export const Name: React.FC = () => {
   const [name, setName] = useState('');
   return (
@@ -41,7 +40,6 @@ export const Name: React.FC = () => {
   );
 };
 
-// Phone field
 export const Phone: React.FC = () => {
   const [phone, setPhone] = useState('');
   return (
@@ -55,7 +53,6 @@ export const Phone: React.FC = () => {
   );
 };
 
-// Email field with validation
 export const Email: React.FC = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState<React.ReactNode>('');
@@ -67,7 +64,7 @@ export const Email: React.FC = () => {
     }
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!regex.test(value)) {
-      setError(<Trans>Please enter a valid email address.</Trans>);
+      setError(<Trans id="Please enter a valid email address." />);
     } else {
       setError('');
     }
@@ -91,7 +88,6 @@ export const Email: React.FC = () => {
   );
 };
 
-// Password and Repeat Password fields
 export const Passwords: React.FC = () => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
