@@ -26,7 +26,6 @@ const meta: Meta<typeof InputBox> = {
 
 export default meta;
 
-
 export const Name: React.FC = () => {
   const [name, setName] = useState('');
   return (
