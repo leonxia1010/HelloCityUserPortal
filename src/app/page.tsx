@@ -1,4 +1,6 @@
-import Banner from "@/components/Banner";
+import Banner from '@/components/Banner';
+import NavBar from '@/components/NavBar';
+import UserProfileCard from '../components/UserLabel';
 
 export default function Home() {
   return (
@@ -8,7 +10,7 @@ export default function Home() {
       {/* Login link(must use <a> link to define Auth0 component) */}
       <a href="/auth/login">Login</a>
       {/* Logout link(must use <a> link to define Auth0 component) */}
-      <a href="/auth/logout" >Logout</a>
+      <a href="/auth/logout">Logout</a>
       {/* conclusion: The Home component renders a simple layout with login and logout links. */}
     </div>
   );

@@ -16,17 +16,17 @@ msgstr ""
 #. js-lingui-explicit-id
 #: src/app/auth/page.tsx:60
 msgid "Prev"
-msgstr ""
+msgstr "上一步"
 
 #. js-lingui-explicit-id
 #: src/app/auth/page.tsx:65
 msgid "I'm all set"
-msgstr ""
+msgstr "我准备好了"
 
 #. js-lingui-explicit-id
 #: src/app/auth/page.tsx:68
 msgid "Next"
-msgstr ""
+msgstr "下一步"
 
 #. js-lingui-explicit-id
 #: src/components/NavBar.tsx:32
@@ -59,19 +59,16 @@ msgid "Try HelloCity"
 msgstr "试用 HelloCity"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:56
 #~ msgid "Profile"
 #~ msgstr "个人资料"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:59
 #~ msgid "Logout"
 #~ msgstr "登出"
 
-#: src/app/auth/PageOne.tsx:22
 #~ msgid "Email"
-#~ msgstr ""
+#~ msgstr "电子邮件"
 
-#: src/app/auth/PageOne.tsx:14
 #~ msgid "UserName"
-#~ msgstr ""
+#~ msgstr "用户名"
+
