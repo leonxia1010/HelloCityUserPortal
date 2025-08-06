@@ -72,6 +72,28 @@ msgstr "validation.repeatPasswordError"
 #: src/components/InputUtils.tsx:76
 msgid "validation.phoneError"
 msgstr "validation.phoneError"
+#: src/components/Banner.tsx:17
+#: src/components/Banner.tsx:44
+msgid "banner.title1"
+msgstr "Navigate your new city with"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:20
+#: src/components/Banner.tsx:47
+msgid "banner.title2"
+msgstr "Confidence"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:24
+#: src/components/Banner.tsx:51
+msgid "banner.paragraph"
+msgstr "Get personalized guidance step by step checklists, and timeline planning for setting into any city. Whether you're a tourist, student or migrant."
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:31
+#: src/components/Banner.tsx:58
+msgid "banner.cta"
+msgstr "Try HelloCity"
 
 #. js-lingui-explicit-id
 #: src/components/NavBar.tsx:87
@@ -104,6 +126,7 @@ msgid "Try HelloCity"
 msgstr "Try HelloCity"
 
 #. js-lingui-explicit-id
+<<<<<<< HEAD
 #: src/stories/InputBox.stories.tsx:33
 msgid "Name"
 msgstr "Name"
@@ -132,6 +155,22 @@ msgstr "Password"
 #: src/stories/InputBox.stories.tsx:104
 msgid "Repeat Password"
 msgstr "Repeat Password"
+=======
+#: src/components/Banner.tsx:24
+#: src/components/Banner.tsx:50
+#~ msgid "Get personalized guidance long"
+#~ msgstr "Get personalized guidance long"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:20
+#~ msgid "Confidence"
+#~ msgstr "Confidence"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:46
+#~ msgid "confidence"
+#~ msgstr "confidence"
+>>>>>>> SCRUM-89-refactor-input-box-component
 
 #. js-lingui-explicit-id
 #: src/components/NavBar.tsx:50
