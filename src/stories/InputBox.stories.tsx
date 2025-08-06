@@ -1,19 +1,38 @@
 import React, { useState } from 'react';
 import type { Meta } from '@storybook/react-vite';
 import InputBox from '@/components/InputBox';
+import { Trans, I18nProvider } from '@lingui/react';
+import { i18n } from '@/i18n';
+import { messages as enMessages } from '/src/locales/en/messages.js';
+import { messages as zhMessages } from '/src/locales/zh/messages.js';
+
+// Load messages
+i18n.load({
+  en: enMessages,
+  zh: zhMessages,
+});
+i18n.activate('en');
 
 const meta: Meta<typeof InputBox> = {
   title: 'InputBox',
   component: InputBox,
+  decorators: [
+    (Story) => (
+      <I18nProvider i18n={i18n}>
+        <Story />
+      </I18nProvider>
+    ),
+  ],
 };
 
 export default meta;
 
+// Name field
 export const Name: React.FC = () => {
   const [name, setName] = useState('');
   return (
     <InputBox
-      label="Name"
+      label={<Trans id="Name"/>}
       fieldType="name"
       value={name}
       onChange={(e) => setName(e.target.value)}
@@ -22,11 +41,12 @@ export const Name: React.FC = () => {
   );
 };
 
+// Phone field
 export const Phone: React.FC = () => {
   const [phone, setPhone] = useState('');
   return (
     <InputBox
-      label="Phone"
+      label={<Trans id="Phone"/>}
       fieldType="phone"
       value={phone}
       onChange={(e) => setPhone(e.target.value)}
@@ -35,9 +55,10 @@ export const Phone: React.FC = () => {
   );
 };
 
+// Email field with validation
 export const Email: React.FC = () => {
   const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
+  const [error, setError] = useState<React.ReactNode>('');
 
   const validateEmail = (value: string) => {
     if (!value) {
@@ -46,7 +67,7 @@ export const Email: React.FC = () => {
     }
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!regex.test(value)) {
-      setError('Please enter a valid email address.');
+      setError(<Trans>Please enter a valid email address.</Trans>);
     } else {
       setError('');
     }
@@ -60,7 +81,7 @@ export const Email: React.FC = () => {
 
   return (
     <InputBox
-      label="Email"
+      label={<Trans id="Email"/>}
       fieldType="email"
       value={email}
       onChange={handleChange}
@@ -70,6 +91,7 @@ export const Email: React.FC = () => {
   );
 };
 
+// Password and Repeat Password fields
 export const Passwords: React.FC = () => {
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
@@ -77,14 +99,14 @@ export const Passwords: React.FC = () => {
   return (
     <>
       <InputBox
-        label="Password"
+        label={<Trans id="Password" />}
         fieldType="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         required
       />
       <InputBox
-        label="Repeat Password"
+        label={<Trans id="Repeat Password"/>}
         fieldType="repeatPassword"
         value={repeatPassword}
         onChange={(e) => setRepeatPassword(e.target.value)}

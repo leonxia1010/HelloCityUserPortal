@@ -8,6 +8,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import styles from '@/components/InputBox.module.scss';
 import { validationRules, getDefaultPlaceholder, getInputType } from '@/components/InputUtils';
+import { i18n } from '@/i18n'; 
 
 export type InputVariant = 'primary' | 'secondary' | 'tertiary';
 export type InputFieldType = 'name' | 'email' | 'password' | 'repeatPassword' | 'phone';
@@ -59,8 +60,15 @@ const InputBox: React.FC<InputBoxProps> = ({
     const rule = validationRules[normalizedFieldType];
     let currentError = '';
 
+    const labelText =
+      typeof label === 'string'
+        ? label
+        : typeof label === 'object' && 'props' in label
+        ? label.props.id || ''
+        : '';
+
     if (!value.trim() && required) {
-      currentError = `${label} is required.`;
+      currentError = i18n._('{field} is required.', { field: labelText });
       setErrorMessage(currentError);
       return;
     }
@@ -72,8 +80,9 @@ const InputBox: React.FC<InputBoxProps> = ({
           : rule.validate(value);
 
       if (!isValid) {
-        currentError = rule.error;
+        currentError = i18n._(rule.error); 
       }
+
       setErrorMessage(currentError);
       return;
     }
@@ -89,7 +98,7 @@ const InputBox: React.FC<InputBoxProps> = ({
       <TextField
         id={inputId}
         fullWidth
-        label={label.charAt(0).toUpperCase() + label.slice(1)}
+        label={typeof label === 'string' ? label.charAt(0).toUpperCase() + label.slice(1) : label}
         type={inputType}
         value={value}
         onChange={handleChange}
@@ -99,13 +108,13 @@ const InputBox: React.FC<InputBoxProps> = ({
         helperText={errorMessage || externalErrorMessage || ' '}
         disabled={disabled}
         required={required}
-        inputProps={{
+        // FormLabelProps={{ required: false }} if i enable this and global set in scss, the star mark will disappear. 
+        inputProps={{ 
           id: inputId,
           maxLength: 20,
           autoComplete: autoComplete ? 'on' : 'off',
           name: normalizedFieldType,
         }}
-        // TODO: 这俩InputProps的区别是什么呢？
         InputProps={
           normalizedFieldType === 'password' || normalizedFieldType === 'repeatPassword'
             ? {
