@@ -14,70 +14,49 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/app/auth/page.tsx:60
+#: src/app/auth/page.tsx:65
 msgid "Prev"
 msgstr "Prev"
 
 #. js-lingui-explicit-id
-#: src/app/auth/page.tsx:65
+#: src/app/auth/page.tsx:70
 msgid "I'm all set"
 msgstr "I'm all set"
 
 #. js-lingui-explicit-id
-#: src/app/auth/page.tsx:68
+#: src/app/auth/page.tsx:81
 msgid "Next"
 msgstr "Next"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:32
+#: src/components/NavBar.tsx:87
 msgid "Home"
 msgstr "Home"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:35
-#: src/components/NavBar.tsx:35
+#: src/components/NavBar.tsx:90
 msgid "Chat"
 msgstr "Chat"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:38
-#: src/components/NavBar.tsx:38
+#: src/components/NavBar.tsx:93
 msgid "FAQ"
 msgstr "FAQ"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:41
-#: src/components/NavBar.tsx:41
+#: src/components/NavBar.tsx:96
 msgid "Check Items"
 msgstr "Check Items"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:66
+#: src/components/NavBar.tsx:121
 msgid "Sign In"
 msgstr "Sign In"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:72
+#: src/components/NavBar.tsx:127
 msgid "Try HelloCity"
 msgstr "Try HelloCity"
-
-#. js-lingui-explicit-id
-#: src/components/NavBar.tsx:56
-#~ msgid "Profile"
-#~ msgstr "Profile"
-
-#. js-lingui-explicit-id
-#: src/components/NavBar.tsx:59
-#~ msgid "Logout"
-#~ msgstr "Logout"
-
-#: src/app/auth/PageOne.tsx:22
-#~ msgid "Email"
-#~ msgstr "Email"
-
-#: src/app/auth/PageOne.tsx:14
-#~ msgid "UserName"
-#~ msgstr "UserName"
 
 #. js-lingui-explicit-id
 #: src/components/NavBar.tsx:50
@@ -88,3 +67,11 @@ msgstr "Try HelloCity"
 #: src/components/NavBar.tsx:53
 #~ msgid "Logout"
 #~ msgstr "Logout"
+
+#: src/app/auth/PageOne.tsx:22
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#: src/app/auth/PageOne.tsx:14
+#~ msgid "UserName"
+#~ msgstr "UserName"
