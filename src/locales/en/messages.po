@@ -14,6 +14,30 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
+#: src/components/Banner.tsx:17
+#: src/components/Banner.tsx:43
+msgid "banner.title1"
+msgstr "Navigate your new city with"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:20
+#: src/components/Banner.tsx:46
+msgid "banner.title2"
+msgstr "Confidence"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:24
+#: src/components/Banner.tsx:50
+msgid "banner.paragraph"
+msgstr "Get personalized guidance step by step checklists, and timeline planning for setting into any city. Whether you're a tourist, student or migrant."
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:30
+#: src/components/Banner.tsx:56
+msgid "banner.cta"
+msgstr "Try HelloCity"
+
+#. js-lingui-explicit-id
 #: src/components/NavBar.tsx:87
 msgid "Home"
 msgstr "Home"
@@ -42,6 +66,22 @@ msgstr "Sign In"
 #: src/components/NavBar.tsx:125
 msgid "Try HelloCity"
 msgstr "Try HelloCity"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:24
+#: src/components/Banner.tsx:50
+#~ msgid "Get personalized guidance long"
+#~ msgstr "Get personalized guidance long"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:20
+#~ msgid "Confidence"
+#~ msgstr "Confidence"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:46
+#~ msgid "confidence"
+#~ msgstr "confidence"
 
 #. js-lingui-explicit-id
 #: src/components/NavBar.tsx:50
