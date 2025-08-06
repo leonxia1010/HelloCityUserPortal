@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import React from 'react';
 import { Typography, Button } from '@mui/material';
 import { Trans } from '@lingui/react';

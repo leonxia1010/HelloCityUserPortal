@@ -13,22 +13,18 @@ describe('BannerText', () => {
     render(
       <I18nProvider i18n={i18n}>
         <Banner />
-      </I18nProvider>
+      </I18nProvider>,
     );
   });
 
   it('renders the title and full paragraph correctly', () => {
     const headings = screen.getAllByRole('heading');
 
-    const hasTitle1 = headings.some((el) =>
-      el.textContent?.toLowerCase().includes('navigate')
-    );
-    const hasTitle2 = headings.some((el) =>
-      el.textContent?.toLowerCase().includes('confidence')
-    );
+    const hasTitle1 = headings.some((el) => el.textContent?.toLowerCase().includes('navigate'));
+    const hasTitle2 = headings.some((el) => el.textContent?.toLowerCase().includes('confidence'));
 
     const paragraphs = screen.getAllByText((_, el) =>
-      el?.textContent?.toLowerCase().includes('get personalized guidance')
+      el?.textContent?.toLowerCase().includes('get personalized guidance'),
     );
     expect(paragraphs.length).toBeGreaterThanOrEqual(1);
   });
@@ -37,9 +33,10 @@ describe('BannerText', () => {
     const buttons = screen.getAllByRole('button');
 
     expect(buttons.length).toBeGreaterThan(0);
-    const hasExpectedText = buttons.some((btn) =>
-      btn.textContent?.toLowerCase().includes('get started') ||
-      btn.textContent?.toLowerCase().includes('hello') 
+    const hasExpectedText = buttons.some(
+      (btn) =>
+        btn.textContent?.toLowerCase().includes('get started') ||
+        btn.textContent?.toLowerCase().includes('hello'),
     );
     expect(hasExpectedText).toBe(true);
   });
