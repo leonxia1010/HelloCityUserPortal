@@ -10,7 +10,7 @@ i18n.load({
   en: enMessages,
   zh: zhMessages,
 });
-i18n.activate('zh'); 
+i18n.activate('zh');
 
 const meta: Meta<typeof InputBox> = {
   title: 'InputBox',
