@@ -13,31 +13,30 @@ describe('BannerText', () => {
     render(
       <I18nProvider i18n={i18n}>
         <Banner />
-      </I18nProvider>
+      </I18nProvider>,
     );
   });
 
- it('renders the title and full paragraph correctly', () => {
-  expect(screen.getAllByText(/navigate your new city with/i)).toHaveLength(1);
-  expect(screen.getAllByText(/confidence/i)).toHaveLength(1);
+  it('renders the title and full paragraph correctly', () => {
+    expect(screen.getAllByText(/navigate your new city with/i)).toHaveLength(1);
+    expect(screen.getAllByText(/confidence/i)).toHaveLength(1);
 
-  const paragraphs = screen.getAllByText((_, el) =>
-  el?.textContent?.includes("Get personalized guidance")
-);
-expect(paragraphs.length).toBeGreaterThanOrEqual(1);
+    const paragraphs = screen.getAllByText((_, el) =>
+      el?.textContent?.includes('Get personalized guidance'),
+    );
+    expect(paragraphs.length).toBeGreaterThanOrEqual(1);
+  });
 
-});
+  it('has the CTA button with correct text and spacing', () => {
+    const buttons = screen.getAllByRole('button');
 
-it('has the CTA button with correct text and spacing', () => {
-  const buttons = screen.getAllByRole('button');
+    // 所有按钮都存在
+    expect(buttons.length).toBeGreaterThan(0);
+    buttons.forEach((btn) => {
+      expect(btn.textContent?.toLowerCase()).toContain('hello');
 
-  // 所有按钮都存在
-  expect(buttons.length).toBeGreaterThan(0);
- buttons.forEach((btn) => {
-  expect(btn.textContent?.toLowerCase()).toContain('hello');
-
-  const computedMargin = getComputedStyle(btn).marginTop;
-  expect(computedMargin).toMatch(/6px|12px/);
-});
-});
+      const computedMargin = getComputedStyle(btn).marginTop;
+      expect(computedMargin).toMatch(/6px|12px/);
+    });
+  });
 });

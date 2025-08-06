@@ -22,7 +22,8 @@ const Banner = ({ isCustom }: Props) => {
 
           <Typography variant="body1" sx={{ opacity: 0.9 }}>
             <Trans id="banner.paragraph">
-              Get personalized guidance step by step checklists, and timeline planning for setting into any city. Whether you're a tourist, student or migrant.
+              Get personalized guidance step by step checklists, and timeline planning for setting
+              into any city. Whether you're a tourist, student or migrant.
             </Trans>
           </Typography>
 
@@ -48,7 +49,8 @@ const Banner = ({ isCustom }: Props) => {
 
         <Typography variant="body1">
           <Trans id="banner.paragraph">
-            Get personalized guidance step by step checklists, and timeline planning for setting into any city. Whether you're a tourist, student or migrant.
+            Get personalized guidance step by step checklists, and timeline planning for setting
+            into any city. Whether you're a tourist, student or migrant.
           </Trans>
         </Typography>
 
