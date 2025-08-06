@@ -14,6 +14,30 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
+#: src/components/Banner.tsx:19
+#: src/components/Banner.tsx:46
+msgid "banner.title1"
+msgstr ""
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:22
+#: src/components/Banner.tsx:49
+msgid "banner.title2"
+msgstr "自信"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:26
+#: src/components/Banner.tsx:53
+msgid "banner.paragraph"
+msgstr "获取个性化指导、逐步清单和时间规划，帮助你顺利融入任何城市。无论你是游客、学生，还是移民。"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:33
+#: src/components/Banner.tsx:60
+msgid "banner.cta"
+msgstr "现在就试试：HelloCity"
+
+#. js-lingui-explicit-id
 #: src/components/InputBox.tsx:71
 msgid "{field} is required."
 msgstr "{field} 为必填项。"
@@ -72,28 +96,6 @@ msgstr "两次密码输入不匹配"
 #: src/components/InputUtils.tsx:76
 msgid "validation.phoneError"
 msgstr "只允许输入数字"
-#: src/components/Banner.tsx:17
-#: src/components/Banner.tsx:44
-msgid "banner.title1"
-msgstr "探索你的城市"
-
-#. js-lingui-explicit-id
-#: src/components/Banner.tsx:20
-#: src/components/Banner.tsx:47
-msgid "banner.title2"
-msgstr "自信"
-
-#. js-lingui-explicit-id
-#: src/components/Banner.tsx:24
-#: src/components/Banner.tsx:51
-msgid "banner.paragraph"
-msgstr "获取个性化指导、逐步清单和时间规划，帮助你顺利融入任何城市。无论你是游客、学生，还是移民。"
-
-#. js-lingui-explicit-id
-#: src/components/Banner.tsx:31
-#: src/components/Banner.tsx:58
-msgid "banner.cta"
-msgstr "现在就试试：HelloCity"
 
 #. js-lingui-explicit-id
 #: src/components/NavBar.tsx:87
@@ -164,3 +166,8 @@ msgstr "重复密码"
 #: src/components/NavBar.tsx:53
 #~ msgid "Logout"
 #~ msgstr "登出"
+
+#: src/components/Banner.tsx:17
+#: src/components/Banner.tsx:44
+#~ msgid "banner.title1"
+#~ msgstr "探索你的城市"
