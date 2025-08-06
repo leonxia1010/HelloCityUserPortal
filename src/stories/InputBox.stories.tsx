@@ -32,7 +32,7 @@ export const Name: React.FC = () => {
   const [name, setName] = useState('');
   return (
     <InputBox
-      label={<Trans id="Name"/>}
+      label={<Trans id="Name" />}
       fieldType="name"
       value={name}
       onChange={(e) => setName(e.target.value)}
@@ -46,7 +46,7 @@ export const Phone: React.FC = () => {
   const [phone, setPhone] = useState('');
   return (
     <InputBox
-      label={<Trans id="Phone"/>}
+      label={<Trans id="Phone" />}
       fieldType="phone"
       value={phone}
       onChange={(e) => setPhone(e.target.value)}
@@ -81,7 +81,7 @@ export const Email: React.FC = () => {
 
   return (
     <InputBox
-      label={<Trans id="Email"/>}
+      label={<Trans id="Email" />}
       fieldType="email"
       value={email}
       onChange={handleChange}
@@ -106,7 +106,7 @@ export const Passwords: React.FC = () => {
         required
       />
       <InputBox
-        label={<Trans id="Repeat Password"/>}
+        label={<Trans id="Repeat Password" />}
         fieldType="repeatPassword"
         value={repeatPassword}
         onChange={(e) => setRepeatPassword(e.target.value)}

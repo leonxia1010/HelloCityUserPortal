@@ -8,7 +8,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import styles from '@/components/InputBox.module.scss';
 import { validationRules, getDefaultPlaceholder, getInputType } from '@/components/InputUtils';
-import { i18n } from '@/i18n'; 
+import { i18n } from '@/i18n';
 
 export type InputVariant = 'primary' | 'secondary' | 'tertiary';
 export type InputFieldType = 'name' | 'email' | 'password' | 'repeatPassword' | 'phone';
@@ -64,8 +64,8 @@ const InputBox: React.FC<InputBoxProps> = ({
       typeof label === 'string'
         ? label
         : typeof label === 'object' && 'props' in label
-        ? label.props.id || ''
-        : '';
+          ? label.props.id || ''
+          : '';
 
     if (!value.trim() && required) {
       currentError = i18n._('{field} is required.', { field: labelText });
@@ -80,7 +80,7 @@ const InputBox: React.FC<InputBoxProps> = ({
           : rule.validate(value);
 
       if (!isValid) {
-        currentError = i18n._(rule.error); 
+        currentError = i18n._(rule.error);
       }
 
       setErrorMessage(currentError);
@@ -108,8 +108,8 @@ const InputBox: React.FC<InputBoxProps> = ({
         helperText={errorMessage || externalErrorMessage || ' '}
         disabled={disabled}
         required={required}
-        // FormLabelProps={{ required: false }} if i enable this and global set in scss, the star mark will disappear. 
-        inputProps={{ 
+        // FormLabelProps={{ required: false }} if i enable this and global set in scss, the star mark will disappear.
+        inputProps={{
           id: inputId,
           maxLength: 20,
           autoComplete: autoComplete ? 'on' : 'off',
