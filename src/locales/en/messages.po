@@ -15,25 +15,25 @@ msgstr ""
 
 #. js-lingui-explicit-id
 #: src/components/Banner.tsx:17
-#: src/components/Banner.tsx:43
+#: src/components/Banner.tsx:44
 msgid "banner.title1"
 msgstr "Navigate your new city with"
 
 #. js-lingui-explicit-id
 #: src/components/Banner.tsx:20
-#: src/components/Banner.tsx:46
+#: src/components/Banner.tsx:47
 msgid "banner.title2"
 msgstr "Confidence"
 
 #. js-lingui-explicit-id
 #: src/components/Banner.tsx:24
-#: src/components/Banner.tsx:50
+#: src/components/Banner.tsx:51
 msgid "banner.paragraph"
 msgstr "Get personalized guidance step by step checklists, and timeline planning for setting into any city. Whether you're a tourist, student or migrant."
 
 #. js-lingui-explicit-id
-#: src/components/Banner.tsx:30
-#: src/components/Banner.tsx:56
+#: src/components/Banner.tsx:31
+#: src/components/Banner.tsx:58
 msgid "banner.cta"
 msgstr "Try HelloCity"
 
