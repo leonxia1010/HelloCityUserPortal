@@ -1,3 +1,16 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
 #. js-lingui-explicit-id
 #: src/app/auth/page.tsx:65
 msgid "Prev"
@@ -12,6 +25,90 @@ msgstr "I'm all set"
 #: src/app/auth/page.tsx:81
 msgid "Next"
 msgstr "Next"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:18
+#: src/components/Banner.tsx:45
+msgid "banner.title1"
+msgstr "Navigate your new city with"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:21
+#: src/components/Banner.tsx:48
+msgid "banner.title2"
+msgstr "Confidence"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:25
+#: src/components/Banner.tsx:52
+msgid "banner.paragraph"
+msgstr "Get personalized guidance step by step checklists, and timeline planning for setting into any city. Whether you're a tourist, student or migrant."
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:32
+#: src/components/Banner.tsx:59
+msgid "banner.cta"
+msgstr "Try HelloCity"
+
+#. js-lingui-explicit-id
+#: src/components/InputBox.tsx:71
+msgid "{field} is required."
+msgstr "{field} is required."
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:19
+msgid "Please enter your email"
+msgstr "Please enter your email"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:21
+msgid "Please enter your password"
+msgstr "Please enter your password"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:23
+msgid "Please repeat your password"
+msgstr "Please repeat your password"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:25
+msgid "Please enter your name"
+msgstr "Please enter your name"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:27
+msgid "Please enter your phone number"
+msgstr "Please enter your phone number"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:29
+msgid "Please enter value"
+msgstr "Please enter value"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:56
+msgid "validation.nameError"
+msgstr "validation.nameError"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:60
+msgid "validation.emailError"
+msgstr "validation.emailError"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:65
+msgid "validation.passwordError"
+msgstr "validation.passwordError"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:72
+msgid "validation.repeatPasswordError"
+msgstr "validation.repeatPasswordError"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:76
+msgid "validation.phoneError"
+msgstr "validation.phoneError"
 
 #. js-lingui-explicit-id
 #: src/components/NavBar.tsx:87
@@ -44,6 +141,46 @@ msgid "Try HelloCity"
 msgstr "Try HelloCity"
 
 #. js-lingui-explicit-id
+#: src/stories/InputBox.stories.tsx:33
+msgid "Name"
+msgstr "Name"
+
+#. js-lingui-explicit-id
+#: src/stories/InputBox.stories.tsx:46
+msgid "Phone"
+msgstr "Phone"
+
+#. js-lingui-explicit-id
+#: src/stories/InputBox.stories.tsx:66
+msgid "Please enter a valid email address."
+msgstr "Please enter a valid email address."
+
+#. js-lingui-explicit-id
+#: src/stories/InputBox.stories.tsx:80
+msgid "Email"
+msgstr "Email"
+
+#. js-lingui-explicit-id
+#: src/stories/InputBox.stories.tsx:97
+msgid "Password"
+msgstr "Password"
+
+#. js-lingui-explicit-id
+#: src/stories/InputBox.stories.tsx:104
+msgid "Repeat Password"
+msgstr "Repeat Password======="
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:20
+#~ msgid "Confidence"
+#~ msgstr "Confidence"
+
+#. js-lingui-explicit-id
+#: src/components/Banner.tsx:46
+#~ msgid "confidence"
+#~ msgstr "confidence>>>>>>> SCRUM-89-refactor-input-box-component"
+
+#. js-lingui-explicit-id
 #: src/components/NavBar.tsx:50
 #~ msgid "Profile"
 #~ msgstr "Profile"
@@ -51,12 +188,26 @@ msgstr "Try HelloCity"
 #. js-lingui-explicit-id
 #: src/components/NavBar.tsx:53
 #~ msgid "Logout"
-#~ msgstr "Logout"
+#~ msgstr "Logout<<<<<<< HEAD"
+
+#: src/components/Banner.tsx:17
+#: src/components/Banner.tsx:44
+#~ msgid "banner.title1"
+#~ msgstr "Navigate your new city with"
 
 #: src/app/auth/PageOne.tsx:22
 #~ msgid "Email"
 #~ msgstr "Email"
 
+#: src/components/Banner.tsx:24
+#: src/components/Banner.tsx:50
+#~ msgid "Get personalized guidance long"
+#~ msgstr "Get personalized guidance long======="
+
+#: src/app/auth/page.tsx:70
+#~ msgid "I'm all set"
+#~ msgstr "I'm all set"
+
 #: src/app/auth/PageOne.tsx:14
 #~ msgid "UserName"
-#~ msgstr "UserName"
+#~ msgstr "UserName>>>>>>> main"

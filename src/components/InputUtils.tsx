@@ -1,3 +1,7 @@
+import type { ReactNode } from 'react';
+import { Trans } from '@lingui/react';
+import { i18n } from '@lingui/core';
+
 export const isValidEmail = (email: string): boolean => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
@@ -8,20 +12,21 @@ export const isStrongPassword = (password: string): boolean => {
   return passwordRegex.test(password);
 };
 
+// Return string only for placeholder (required by MUI TextField)
 export const getDefaultPlaceholder = (type: string): string => {
   switch (type) {
     case 'email':
-      return 'Please enter your email';
+      return i18n._(/* id: "placeholder.email" */ 'Please enter your email');
     case 'password':
-      return 'Please enter your password';
+      return i18n._(/* id: "placeholder.password" */ 'Please enter your password');
     case 'repeatPassword':
-      return 'Please repeat your password';
+      return i18n._(/* id: "placeholder.repeatPassword" */ 'Please repeat your password');
     case 'name':
-      return 'Please enter your name';
+      return i18n._(/* id: "placeholder.name" */ 'Please enter your name');
     case 'phone':
-      return 'Please enter your phone number';
+      return i18n._(/* id: "placeholder.phone" */ 'Please enter your phone number');
     default:
-      return 'Please enter value';
+      return i18n._(/* id: "placeholder.default" */ 'Please enter value');
   }
 };
 
@@ -43,28 +48,31 @@ export const validationRules: Record<
   string,
   {
     validate: (value: string, compareTo?: string) => boolean;
-    error: string;
+    error: ReactNode;
   }
 > = {
   name: {
     validate: (v) => v.trim() !== '' && /^[a-zA-Z\s]+$/.test(v),
-    error: 'Only letters are allowed and name is required.',
+    error: <Trans id="validation.nameError">Only letters are allowed and name is required.</Trans>,
   },
   email: {
     validate: isValidEmail,
-    error: 'Please enter a valid email address.',
+    error: <Trans id="validation.emailError">Please enter a valid email address.</Trans>,
   },
   password: {
     validate: isStrongPassword,
-    error:
-      'Password must be 6-20 characters with uppercase, lowercase, number, and special character.',
+    error: (
+      <Trans id="validation.passwordError">
+        Password must be 6-20 characters with uppercase, lowercase, number, and special character.
+      </Trans>
+    ),
   },
   repeatPassword: {
     validate: (v, original = '') => v === original,
-    error: 'Passwords do not match.',
+    error: <Trans id="validation.repeatPasswordError">Passwords do not match.</Trans>,
   },
   phone: {
     validate: (v) => /^\d+$/.test(v),
-    error: 'Only numbers are allowed.',
+    error: <Trans id="validation.phoneError">Only numbers are allowed.</Trans>,
   },
 };
