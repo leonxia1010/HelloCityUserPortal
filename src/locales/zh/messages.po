@@ -16,17 +16,17 @@ msgstr ""
 #. js-lingui-explicit-id
 #: src/app/auth/page.tsx:65
 msgid "Prev"
-msgstr ""
+msgstr "上一步"
 
 #. js-lingui-explicit-id
 #: src/app/auth/page.tsx:70
 msgid "I'm all set"
-msgstr ""
+msgstr "我准备好了"
 
 #. js-lingui-explicit-id
 #: src/app/auth/page.tsx:81
 msgid "Next"
-msgstr ""
+msgstr "下一步"
 
 #. js-lingui-explicit-id
 #: src/components/NavBar.tsx:87
@@ -67,3 +67,18 @@ msgstr "试用 HelloCity"
 #: src/components/NavBar.tsx:53
 #~ msgid "Logout"
 #~ msgstr "登出"
+
+#. js-lingui-explicit-id
+#~ msgid "Profile"
+#~ msgstr "个人资料"
+
+#. js-lingui-explicit-id
+#~ msgid "Logout"
+#~ msgstr "登出"
+
+#~ msgid "Email"
+#~ msgstr "电子邮件"
+
+#~ msgid "UserName"
+#~ msgstr "用户名"
+
