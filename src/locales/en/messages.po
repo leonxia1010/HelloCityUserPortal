@@ -14,31 +14,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:56
-msgid "validation.nameError"
-msgstr "validation.nameError"
-
-#. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:60
-msgid "validation.emailError"
-msgstr "validation.emailError"
-
-#. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:65
-msgid "validation.passwordError"
-msgstr "validation.passwordError"
-
-#. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:72
-msgid "validation.repeatPasswordError"
-msgstr "validation.repeatPasswordError"
-
-#. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:76
-msgid "validation.phoneError"
-msgstr "validation.phoneError"
-
-#. js-lingui-explicit-id
 #: src/components/InputBox.tsx:71
 msgid "{field} is required."
 msgstr "{field} is required."
@@ -74,6 +49,31 @@ msgid "Please enter value"
 msgstr "Please enter value"
 
 #. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:56
+msgid "validation.nameError"
+msgstr "validation.nameError"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:60
+msgid "validation.emailError"
+msgstr "validation.emailError"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:65
+msgid "validation.passwordError"
+msgstr "validation.passwordError"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:72
+msgid "validation.repeatPasswordError"
+msgstr "validation.repeatPasswordError"
+
+#. js-lingui-explicit-id
+#: src/components/InputUtils.tsx:76
+msgid "validation.phoneError"
+msgstr "validation.phoneError"
+
+#. js-lingui-explicit-id
 #: src/components/NavBar.tsx:87
 msgid "Home"
 msgstr "Home"
@@ -104,27 +104,32 @@ msgid "Try HelloCity"
 msgstr "Try HelloCity"
 
 #. js-lingui-explicit-id
-#: src/stories/InputBox.stories.tsx:35
+#: src/stories/InputBox.stories.tsx:33
 msgid "Name"
 msgstr "Name"
 
 #. js-lingui-explicit-id
-#: src/stories/InputBox.stories.tsx:49
+#: src/stories/InputBox.stories.tsx:46
 msgid "Phone"
 msgstr "Phone"
 
 #. js-lingui-explicit-id
-#: src/stories/InputBox.stories.tsx:84
+#: src/stories/InputBox.stories.tsx:66
+msgid "Please enter a valid email address."
+msgstr "Please enter a valid email address."
+
+#. js-lingui-explicit-id
+#: src/stories/InputBox.stories.tsx:80
 msgid "Email"
 msgstr "Email"
 
 #. js-lingui-explicit-id
-#: src/stories/InputBox.stories.tsx:102
+#: src/stories/InputBox.stories.tsx:97
 msgid "Password"
 msgstr "Password"
 
 #. js-lingui-explicit-id
-#: src/stories/InputBox.stories.tsx:109
+#: src/stories/InputBox.stories.tsx:104
 msgid "Repeat Password"
 msgstr "Repeat Password"
 

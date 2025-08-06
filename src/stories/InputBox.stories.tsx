@@ -3,8 +3,8 @@ import type { Meta } from '@storybook/react-vite';
 import InputBox from '@/components/InputBox';
 import { Trans, I18nProvider } from '@lingui/react';
 import { i18n } from '@/i18n';
-import { messages as enMessages } from '@/locales/en/messages';
-import { messages as zhMessages } from '@/locales/zh/messages';
+import enMessages from '@/locales/en/messages.js';
+import zhMessages from '@/locales/zh/messages.js';
 
 i18n.load({
   en: enMessages,
