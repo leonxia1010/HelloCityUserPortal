@@ -14,21 +14,6 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
-#: src/app/auth/page.tsx:60
-msgid "Prev"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/auth/page.tsx:65
-msgid "I'm all set"
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/app/auth/page.tsx:68
-msgid "Next"
-msgstr ""
-
-#. js-lingui-explicit-id
 #: src/components/NavBar.tsx:32
 msgid "Home"
 msgstr "首页"
@@ -49,29 +34,21 @@ msgid "Check Items"
 msgstr "检查项目"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:66
+#: src/components/NavBar.tsx:65
 msgid "Sign In"
 msgstr "登录"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:72
+#: src/components/NavBar.tsx:70
 msgid "Try HelloCity"
 msgstr "试用 HelloCity"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:56
+#: src/components/NavBar.tsx:50
 #~ msgid "Profile"
 #~ msgstr "个人资料"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:59
+#: src/components/NavBar.tsx:53
 #~ msgid "Logout"
 #~ msgstr "登出"
-
-#: src/app/auth/PageOne.tsx:22
-#~ msgid "Email"
-#~ msgstr ""
-
-#: src/app/auth/PageOne.tsx:14
-#~ msgid "UserName"
-#~ msgstr ""
