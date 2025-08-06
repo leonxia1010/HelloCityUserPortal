@@ -24,12 +24,9 @@ describe('NavBar', () => {
 
     const chatLink = screen.getByRole('link', { name: /Chat/i });
     expect(chatLink).toBeInTheDocument();
-    // page component not implemented
-    // expect(chatLink).toHaveAttribute('href', '/chat');
 
     const ctaLink = screen.getByRole('link', { name: /Try HelloCity/i });
     expect(ctaLink).toBeInTheDocument();
-    // expect(ctaLink).toHaveAttribute('href', '/chat');
   });
 
   it('toggles language label between CN and EN', async () => {
@@ -39,7 +36,7 @@ describe('NavBar', () => {
       </I18nTestWrapper>,
     );
 
-    const toggle = screen.getByRole('checkbox');
+    const toggle = screen.getByRole('switch'); // ✅ 修复点
 
     expect(screen.getByText('EN')).toBeInTheDocument();
 
@@ -84,7 +81,6 @@ describe('NavBar', () => {
       </I18nTestWrapper>,
     );
 
-    // It would display English navigation items by default
     expect(screen.getByText('Home')).toBeInTheDocument();
     expect(screen.getByText('Chat')).toBeInTheDocument();
     expect(screen.getByText('FAQ')).toBeInTheDocument();
@@ -100,9 +96,8 @@ describe('NavBar', () => {
       </I18nTestWrapper>,
     );
 
-    const toggle = screen.getByRole('checkbox');
+    const toggle = screen.getByRole('switch'); // ✅ 修复点
 
-    // Switch to Chinese
     fireEvent.click(toggle);
 
     await waitFor(() => {
@@ -122,16 +117,14 @@ describe('NavBar', () => {
       </I18nTestWrapper>,
     );
 
-    const toggle = screen.getByRole('checkbox');
+    const toggle = screen.getByRole('switch'); // ✅ 修复点
 
-    // Switch to Chinese
     fireEvent.click(toggle);
 
     await waitFor(() => {
       expect(screen.getByText('首页')).toBeInTheDocument();
     });
 
-    // Switch back to English
     fireEvent.click(toggle);
 
     await waitFor(() => {
@@ -144,5 +137,5 @@ describe('NavBar', () => {
     });
   });
 
-  //NavBar Login Test incomplete
+  // NavBar Login Test incomplete
 });
