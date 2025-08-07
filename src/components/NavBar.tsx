@@ -47,13 +47,7 @@ const NavBar = ({ isCustom }: Props) => {
             Check Items
           </Button>
           <FormControlLabel
-            control={
-              <Switch
-                checked={isEnglish}
-                onChange={handleChange}
-                color="primary"
-              />
-            }
+            control={<Switch checked={isEnglish} onChange={handleChange} color="primary" />}
             sx={{ color: 'white' }}
             label={isEnglish ? 'EN' : 'CN'}
           />
@@ -73,9 +67,7 @@ const NavBar = ({ isCustom }: Props) => {
               </Button>
             </>
           ) : (
-            <Button variant="tertiary">
-              Sign In
-            </Button>
+            <Button variant="tertiary">Sign In</Button>
           )}
 
           <Button component={Link} href="/" variant="primary">
@@ -124,14 +116,18 @@ const NavBar = ({ isCustom }: Props) => {
             showUserLabel
           />
         ) : (
-          <Button variant="tertiary">
-            <Trans id="Sign In">Sign In</Trans>
-          </Button>
+          <div className="flex gap-2">
+            <Button component={Link} href="/" variant="tertiary">
+              <Trans id="Sign In">Sign In</Trans>
+            </Button>
+            <Button variant="tertiary" component={Link} href="/auth">
+              Sign Up
+            </Button>
+            <Button component={Link} href="/" variant="primary">
+              <Trans id="Try HelloCity">Try HelloCity</Trans>
+            </Button>
+          </div>
         )}
-
-        <Button component={Link} href="/" variant="primary">
-          <Trans id="Try HelloCity">Try HelloCity</Trans>
-        </Button>
       </div>
     </div>
   );
