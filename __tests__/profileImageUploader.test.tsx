@@ -1,5 +1,6 @@
 import React from 'react';
 
+import type { ImageProps } from 'next/image'
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
@@ -7,9 +8,9 @@ import ProfileImageUploader from '../src/components/ProfileImageUploader';
 
 jest.mock('next/image', () => ({
   __esModule: true,
-  default: (props: any) => {
+  default: (props: ImageProps) => {
     const { src, alt, ...rest } = props;
-    return <img src={src} alt={alt} {...rest} />;
+    return <img src={typeof src ==='string' ? src : ''} alt={alt} {...rest} />;
   }
 }));
 
@@ -31,19 +32,21 @@ describe('ProfileImageUploader',()=>{
         global.URL.createObjectURL = jest.fn(()=>'mock-url')
     })
 
-    test('Testing if default image is rendered', ()=>{
+    test('Default image testing ', ()=>{
         render(<ProfileImageUploader/>)
         const defaultImg = screen.getByAltText('Default Avatar')
-        expect(defaultImg).toBeInTheDocument()
+        expect(defaultImg).toHaveClass(
+            'border-2',
+            'border-indigo-600',
+            'rounded-xl'
+        )
     })
 
     test('Testing uploads an image file, show preview and remove photos', async ()=>{
         render(<ProfileImageUploader/>)
-        const file = new File(['fakeFile'], 'avatar.png',{type: 'image/png'})
         const input = screen.getByLabelText(/Add Profile Picture/i)
-
         fireEvent.change(input, {
-            target:{files: [file]}
+            target:{files: [new File(['fakeFile'], 'avatar.png',{type: 'image/png'})]}
         })
 
         const statusText = await screen.findByText(/The image is uploading/i)
@@ -66,15 +69,13 @@ describe('ProfileImageUploader',()=>{
 
     test('Testing error message throw for invalid file - excceding 5MB', async()=>{
         render(<ProfileImageUploader/>)
-        const largeFile = new File(['F'.repeat(6*1024*1024)], 'largeFile.png', {type:'image/png'})
         const input = screen.getByLabelText(/Add Profile Picture/i)
 
         fireEvent.change(input,{
-            target: {files: [largeFile]}
+            target: {files: [new File(['F'.repeat(6*1024*1024)], 'largeFile.png', {type:'image/png'})]}
         })
 
-        const errorMessage = await screen.findByText('Invalid File size or type. Please upload an image file under 5MB')
-        expect(errorMessage).toBeInTheDocument()
+        expect(await screen.findByText('Invalid File size or type. Please upload an image file under 5MB')).toBeInTheDocument()
     })
 
     test('Testing error message throw for invalid file - invalid type', async()=>{
@@ -90,7 +91,7 @@ describe('ProfileImageUploader',()=>{
         expect(errorMessage).toBeInTheDocument()
     })
 
-    test('className on the outermost div', ()=>{
+    test('ClassName on the outermost div', ()=>{
         const { container } = render(<ProfileImageUploader/>)
         const outerDiv = container.firstChild as HTMLElement
 
@@ -102,11 +103,11 @@ describe('ProfileImageUploader',()=>{
             'border-2',
             'rounded-xl',
             'max-w-96',
-            'min-w-[30dvw]'
+            'min-w-[40dvw]'
         )
     })
 
-    test('className on container wrapping add & remove button',()=>{
+    test('ClassName on container wrapping add & remove button',()=>{
         render(<ProfileImageUploader/>)
         const uploadButton = screen.getByText(/Add Profile Picture/i)
         const buttonDiv = uploadButton.parentElement as HTMLElement
@@ -116,16 +117,6 @@ describe('ProfileImageUploader',()=>{
             'justify-center',
             'flex-wrap',
             'w-4/5'
-        )
-    })
-
-    test('className on image of default avatar',()=>{
-        render(<ProfileImageUploader/>)
-        const defaultImg = screen.getByAltText('Default Avatar')
-        expect(defaultImg).toHaveClass(
-            'border-2',
-            'border-indigo-600',
-            'rounded-xl'
         )
     })
 
