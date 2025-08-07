@@ -1,5 +1,4 @@
-
-import { getAccessToken } from "@auth0/nextjs-auth0";
+import { getAccessToken } from '@auth0/nextjs-auth0';
 
 /**
  * start an authenticated fetch request
@@ -7,22 +6,18 @@ import { getAccessToken } from "@auth0/nextjs-auth0";
  * @param init The fetch configuration object (method, body, headers, etc.)
  * @returns The Response object returned by fetch
  */
-export async function fetchWithAuth(
-    url: string,
-    init: RequestInit = {}
-): Promise<Response> {
-    // Get the access token
-    const accessToken = await getAccessToken();
+export async function fetchWithAuth(url: string, init: RequestInit = {}): Promise<Response> {
+  // Get the access token
+  const accessToken = await getAccessToken();
 
-    // Assemble headers
-    const headers = new Headers(init.headers || {});
-    headers.set("Authorization", `Bearer ${accessToken}`);
-    headers.set("Content-Type", "application/json");
+  // Assemble headers
+  const headers = new Headers(init.headers || {});
+  headers.set('Authorization', `Bearer ${accessToken}`);
+  headers.set('Content-Type', 'application/json');
 
-    // Send the request
-    return fetch(url, {
-        ...init,
-        headers
-    });
+  // Send the request
+  return fetch(url, {
+    ...init,
+    headers,
+  });
 }
-
