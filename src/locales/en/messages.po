@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language: \n"
+"Language-Team: \n"
+"Content-Type: \n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+=======
 #. js-lingui-explicit-id
 #: src/app/auth/page.tsx:65
 msgid "Prev"
@@ -12,6 +26,7 @@ msgstr "I'm all set"
 #: src/app/auth/page.tsx:81
 msgid "Next"
 msgstr "Next"
+>>>>>>> main
 
 #. js-lingui-explicit-id
 #: src/components/NavBar.tsx:87
@@ -44,6 +59,24 @@ msgid "Try HelloCity"
 msgstr "Try HelloCity"
 
 #. js-lingui-explicit-id
+<<<<<<< HEAD
+#: src/app/auth/page.tsx:65
+msgid "Prev"
+msgstr "Prev"
+
+#. js-lingui-explicit-id
+#: src/app/auth/page.tsx:70
+msgid "I'm all set"
+msgstr "I'm all set"
+
+#. js-lingui-explicit-id
+#: src/app/auth/page.tsx:81
+msgid "Next"
+msgstr "Next"
+
+#. js-lingui-explicit-id
+=======
+>>>>>>> main
 #: src/components/NavBar.tsx:50
 #~ msgid "Profile"
 #~ msgstr "Profile"

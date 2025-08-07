@@ -14,6 +14,8 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. js-lingui-explicit-id
+<<<<<<< HEAD
+=======
 #: src/app/auth/page.tsx:65
 msgid "Prev"
 msgstr "上一步"
@@ -29,6 +31,7 @@ msgid "Next"
 msgstr "下一步"
 
 #. js-lingui-explicit-id
+>>>>>>> main
 #: src/components/NavBar.tsx:87
 msgid "Home"
 msgstr "首页"
@@ -59,6 +62,21 @@ msgid "Try HelloCity"
 msgstr "试用 HelloCity"
 
 #. js-lingui-explicit-id
+<<<<<<< HEAD
+#: src/app/auth/page.tsx:65
+msgid "Prev"
+msgstr "上一步"
+
+#. js-lingui-explicit-id
+#: src/app/auth/page.tsx:70
+msgid "I'm all set"
+msgstr "我准备好了"
+
+#. js-lingui-explicit-id
+#: src/app/auth/page.tsx:81
+msgid "Next"
+msgstr "下一步"
+=======
 #: src/components/NavBar.tsx:50
 #~ msgid "Profile"
 #~ msgstr "个人资料"
@@ -67,6 +85,7 @@ msgstr "试用 HelloCity"
 #: src/components/NavBar.tsx:53
 #~ msgid "Logout"
 #~ msgstr "登出"
+>>>>>>> main
 
 #. js-lingui-explicit-id
 #~ msgid "Profile"
@@ -81,4 +100,7 @@ msgstr "试用 HelloCity"
 
 #~ msgid "UserName"
 #~ msgstr "用户名"
+<<<<<<< HEAD
+=======
 
+>>>>>>> main
