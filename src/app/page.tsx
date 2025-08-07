@@ -1,6 +1,7 @@
 import Banner from '@/components/Banner';
 import NavBar from '@/components/NavBar';
 import UserProfileCard from '../components/UserLabel';
+
 export default function Home() {
   return (
     <div>
