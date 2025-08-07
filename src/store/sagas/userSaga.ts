@@ -1,7 +1,5 @@
-// src/store/sagas/userSaga.ts
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { fetchUserRequest, fetchUserSuccess, fetchUserFailure } from '../slices/user';
-import { UserProfileCard } from '@/components';
 
 // mock API call
 // function fetchUserApi() {
