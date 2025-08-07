@@ -7,6 +7,7 @@ import websiteTheme from '@/theme/theme';
 import NavBar from '@/components/NavBar';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import { I18nProvider } from '@/contexts/I18nProvider';
+import ProviderRedux from './providers';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -28,12 +29,14 @@ export default function RootLayout({
           <StyledEngineProvider injectFirst>
             <ThemeProvider theme={websiteTheme}>
               <CssBaseline />
-              <LanguageProvider>
-                <I18nProvider>
-                  <NavBar />
-                  <div className="relative">{children}</div>
-                </I18nProvider>
-              </LanguageProvider>
+              <ProviderRedux>
+                <LanguageProvider>
+                  <I18nProvider>
+                    <NavBar />
+                    <div className="relative">{children}</div>
+                  </I18nProvider>
+                </LanguageProvider>
+              </ProviderRedux>
             </ThemeProvider>
           </StyledEngineProvider>
         </AppRouterCacheProvider>

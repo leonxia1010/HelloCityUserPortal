@@ -59,16 +59,6 @@ msgid "Try HelloCity"
 msgstr "试用 HelloCity"
 
 #. js-lingui-explicit-id
-#: src/components/NavBar.tsx:50
-#~ msgid "Profile"
-#~ msgstr "个人资料"
-
-#. js-lingui-explicit-id
-#: src/components/NavBar.tsx:53
-#~ msgid "Logout"
-#~ msgstr "登出"
-
-#. js-lingui-explicit-id
 #~ msgid "Profile"
 #~ msgstr "个人资料"
 
@@ -81,4 +71,3 @@ msgstr "试用 HelloCity"
 
 #~ msgid "UserName"
 #~ msgstr "用户名"
-
