@@ -24,118 +24,100 @@ jest.mock('@mui/material/styles', () => ({
 }));
 
 describe('ProfileImageUploader',()=>{
+
     beforeEach(()=>{
-        jest.clearAllMocks()
+            jest.clearAllMocks()
     })
 
     beforeAll(()=>{
-        global.URL.createObjectURL = jest.fn(()=>'mock-url')
+            global.URL.createObjectURL = jest.fn(()=>'mock-url')
     })
 
-    test('Default image testing ', ()=>{
-        render(<ProfileImageUploader/>)
-        const defaultImg = screen.getByAltText('Default Avatar')
-        expect(defaultImg).toHaveClass(
-            'border-2',
-            'border-indigo-600',
-            'rounded-xl'
-        )
-    })
-
-    test('Testing uploads an image file, show preview and remove photos', async ()=>{
-        render(<ProfileImageUploader/>)
+    const uploadFile = (file: File) => {
         const input = screen.getByLabelText(/Add Profile Picture/i)
-        fireEvent.change(input, {
-            target:{files: [new File(['fakeFile'], 'avatar.png',{type: 'image/png'})]}
+        fireEvent.change(input, {target: {files: [file]}})
+    }
+
+    describe('UX responses test',()=>{
+        test('Default image testing ', ()=>{
+            render(<ProfileImageUploader/>)
+            const defaultImg = screen.getByAltText('Default Avatar')
+            expect(defaultImg).toHaveAttribute('src', '/images/default-avatar.jpg')
+            expect(defaultImg).toHaveClass(
+                'border-2',
+                'border-indigo-600',
+                'rounded-xl'
+            )
         })
 
-        const statusText = await screen.findByText(/The image is uploading/i)
-        const circularProgress = screen.getByRole('progressbar')
-        expect(statusText).toBeInTheDocument()
-        expect(circularProgress).toBeInTheDocument()
+        test('Testing uploads an image file, show preview and remove photos', async ()=>{
+            render(<ProfileImageUploader/>)
+            uploadFile(new File(['fakeFile'], 'avatar.png', {type: 'image/png'}))
 
-        const successText = await screen.findByText(/The image is uploaded/i, undefined, { timeout: 4000 });
-        expect(successText).toBeInTheDocument()
+            expect(await screen.findByText(/The image is uploading .../i)).toBeInTheDocument()
+            expect(screen.getByRole('progressbar')).toBeInTheDocument()
 
-        const previewImage = await screen.findByAltText(/Profile Image Preview/i)
-        expect(previewImage).toBeInTheDocument()
+            const previewImage = await screen.findByAltText(/Profile Image Preview/i, undefined, { timeout: 4000 })
+            expect(screen.getByText(/The image is uploaded/i)).toBeInTheDocument()
+            expect(previewImage).toHaveAttribute('src', 'mock-url')
+            expect(previewImage).toHaveClass(
+                'w-32',
+                'h-32',
+                'object-cover',
+                'border-2',
+                'border-indigo-600',
+                'rounded-xl'
+            )
 
-        const removeButton = screen.getByRole('button',{name: /Remove Photos/i})
-        fireEvent.click(removeButton)
-        
-        expect(screen.getByAltText('Default Avatar')).toBeInTheDocument()
-        expect(screen.queryByText(/The image is uploaded/i)).not.toBeInTheDocument()
-    })
-
-    test('Testing error message throw for invalid file - excceding 5MB', async()=>{
-        render(<ProfileImageUploader/>)
-        const input = screen.getByLabelText(/Add Profile Picture/i)
-
-        fireEvent.change(input,{
-            target: {files: [new File(['F'.repeat(6*1024*1024)], 'largeFile.png', {type:'image/png'})]}
+            const removeButton = screen.getByRole('button',{name: /Remove Photos/i})
+            fireEvent.click(removeButton)
+            
+            expect(screen.getByAltText('Default Avatar')).toHaveAttribute('src', '/images/default-avatar.jpg')
+            expect(screen.queryByText(/The image is uploaded/i)).not.toBeInTheDocument()
         })
 
-        expect(await screen.findByText('Invalid File size or type. Please upload an image file under 5MB')).toBeInTheDocument()
-    })
+        test('Testing error message throw for invalid file - excceding 5MB', async()=>{
+            render(<ProfileImageUploader/>)
+            uploadFile(new File(['F'.repeat(6*1024*1024)], 'largeFile.png', {type:'image/png'}))
 
-    test('Testing error message throw for invalid file - invalid type', async()=>{
-        render(<ProfileImageUploader />)
-        const textFile = new File(['textFile'], 'textFile.txt',{type:'text/plain'})
-        const input = screen.getByLabelText(/Add Profile Picture/i)
-
-        fireEvent.change(input,{
-            target:{files: [textFile]}
+            expect(await screen.findByText('Invalid File size or type. Please upload an image file under 5MB')).toBeInTheDocument()
         })
 
-        const errorMessage = await screen.findByText('Invalid File size or type. Please upload an image file under 5MB')
-        expect(errorMessage).toBeInTheDocument()
+        test('Testing error message throw for invalid file - invalid type', async()=>{
+            render(<ProfileImageUploader />)
+            uploadFile(new File(['textFile'], 'textFile.txt',{type:'text/plain'}))
+            expect(await screen.findByText('Invalid File size or type. Please upload an image file under 5MB')).toBeInTheDocument()
+        })
     })
+    
+    describe('container className test',()=>{
+        test('ClassName on the outermost div', ()=>{
+            const { container } = render(<ProfileImageUploader/>)
+            const outerDiv = container.firstChild as HTMLElement
 
-    test('ClassName on the outermost div', ()=>{
-        const { container } = render(<ProfileImageUploader/>)
-        const outerDiv = container.firstChild as HTMLElement
-
-        expect(outerDiv).toHaveClass(
-            'flex',
-            'flex-col',  
-            'items-center',
-            'justify-center',
-            'border-2',
-            'rounded-xl',
-            'max-w-96',
-            'min-w-[40dvw]'
-        )
-    })
-
-    test('ClassName on container wrapping add & remove button',()=>{
-        render(<ProfileImageUploader/>)
-        const uploadButton = screen.getByText(/Add Profile Picture/i)
-        const buttonDiv = uploadButton.parentElement as HTMLElement
-
-        expect(buttonDiv).toHaveClass(
-            'flex',
-            'justify-center',
-            'flex-wrap',
-            'w-4/5'
-        )
-    })
-
-    test('className on image of preview', async ()=>{
-        render(<ProfileImageUploader/>)
-        const file = new File(['fakeFile'], 'avatar.png',{type: 'image/png'})
-        const input = screen.getByLabelText(/Add Profile Picture/i)
-        fireEvent.change(input, {
-            target:{files: [file]}
+            expect(outerDiv).toHaveClass(
+                'flex',
+                'flex-col',  
+                'items-center',
+                'justify-center',
+                'border-2',
+                'rounded-xl',
+                'max-w-96',
+                'min-w-[40dvw]'
+            )
         })
 
-        const previewImage = await screen.findByAltText(/Profile Image Preview/i, undefined, {timeout: 4000})
-        expect(previewImage).toHaveClass(
-            'w-32',
-            'h-32',
-            'object-cover',
-            'border-2',
-            'border-indigo-600',
-            'rounded-xl'
-        )
+        test('ClassName on container wrapping add & remove button',()=>{
+            render(<ProfileImageUploader/>)
+            const uploadButton = screen.getByText(/Add Profile Picture/i)
+            const buttonDiv = uploadButton.parentElement as HTMLElement
+
+            expect(buttonDiv).toHaveClass(
+                'flex',
+                'justify-center',
+                'flex-wrap',
+                'w-4/5'
+            )
+        })
     })
 })
