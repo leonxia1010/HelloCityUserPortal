@@ -9,7 +9,7 @@ describe('InputBox component', () => {
       <InputBox
         label="Name"
         value=""
-        onChange={() => { }}
+        onChange={() => {}}
         placeholder="Enter your name"
         fieldType="name"
       />,
@@ -23,7 +23,7 @@ describe('InputBox component', () => {
       <InputBox
         label="Email"
         value="invalid"
-        onChange={() => { }}
+        onChange={() => {}}
         errorMessage="Invalid email"
         fieldType="email"
       />,
@@ -43,18 +43,18 @@ describe('InputBox component', () => {
 
 describe('InputBox validation', () => {
   test('Shows required error when phone input is empty', () => {
-   const props = {
-  label: 'Phone',
-  required: true,
-  fieldType: 'phone' as const,
-};
+    const props = {
+      label: 'Phone',
+      required: true,
+      fieldType: 'phone' as const,
+    };
 
-const Wrapper = () => {
-  const [val, setVal] = React.useState('123');
-  return <InputBox value={val} onChange={(e) => setVal(e.target.value)} {...props} />;
-};
+    const Wrapper = () => {
+      const [val, setVal] = React.useState('123');
+      return <InputBox value={val} onChange={(e) => setVal(e.target.value)} {...props} />;
+    };
 
-render(<Wrapper />);
+    render(<Wrapper />);
     const input = screen.getByLabelText(/phone/i);
     fireEvent.change(input, { target: { value: '' } });
 
@@ -87,7 +87,7 @@ render(<Wrapper />);
       <InputBox
         label="Email"
         value="invalid"
-        onChange={() => { }}
+        onChange={() => {}}
         errorMessage="Invalid email"
         fieldType="email"
       />,

@@ -14,7 +14,7 @@ describe('BannerText', () => {
     render(
       <I18nProvider i18n={i18n}>
         <Banner isCustom />
-      </I18nProvider>
+      </I18nProvider>,
     );
   });
 
@@ -22,18 +22,16 @@ describe('BannerText', () => {
     // ✅ 用 heading role 来查找 h2
     const headings = screen.getAllByRole('heading');
     const hasTitle1 = headings.some((el) =>
-      el.textContent?.toLowerCase().includes('navigate your new city with')
+      el.textContent?.toLowerCase().includes('navigate your new city with'),
     );
-    const hasTitle2 = headings.some((el) =>
-      el.textContent?.toLowerCase().includes('confidence')
-    );
+    const hasTitle2 = headings.some((el) => el.textContent?.toLowerCase().includes('confidence'));
 
     expect(hasTitle1).toBe(true);
     expect(hasTitle2).toBe(true);
 
     // ✅ 用 p 元素找 paragraph 内容
     const paragraphs = screen.getAllByText((_, el) =>
-      el?.textContent?.toLowerCase().includes('personalized guidance')
+      el?.textContent?.toLowerCase().includes('personalized guidance'),
     );
     expect(paragraphs.length).toBeGreaterThan(0);
   });
