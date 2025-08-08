@@ -1,9 +1,10 @@
 .input-box-wrapper {
-  margin-bottom: 24px;
+  margin-bottom: 10px;
+  width: 400px;
 
   .label {
     display: inline-block;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
     font-size: 1.1rem;
     font-weight: 600;
     color: #000;
@@ -13,7 +14,7 @@
   }
 
   &:first-of-type .label {
-    margin-top: 24px; // Extra spacing for the first input
+    margin-top: 16px; // Extra spacing for the first input
   }
 
   .MuiOutlinedInput-root {
@@ -40,3 +41,6 @@
     margin-left: 0;
   }
 }
+// :global(.MuiFormLabel-asterisk) {
+//   display: none !important;
+// }   If i use this, the star mark on inputbox label will disappear while we keep the required logic.

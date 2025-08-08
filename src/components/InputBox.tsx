@@ -6,8 +6,9 @@ import InputAdornment from '@mui/material/InputAdornment';
 import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-import styles from './InputBox.module.scss';
-import { validationRules, getDefaultPlaceholder, getInputType } from './utils';
+import styles from '@/components/InputBox.module.scss';
+import { validationRules, getDefaultPlaceholder, getInputType } from '@/components/InputUtils';
+import { i18n } from '@/i18n';
 
 export type InputVariant = 'primary' | 'secondary' | 'tertiary';
 export type InputFieldType = 'name' | 'email' | 'password' | 'repeatPassword' | 'phone';
@@ -43,7 +44,8 @@ const InputBox: React.FC<InputBoxProps> = ({
   const [showPassword, setShowPassword] = useState(false);
   const [touched, setTouched] = useState(false);
 
-  const normalizedFieldType = fieldType || label.toLowerCase().replace(/\s/g, '');
+  const normalizedFieldType =
+    fieldType || (typeof label === 'string' ? label.toLowerCase().replace(/\s/g, '') : '');
   const inputType =
     normalizedFieldType === 'password' || normalizedFieldType === 'repeatPassword'
       ? showPassword
@@ -51,7 +53,6 @@ const InputBox: React.FC<InputBoxProps> = ({
         : 'password'
       : getInputType(normalizedFieldType);
   const finalPlaceholder = placeholder ?? getDefaultPlaceholder(normalizedFieldType);
-  const maxLength = 20;
   const inputId = `input-${normalizedFieldType}`;
 
   useEffect(() => {
@@ -60,22 +61,32 @@ const InputBox: React.FC<InputBoxProps> = ({
     const rule = validationRules[normalizedFieldType];
     let currentError = '';
 
-    if (!value.trim()) {
-      if (required) {
-        currentError = `${label} is required.`;
-      }
-    } else if (rule) {
+    const labelText =
+      typeof label === 'string'
+        ? label
+        : typeof label === 'object' && 'props' in label
+          ? label.props.id || ''
+          : '';
+
+    if (!value.trim() && required) {
+      currentError = i18n._('{field} is required.', { field: labelText });
+      setErrorMessage(currentError);
+      return;
+    }
+
+    if (rule) {
       const isValid =
         normalizedFieldType === 'repeatPassword'
           ? rule.validate(value, originalPassword ?? '')
           : rule.validate(value);
 
       if (!isValid) {
-        currentError = rule.error;
+        currentError = i18n._(rule.error);
       }
-    }
 
-    setErrorMessage(currentError);
+      setErrorMessage(currentError);
+      return;
+    }
   }, [value, touched, required, originalPassword, label, normalizedFieldType]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -83,16 +94,11 @@ const InputBox: React.FC<InputBoxProps> = ({
     onChange(e);
   };
 
-  const togglePasswordVisibility = () => {
-    setShowPassword((prev) => !prev);
-  };
-
   return (
     <div className={`${styles['input-box-wrapper']} ${variant}`}>
       <TextField
         id={inputId}
-        fullWidth
-        label={label.charAt(0).toUpperCase() + label.slice(1)}
+        label={typeof label === 'string' ? label.charAt(0).toUpperCase() + label.slice(1) : label}
         type={inputType}
         value={value}
         onChange={handleChange}
@@ -102,9 +108,10 @@ const InputBox: React.FC<InputBoxProps> = ({
         helperText={errorMessage || externalErrorMessage || ' '}
         disabled={disabled}
         required={required}
+        // FormLabelProps={{ required: false }} if i enable this and global set in scss, the star mark will disappear.
         inputProps={{
           id: inputId,
-          maxLength,
+          maxLength: 20,
           autoComplete: autoComplete ? 'on' : 'off',
           name: normalizedFieldType,
         }}
@@ -114,7 +121,7 @@ const InputBox: React.FC<InputBoxProps> = ({
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton
-                      onClick={togglePasswordVisibility}
+                      onClick={() => setShowPassword((prev) => !prev)}
                       edge="end"
                       aria-label="toggle password visibility"
                     >
