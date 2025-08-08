@@ -40,3 +40,4 @@ storybook-static
 
 # Lingui compiled files
 src/locales/*.js
+src/locales/*.mjs

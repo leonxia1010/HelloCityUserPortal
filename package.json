@@ -18,7 +18,7 @@
     "test:coverage": "jest --coverage",
     "type-check": "tsc --noEmit",
     "extract": "lingui extract",
-    "compile": "lingui compile"
+    "compile": "lingui compile --namespace es"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^4.8.0",
