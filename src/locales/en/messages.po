@@ -27,27 +27,27 @@ msgid "Next"
 msgstr "Next"
 
 #. js-lingui-explicit-id
-#: src/components/dropdownMenuOptions.tsx:9
+#: src/components/dropdownMenuOptions.tsx:11
 msgid "Profile"
 msgstr "Profile"
 
 #. js-lingui-explicit-id
-#: src/components/dropdownMenuOptions.tsx:10
+#: src/components/dropdownMenuOptions.tsx:18
 msgid "Settings"
 msgstr "Settings"
 
 #. js-lingui-explicit-id
-#: src/components/dropdownMenuOptions.tsx:11
+#: src/components/dropdownMenuOptions.tsx:25
 msgid "Theme"
 msgstr "Theme"
 
 #. js-lingui-explicit-id
-#: src/components/dropdownMenuOptions.tsx:12
+#: src/components/dropdownMenuOptions.tsx:32
 msgid "Subscription"
 msgstr "Subscription"
 
 #. js-lingui-explicit-id
-#: src/components/dropdownMenuOptions.tsx:13
+#: src/components/dropdownMenuOptions.tsx:39
 msgid "Logout"
 msgstr "Logout"
 
