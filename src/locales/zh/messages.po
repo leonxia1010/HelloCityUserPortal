@@ -29,88 +29,29 @@ msgid "Next"
 msgstr "下一步"
 
 #. js-lingui-explicit-id
-#: src/components/Banner.tsx:18
-#: src/components/Banner.tsx:45
-msgid "banner.title1"
-msgstr ""
+#: src/components/dropdownMenuOptions.tsx:9
+msgid "Profile"
+msgstr "个人资料"
 
 #. js-lingui-explicit-id
-#: src/components/Banner.tsx:21
-#: src/components/Banner.tsx:48
-msgid "banner.title2"
-msgstr "自信"
+#: src/components/dropdownMenuOptions.tsx:10
+msgid "Settings"
+msgstr "设置"
 
 #. js-lingui-explicit-id
-#: src/components/Banner.tsx:25
-#: src/components/Banner.tsx:52
-msgid "banner.paragraph"
-msgstr "获取个性化指导、逐步清单和时间规划，帮助你顺利融入任何城市。无论你是游客、学生，还是移民。"
+#: src/components/dropdownMenuOptions.tsx:11
+msgid "Theme"
+msgstr "主题"
 
 #. js-lingui-explicit-id
-#: src/components/Banner.tsx:32
-#: src/components/Banner.tsx:59
-msgid "banner.cta"
-msgstr "现在就试试：HelloCity"
+#: src/components/dropdownMenuOptions.tsx:12
+msgid "Subscription"
+msgstr "订阅管理"
 
 #. js-lingui-explicit-id
-#: src/components/InputBox.tsx:71
-msgid "{field} is required."
-msgstr "{field} 为必填项。"
-
-#. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:19
-msgid "Please enter your email"
-msgstr "请输入您的邮箱"
-
-#. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:21
-msgid "Please enter your password"
-msgstr "请输入您的密码"
-
-#. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:23
-msgid "Please repeat your password"
-msgstr "请重复输入密码"
-
-#. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:25
-msgid "Please enter your name"
-msgstr "请输入您的姓名"
-
-#. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:27
-msgid "Please enter your phone number"
-msgstr "请输入您的手机号"
-
-#. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:29
-msgid "Please enter value"
-msgstr "请输入内容"
-
-#. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:56
-msgid "validation.nameError"
-msgstr "只能包含字母且姓名不能为空"
-
-#. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:60
-msgid "validation.emailError"
-msgstr "请输入有效的邮箱地址"
-
-#. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:65
-msgid "validation.passwordError"
-msgstr "密码必须包含大小写字母、数字和特殊字符，长度为6-20位"
-
-#. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:72
-msgid "validation.repeatPasswordError"
-msgstr "两次密码输入不匹配"
-
-#. js-lingui-explicit-id
-#: src/components/InputUtils.tsx:76
-msgid "validation.phoneError"
-msgstr "只允许输入数字"
+#: src/components/dropdownMenuOptions.tsx:13
+msgid "Logout"
+msgstr "登出"
 
 #. js-lingui-explicit-id
 #: src/components/NavBar.tsx:87
@@ -142,55 +83,8 @@ msgstr "登录"
 msgid "Try HelloCity"
 msgstr "试用 HelloCity"
 
-#. js-lingui-explicit-id
-#: src/stories/InputBox.stories.tsx:33
-msgid "Name"
-msgstr "姓名"
-
-#. js-lingui-explicit-id
-#: src/stories/InputBox.stories.tsx:46
-msgid "Phone"
-msgstr "手机号"
-
-#. js-lingui-explicit-id
-#: src/stories/InputBox.stories.tsx:66
-msgid "Please enter a valid email address."
-msgstr ""
-
-#. js-lingui-explicit-id
-#: src/stories/InputBox.stories.tsx:80
-msgid "Email"
-msgstr "邮箱"
-
-#. js-lingui-explicit-id
-#: src/stories/InputBox.stories.tsx:97
-msgid "Password"
-msgstr "密码"
-
-#. js-lingui-explicit-id
-#: src/stories/InputBox.stories.tsx:104
-msgid "Repeat Password"
-msgstr "重复密码"
-
-#. js-lingui-explicit-id
-#~ msgid "Profile"
-#~ msgstr "个人资料"
-
-#. js-lingui-explicit-id
-#~ msgid "Logout"
-#~ msgstr "登出"
-
-#: src/components/Banner.tsx:17
-#: src/components/Banner.tsx:44
-#~ msgid "banner.title1"
-#~ msgstr "探索你的城市======="
-
 #~ msgid "Email"
 #~ msgstr "电子邮件"
 
-#: src/app/auth/page.tsx:65
-#~ msgid "Prev"
-#~ msgstr "上一步"
-
 #~ msgid "UserName"
-#~ msgstr "用户名>>>>>>> main"
+#~ msgstr "用户名"
