@@ -81,6 +81,41 @@ msgstr "Sign In"
 msgid "Try HelloCity"
 msgstr "Try HelloCity"
 
+#. js-lingui-explicit-id
+#: src/components/ProfileImageUploader.tsx:26
+msgid "file.upload.error"
+msgstr "Invalid File size or type. Please upload an image file under 5MB"
+
+#. js-lingui-explicit-id
+#: src/components/ProfileImageUploader.tsx:34
+msgid "file.upload.progress"
+msgstr "The image is uploading ..."
+
+#. js-lingui-explicit-id
+#: src/components/ProfileImageUploader.tsx:41
+msgid "file.upload.success"
+msgstr "The image is uploaded"
+
+#. js-lingui-explicit-id
+#: src/components/ProfileImageUploader.tsx:95
+msgid "account.title"
+msgstr "HelloCity Account"
+
+#. js-lingui-explicit-id
+#: src/components/ProfileImageUploader.tsx:99
+msgid "profile.avatar.title"
+msgstr "Profile Picture"
+
+#. js-lingui-explicit-id
+#: src/components/ProfileImageUploader.tsx:127
+msgid "profile.avatar.add"
+msgstr "Add Profile Picture"
+
+#. js-lingui-explicit-id
+#: src/components/ProfileImageUploader.tsx:133
+msgid "profile.avatar.remove"
+msgstr "Remove Photos"
+
 #: src/app/auth/PageOne.tsx:22
 #~ msgid "Email"
 #~ msgstr "Email"
