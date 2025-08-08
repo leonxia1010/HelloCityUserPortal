@@ -43,20 +43,18 @@ describe('InputBox component', () => {
 
 describe('InputBox validation', () => {
   test('Shows required error when phone input is empty', () => {
-    const Wrapper = () => {
-      const [val, setVal] = React.useState('123');
-      return (
-        <InputBox
-          label="Phone"
-          value={val}
-          onChange={(e) => setVal(e.target.value)}
-          required
-          fieldType="phone"
-        />
-      );
-    };
+   const props = {
+  label: 'Phone',
+  required: true,
+  fieldType: 'phone' as const,
+};
 
-    render(<Wrapper />);
+const Wrapper = () => {
+  const [val, setVal] = React.useState('123');
+  return <InputBox value={val} onChange={(e) => setVal(e.target.value)} {...props} />;
+};
+
+render(<Wrapper />);
     const input = screen.getByLabelText(/phone/i);
     fireEvent.change(input, { target: { value: '' } });
 

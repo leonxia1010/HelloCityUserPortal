@@ -9,7 +9,7 @@ describe('NavBar', () => {
     localStorage.clear();
   });
 
-  it('renders the logo and navigation links', () => {
+  it('Renders the logo and navigation links', () => {
     render(
       <I18nTestWrapper>
         <NavBar />
@@ -29,7 +29,7 @@ describe('NavBar', () => {
     expect(ctaLink).toBeInTheDocument();
   });
 
-  it('toggles language label between CN and EN', async () => {
+  it('Toggles language label between CN and EN', async () => {
     render(
       <I18nTestWrapper>
         <NavBar />
@@ -53,7 +53,7 @@ describe('NavBar', () => {
     });
   });
 
-  it('applies correct Tailwind classes to the outermost div', () => {
+  it('Applies correct Tailwind classes to the outermost div', () => {
     const { container } = render(
       <I18nTestWrapper>
         <NavBar />
@@ -74,7 +74,7 @@ describe('NavBar', () => {
     );
   });
 
-  it('displays English navigation items by default', () => {
+  it('Displays English navigation items by default', () => {
     render(
       <I18nTestWrapper>
         <NavBar />
@@ -89,7 +89,7 @@ describe('NavBar', () => {
     expect(screen.getByText('Try HelloCity')).toBeInTheDocument();
   });
 
-  it('switches to Chinese and displays translated labels', async () => {
+  it('Switches to Chinese and displays translated labels', async () => {
     render(
       <I18nTestWrapper>
         <NavBar />
@@ -110,7 +110,7 @@ describe('NavBar', () => {
     });
   });
 
-  it('switches back to English from Chinese', async () => {
+  it('Switches back to English from Chinese', async () => {
     render(
       <I18nTestWrapper>
         <NavBar />

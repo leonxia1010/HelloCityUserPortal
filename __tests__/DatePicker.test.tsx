@@ -35,23 +35,23 @@ describe('DatePicker component', () => {
       expect(input).toBeDisabled();
     });
   });
+});
 
-  describe('User Experience', () => {
-    it('Calls onChange when date is changed manually', () => {
-      const handleChange = jest.fn();
-      renderDatePicker({
-        value: dayjs('2025-08-01'),
-        onChange: handleChange,
-        label: 'Change Date',
-      });
-
-      const input = screen.getByLabelText('Change Date');
-      fireEvent.change(input, { target: { value: '08/03/2025' } });
-      fireEvent.blur(input);
-      expect(handleChange).toHaveBeenCalled();
-      const calledValue = handleChange.mock.calls[0][0];
-      expect(isDayjs(calledValue)).toBe(true);
-      expect(calledValue.format('YYYY-MM-DD')).toBe('2025-08-03');
-    });
+// ✅ 把这个 test 从 inner describe 拿到外层
+it('Calls onChange when date is changed manually', () => {
+  const handleChange = jest.fn();
+  renderDatePicker({
+    value: dayjs('2025-08-01'),
+    onChange: handleChange,
+    label: 'Change Date',
   });
+
+  const input = screen.getByLabelText('Change Date');
+  fireEvent.change(input, { target: { value: '08/03/2025' } });
+  fireEvent.blur(input);
+  expect(handleChange).toHaveBeenCalled();
+
+  const calledValue = handleChange.mock.calls[0][0];
+  expect(isDayjs(calledValue)).toBe(true);
+  expect(calledValue.format('YYYY-MM-DD')).toBe('2025-08-03');
 });

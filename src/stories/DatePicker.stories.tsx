@@ -1,9 +1,8 @@
-// File: src/components/DatePicker.stories.tsx
-
 import type { Meta, StoryObj } from '@storybook/react-vite';
 import React, { useState } from 'react';
 import type { Dayjs } from 'dayjs';
 import dayjs from 'dayjs';
+import { Trans } from '@lingui/react';
 import DatePicker from '../components/DatePicker';
 
 const meta: Meta<typeof DatePicker> = {
@@ -21,7 +20,11 @@ export const SingleDate: Story = {
 
     return (
       <div className="w-full max-w-xs">
-        <DatePicker value={value} onChange={(newValue) => setValue(newValue)} label="Pick a date" />
+        <DatePicker
+          value={value}
+          onChange={(newValue) => setValue(newValue)}
+          label={<Trans id="datepicker.label">Pick a date</Trans>}
+        />
       </div>
     );
   },
