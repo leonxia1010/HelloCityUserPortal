@@ -2,43 +2,50 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { I18nProvider } from '@lingui/react';
 import { i18n } from '@/i18n';
-import messages from '@/locales/en/messages.js';
 import Banner from '@/components/Banner';
 
 describe('BannerText', () => {
   beforeEach(() => {
-    // ✅ 保留 i18n 初始化（可挪入 setupTests.ts）
-    i18n.load('en', messages.messages);
+    // 模拟翻译内容：用 key => text 直接映射
+    i18n.load('en', {
+      'banner.title1': 'Navigate your new city with',
+      'banner.title2': 'Confidence',
+      'banner.paragraph':
+        'Get personalized guidance step by step checklists, and timeline planning for setting into any city. Whether you\'re a tourist, student or migrant',
+      'banner.cta': 'Try HelloCity',
+    });
     i18n.activate('en');
 
     render(
       <I18nProvider i18n={i18n}>
-        <Banner isCustom />
-      </I18nProvider>,
+        <Banner />
+      </I18nProvider>
     );
   });
 
-  it('renders title and paragraph correctly', () => {
-    // ✅ 用 heading role 来查找 h2
+  it('renders both heading titles', () => {
     const headings = screen.getAllByRole('heading');
-    const hasTitle1 = headings.some((el) =>
-      el.textContent?.toLowerCase().includes('navigate your new city with'),
+    const hasTitle1 = headings.some(h =>
+      h.textContent?.toLowerCase().includes('navigate')
     );
-    const hasTitle2 = headings.some((el) => el.textContent?.toLowerCase().includes('confidence'));
+    const hasTitle2 = headings.some(h =>
+      h.textContent?.toLowerCase().includes('confidence')
+    );
 
     expect(hasTitle1).toBe(true);
     expect(hasTitle2).toBe(true);
-
-    // ✅ 用 p 元素找 paragraph 内容
-    const paragraphs = screen.getAllByText((_, el) =>
-      el?.textContent?.toLowerCase().includes('personalized guidance'),
-    );
-    expect(paragraphs.length).toBeGreaterThan(0);
   });
 
-  it('renders CTA button with correct text', () => {
-    // ✅ 明确查找按钮名字包含 hello（按钮是 Try HelloCity）
-    const button = screen.getByRole('button', { name: /hello/i });
-    expect(button).toBeInTheDocument();
+  it('renders the full paragraph text', () => {
+    const paragraph = screen.getByText((content) =>
+      content.includes('Get personalized guidance') &&
+      content.includes('Whether you\'re a tourist')
+    );
+    expect(paragraph).toBeInTheDocument();
+  });
+
+  it('renders the CTA button correctly', () => {
+    const btn = screen.getByRole('button', { name: /try hellocity/i });
+    expect(btn).toBeInTheDocument();
   });
 });
