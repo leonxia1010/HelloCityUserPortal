@@ -72,8 +72,8 @@ export const Email = () => {
       onChange={(e) => setEmail(e.target.value)}
       required
     />
-  )
-}
+  );
+};
 
 export const EmailError: StoryObj<typeof InputBox> = {
   args: {

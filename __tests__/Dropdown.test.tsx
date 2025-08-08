@@ -29,8 +29,10 @@ const options: DropdownOptionProps[] = [{ label: 'Profile', value: 'profile', on
 // TODO: 这个option和base不同，你需要给一个合理的名字，这个名字不合适
 
 const renderDropdown = (props = {}) => {
-  return renderWithTheme(<Dropdown anchorElContent={<span>open</span>} dropdownOptions={baseOptions} {...props} />);
-}
+  return renderWithTheme(
+    <Dropdown anchorElContent={<span>open</span>} dropdownOptions={baseOptions} {...props} />,
+  );
+};
 // TODO: 这个renderDropdown重复次数太多了，应该提出来做一个单独的函数
 
 describe('DropDown component', () => {
@@ -55,7 +57,8 @@ describe('DropDown component', () => {
       expect(separators).toHaveLength(1);
     });
 
-    it('Items are rendered vertically when layout = vertical as default value', async () => { // TODO: vertical是default，所以应该在测试上明确说出来
+    it('Items are rendered vertically when layout = vertical as default value', async () => {
+      // TODO: vertical是default，所以应该在测试上明确说出来
       renderDropdown();
       await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
 
@@ -64,7 +67,7 @@ describe('DropDown component', () => {
     });
 
     it('Items are rendered horizontally when layout = horizontal', async () => {
-      renderDropdown({layout: 'horizontal'});
+      renderDropdown({ layout: 'horizontal' });
       await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
 
       const list = document.querySelector('.MuiMenu-list');
@@ -72,7 +75,7 @@ describe('DropDown component', () => {
     });
 
     it('User label is rendered if showUserLabel = true', async () => {
-      renderDropdown({showUserLabel: true});
+      renderDropdown({ showUserLabel: true });
       await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
 
       expect(await screen.findByText(/Leon/i)).toBeInTheDocument();
@@ -86,14 +89,14 @@ describe('DropDown component', () => {
       //     textAlignCenter
       //   />,
       // );
-      renderDropdown({textAlignCenter: true});
+      renderDropdown({ textAlignCenter: true });
       await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
 
       const typography = await screen.findByText('Profile');
       expect(typography).toHaveStyle({ textAlign: 'center', flexGrow: 1 });
     });
 
-      // dynamic margin top calculator
+    // dynamic margin top calculator
     it('uses negative margin when popup opens upward (vertical="top")', async () => {
       // renderWithTheme(
       //   <Dropdown
@@ -103,7 +106,10 @@ describe('DropDown component', () => {
       //   />,
       // );
 
-      renderDropdown({dropdownOptions: [{ label: 'A', value: 'a', onClick: jest.fn() }], anchorOrigin: { vertical: 'top', horizontal: 'right' }});
+      renderDropdown({
+        dropdownOptions: [{ label: 'A', value: 'a', onClick: jest.fn() }],
+        anchorOrigin: { vertical: 'top', horizontal: 'right' },
+      });
 
       // TODO: 既然用了customized的propr，那就提出去起个名，尤其是你都用了两次了
 
@@ -121,7 +127,10 @@ describe('DropDown component', () => {
       //   />,
       // );
 
-      renderDropdown({dropdownOptions: [{ label: 'A', value: 'a', onClick: jest.fn() }], anchorOrigin: { vertical: 'center', horizontal: 'right' }});
+      renderDropdown({
+        dropdownOptions: [{ label: 'A', value: 'a', onClick: jest.fn() }],
+        anchorOrigin: { vertical: 'center', horizontal: 'right' },
+      });
 
       await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
       const paper = document.querySelector('.MuiPaper-root') as HTMLElement;
@@ -151,7 +160,7 @@ describe('DropDown component', () => {
     //   close menu test and onclick event TODO: 你test都写上名字了你为啥还要再加上comment呢？comment少加，能少加都少加，好的代码根本不需要加comment，加comment显得很难看
     it('Onclick fired and menu closes after clicking an item', async () => {
       // renderWithTheme(<Dropdown anchorElContent={<span>Open</span>} dropdownOptions={options} />);
-      renderDropdown({dropdownOptions: options});
+      renderDropdown({ dropdownOptions: options });
 
       await userEvent.click(screen.getByRole('button', { name: /open menu/i }));
       expect(await screen.findByRole('menu')).toBeInTheDocument();
@@ -194,5 +203,5 @@ describe('DropDown component', () => {
         expect(screen.queryByRole('menu')).not.toBeInTheDocument();
       });
     });
-  })
+  });
 });

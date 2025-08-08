@@ -25,8 +25,8 @@ const mockUserData = {
 };
 
 const renderUserLabel = (props = {}) => {
-    return render(<UserProfileCard {...props} />);
-}
+  return render(<UserProfileCard {...props} />);
+};
 
 describe('UserLabel component test', () => {
   it('Correctly render incoming user data', () => {
@@ -41,7 +41,12 @@ describe('UserLabel component test', () => {
   });
 
   it('When missing some data, show default values', () => {
-    renderUserLabel({UserName: undefined, PreferredName: undefined, Avatar: undefined, LastJoinDate: undefined});
+    renderUserLabel({
+      UserName: undefined,
+      PreferredName: undefined,
+      Avatar: undefined,
+      LastJoinDate: undefined,
+    });
     expect(screen.getByText('Unknown User')).toBeInTheDocument();
     expect(screen.getByText('@UnknownNickname')).toBeInTheDocument();
     expect(screen.getByText(/last login: unknown/i)).toBeInTheDocument();
@@ -50,9 +55,10 @@ describe('UserLabel component test', () => {
     expect(screen.queryByText(/last login: 2023-10-15 14:30/i)).not.toBeInTheDocument();
   });
 
-  it('When no avatar is provided, show placeholder icon', () => { // TODO: 这个测试为什么不能和上面那个合并成一个呢？从语义上来说，都是没有数据显示default值的情况
+  it('When no avatar is provided, show placeholder icon', () => {
+    // TODO: 这个测试为什么不能和上面那个合并成一个呢？从语义上来说，都是没有数据显示default值的情况
     // render(<UserProfileCard UserName="SecondName" PreferredName="SecondNickname" />);
-    renderUserLabel({UserName: 'SecondName', PreferredName: 'SecondNickname'});
+    renderUserLabel({ UserName: 'SecondName', PreferredName: 'SecondNickname' });
     const placeholderIcon = screen.getByText('account_circle');
     expect(placeholderIcon).toBeInTheDocument();
     expect(placeholderIcon).toHaveClass('material-icons text-7xl text-gray-400');
