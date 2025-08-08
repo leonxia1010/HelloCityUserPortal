@@ -44,7 +44,7 @@ const InputBox: React.FC<InputBoxProps> = ({
   const [showPassword, setShowPassword] = useState(false);
   const [touched, setTouched] = useState(false);
 
-  const normalizedFieldType = fieldType || label.toLowerCase().replace(/\s/g, '');
+const normalizedFieldType = fieldType || (typeof label === 'string' ? label.toLowerCase().replace(/\s/g, '') : '');
   const inputType =
     normalizedFieldType === 'password' || normalizedFieldType === 'repeatPassword'
       ? showPassword
@@ -97,7 +97,6 @@ const InputBox: React.FC<InputBoxProps> = ({
     <div className={`${styles['input-box-wrapper']} ${variant}`}>
       <TextField
         id={inputId}
-        fullWidth
         label={typeof label === 'string' ? label.charAt(0).toUpperCase() + label.slice(1) : label}
         type={inputType}
         value={value}
