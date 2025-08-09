@@ -23,6 +23,11 @@ jest.mock('@mui/material/styles', () => ({
         }),
 }));
 
+const uploadFile = (file: File) => {
+        const input = screen.getByLabelText(/Add Profile Picture/i)
+        fireEvent.change(input, {target: {files: [file]}})
+    }
+
 describe('ProfileImageUploader',()=>{
 
     beforeEach(()=>{
@@ -32,11 +37,6 @@ describe('ProfileImageUploader',()=>{
     beforeAll(()=>{
             global.URL.createObjectURL = jest.fn(()=>'mock-url')
     })
-
-    const uploadFile = (file: File) => {
-        const input = screen.getByLabelText(/Add Profile Picture/i)
-        fireEvent.change(input, {target: {files: [file]}})
-    }
 
     describe('UX responses test',()=>{
         test('Default image testing ', ()=>{
@@ -90,7 +90,7 @@ describe('ProfileImageUploader',()=>{
         })
     })
     
-    describe('container className test',()=>{
+    describe('Container className test',()=>{
         test('ClassName on the outermost div', ()=>{
             const { container } = render(<ProfileImageUploader/>)
             const outerDiv = container.firstChild as HTMLElement
